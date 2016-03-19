@@ -2,6 +2,8 @@
 
 # The gem namespace.
 module Versionaire
+  module_function
+
   # Conversion function for casting (strict) a value into a version.
   # rubocop:disable Style/MethodName
   # rubocop:disable Metrics/MethodLength
@@ -19,10 +21,10 @@ module Versionaire
         valid = value.keys.all? { |key| Version.keys.include? key }
         fail(Errors::Conversion, Errors::Conversion.hash_message) unless valid
         Version.new value
-      when Version then value
-      else fail(Errors::Conversion, Errors::Conversion.primitive_message)
+      when Version
+        value
+      else
+        fail Errors::Conversion, Errors::Conversion.primitive_message
     end
   end
-
-  module_function :Version
 end

@@ -22,21 +22,21 @@ RSpec.describe "Versionaire.Version" do
     end
 
     context "with array" do
-      it "converts an empty array" do
+      it "converts empty array" do
         expect(Versionaire.Version([])).to eq(Versionaire::Version.new)
       end
 
-      it "converts an array with one argument" do
+      it "converts array with one argument" do
         version = Versionaire::Version.new major: 1
         expect(Versionaire.Version([1])).to eq(version)
       end
 
-      it "converts an array with two arguments" do
+      it "converts array with two arguments" do
         version = Versionaire::Version.new major: 1, minor: 2
         expect(Versionaire.Version([1, 2])).to eq(version)
       end
 
-      it "converts an array with three arguments" do
+      it "converts array with three arguments" do
         expect(Versionaire.Version([1, 2, 3])).to eq(version)
       end
 
@@ -57,7 +57,7 @@ RSpec.describe "Versionaire.Version" do
       end
 
       it "fails with conversion error for invalid hash" do
-        result = -> { Versionaire.Version maintenance: 5, bogus: "test" }
+        result = -> { Versionaire.Version bogus: "test" }
         expect(&result).to raise_error(Versionaire::Errors::Conversion, /Invalid hash conversion/)
       end
     end
