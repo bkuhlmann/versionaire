@@ -12,7 +12,16 @@ module Versionaire
     end
 
     def self.format
-      /\Av?\d{1,}\.\d{1,}\.\d{1,}\z/
+      /
+        \A     # Start of string.
+        v?     # Optional prefix.
+        \d{1,} # Major version.
+        \.     # Delimiter.
+        \d{1,} # Minor version.
+        \.     # Delimiter.
+        \d{1,} # Maintenance version.
+        \z     # End of string.
+      /x
     end
 
     def self.arguments major, minor, maintenance
