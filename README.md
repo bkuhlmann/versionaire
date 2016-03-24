@@ -7,7 +7,7 @@
 [![Travis CI Status](https://secure.travis-ci.org/bkuhlmann/versionaire.svg)](https://travis-ci.org/bkuhlmann/versionaire)
 [![Patreon](https://img.shields.io/badge/patreon-donate-brightgreen.svg)](https://www.patreon.com/bkuhlmann)
 
-Provides immutable, semantic versioning.
+Provides immutable, thread-safe, semantic versioning.
 
 <!-- Tocer[start]: Auto-generated, don't remove. -->
 
@@ -18,16 +18,19 @@ Provides immutable, semantic versioning.
 - [Requirements](#requirements)
 - [Setup](#setup)
 - [Usage](#usage)
-  - [Basic](#basic)
-  - [Math](#math)
-    - [Add](#add)
-    - [Subtract](#subtract)
-  - [Comparisons](#comparisons)
+  - [Initialization](#initialization)
   - [Equality](#equality)
-  - [Identity](#identity)
-  - [Implicit Conversions](#implicit-conversions)
-  - [Explicit Conversions](#explicit-conversions)
-  - [Conversions (Casting)](#conversions-casting)
+    - [Value (`#==`)](#value-)
+    - [Hash (`#eql?`)](#hash-eql)
+    - [Case (`#===`)](#case-)
+    - [Identity (`#equal?`)](#identity-equal)
+  - [Conversions](#conversions)
+    - [Function (Casting)](#function-casting)
+    - [Implicit](#implicit)
+    - [Explicit](#explicit)
+  - [Math](#math)
+    - [Addition](#addition)
+    - [Subtraction](#subtraction)
 - [Tests](#tests)
 - [Versioning](#versioning)
 - [Code of Conduct](#code-of-conduct)
@@ -41,10 +44,8 @@ Provides immutable, semantic versioning.
 # Features
 
 - Provides [Semantic Versioning](http://semver.org).
-- Provides immutable version instances.
-- Provides conversions (casts) from a `String`, `Array`, `Hash`, or `Version` to a new `Version`.
-- Provides impicit conversion to a `String`.
-- Provides explicit conversions to a `String`, `Array`, and a `Hash`.
+- Provides immutable, thread-safe version instances.
+- Provides conversions (casts) from a `String`, `Array`, `Hash`, or `Version` to a `Version`.
 
 # Screencasts
 
@@ -74,7 +75,7 @@ Add the following to your Gemfile:
 
 # Usage
 
-## Basic
+## Initialization
 
 A new version can be initialized in a variety of ways:
 
@@ -83,90 +84,52 @@ A new version can be initialized in a variety of ways:
     Versionaire::Version.new major: 1, minor: 2                 # "1.2.0"
     Versionaire::Version.new major: 1, minor: 2, maintenance: 3 # "1.2.3"
 
-## Math
-
-Versions can be added and subtracted from each other.
-
-### Add
-
-    version_1 = Versionaire::Version.new major: 1, minor: 2, maintenance: 3
-    version_2 = Versionaire::Version.new major: 2, minor: 5, maintenance: 7
-    version_1 + version_2 # "3.7.10"
-
-### Subtract
-
-    version_1 = Versionaire::Version.new major: 1, minor: 2, maintenance: 3
-    version_2 = Versionaire::Version.new major: 1, minor: 1, maintenance: 1
-    version_1 - version_2 # "0.1.2"
-
-    version_1 = Versionaire::Version.new major: 1
-    version_2 = Versionaire::Version.new major: 5
-    version_1 - version_2 # Fails with a Versionaire::Errors::NegativeNumber
-
-## Comparisons
-
-Versions can be compared against other versions:
-
-    version_1 = Versionaire::Version.new major: 1
-    version_2 = Versionaire::Version.new major: 5
-
-    version_1 > version_2  # false
-    version_1 == version_2 # false
-    version_1 < version_2  # true
-
-Versions can't be compared to similar objects:
-
-    version = Versionaire::Version.new major: 1
-
-    version == "1.0.0"                              # false
-    version == [1, 0, 0]                            # false
-    version == {major: 1, minor: 0, maintenance: 0} # false
-
 ## Equality
 
-Equality is based on the values that make up the version, not identity.
+### Value (`#==`)
 
-    version = Versionaire::Version.new major: 1, minor: 2, maintenance: 3
-    identical = Versionaire::Version.new major: 1, minor: 2, maintenance: 3
-    different = Versionaire::Version.new major: 3
+Equality is deterimined by the state of the object. This means that a version is equal to another version as long as
+all of the values (i.e. state) are equal to each other. Example:
 
-    version == version   # true
-    version == identical # true
-    version == different # false
+    version_a = Versionaire::Version.new major: 1
+    version_b = Versionaire::Version.new major: 2
+    version_c = Versionaire::Version.new major: 1
 
-This is the same behavior for `#eql?` method too.
+    version_a == version_a # true
+    version_a == version_b # false
+    version_a == version_c # true
 
-## Identity
+Knowning this, versions can be compared against one another too:
 
-Identity is composed of the values that make up the version plus the class:
+    version_a > version_b                   # false
+    version_a < version_b                   # true
+    version_a.between? version_c, version_b # true
 
-    version = Versionaire::Version.new major: 1, minor: 2, maintenance: 3
-    identical = Versionaire::Version.new major: 1, minor: 2, maintenance: 3
-    different = Versionaire::Version.new major: 3
+### Hash (`#eql?`)
 
-    version.hash   # -4162833121614102126
-    identical.hash # -4162833121614102126
-    different.hash # -2082793513660996236
+Behaves exactly as `#==`.
 
-## Implicit Conversions
+### Case (`#===`)
 
-Implicit conversion to a `String` is supported:
+Behaves exactly as `#==`.
 
-    "1.0.0".match Versionaire::Version.new(major: 1) # <MatchData "1.0.0">
+### Identity (`#equal?`)
 
-## Explicit Conversions
+Works like any other standard Ruby object where an object is equal only to itself.
 
-Explicit converting to a `String`, `Array`, or `Hash` is supported:
+    version_a = Versionaire::Version.new major: 1
+    version_b = Versionaire::Version.new major: 2
+    version_c = Versionaire::Version.new major: 1
 
-    version = Versionaire::Version.new
+    version_a.equal? version_a # true
+    version_a.equal? version_b # false
+    version_a.equal? version_c # false
 
-    version.to_s # "0.0.0"
-    version.to_a # [0, 0, 0]
-    version.to_h # {major: 0, minor: 0, maintenance: 0}
+## Conversions
 
-## Conversions (Casting)
+### Function (Casting)
 
-The `Versionaire::Version` function is provided for explicit conversion (casting) to a new version:
+The `Versionaire::Version` function is provided for explicit casting to a version:
 
     version = Versionaire::Version.new major: 1
 
@@ -175,8 +138,44 @@ The `Versionaire::Version` function is provided for explicit conversion (casting
     Versionaire::Version major: 1, minor: 0, maintenance: 0
     Versionaire::Version version
 
-Each of these conversions will result in a new version object that is equal to "1.0.0". When attempting to convert an
+Each of these conversions will result in a version object that represents "1.0.0". When attempting to convert an
 unsupported type, a `Versionaire::Errors::Conversion` exception will be thrown.
+
+### Implicit
+
+Implicit conversion to a `String` is supported:
+
+    "1.0.0".match Versionaire::Version.new(major: 1) # <MatchData "1.0.0">
+
+### Explicit
+
+Explicit conversion to a `String`, `Array`, or `Hash` is supported:
+
+    version = Versionaire::Version.new
+
+    version.to_s # "0.0.0"
+    version.to_a # [0, 0, 0]
+    version.to_h # {major: 0, minor: 0, maintenance: 0}
+
+## Math
+
+Versions can be added and subtracted from each other.
+
+### Addition
+
+    version_1 = Versionaire::Version.new major: 1, minor: 2, maintenance: 3
+    version_2 = Versionaire::Version.new major: 2, minor: 5, maintenance: 7
+    version_1 + version_2 # "3.7.10"
+
+### Subtraction
+
+    version_1 = Versionaire::Version.new major: 1, minor: 2, maintenance: 3
+    version_2 = Versionaire::Version.new major: 1, minor: 1, maintenance: 1
+    version_1 - version_2 # "0.1.2"
+
+    version_1 = Versionaire::Version.new major: 1
+    version_2 = Versionaire::Version.new major: 5
+    version_1 - version_2 # Fails with a Versionaire::Errors::NegativeNumber
 
 # Tests
 
