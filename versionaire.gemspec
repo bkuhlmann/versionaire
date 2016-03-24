@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["Brooke Kuhlmann"]
   spec.email = ["brooke@alchemists.io"]
   spec.homepage = "https://github.com/bkuhlmann/versionaire"
-  spec.summary = "Provides immutable, semantic versioning."
-  spec.description = "Provides immutable, semantic versioning."
+  spec.summary = "Provides immutable, thread-safe, semantic versioning."
+  spec.description = "Provides immutable, thread-safe, semantic versioning."
   spec.license = "MIT"
 
   if ENV["RUBY_GEM_SECURITY"] == "enabled"
