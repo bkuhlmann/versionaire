@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Versionaire
   module Errors
     # Thrown when numbers are negative.
