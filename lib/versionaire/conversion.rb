@@ -24,7 +24,7 @@ module Versionaire
     end
 
     def convert_from_string
-      fail(Errors::Conversion, Errors::Conversion.string_message) unless value =~ Version.format
+      fail(Errors::Conversion, Errors::Conversion.string_message) unless value =~ Version.string_format
       Version.new string_to_arguments
     end
 

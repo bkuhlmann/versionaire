@@ -11,29 +11,29 @@ RSpec.describe Versionaire::Version do
     end
   end
 
-  describe ".format" do
+  describe ".string_format" do
     it "matches single digit <major>.<minor>.<maintenance> format" do
-      expect(described_class.format).to match("1.2.3")
+      expect(described_class.string_format).to match("1.2.3")
     end
 
     it "matches multiple digit <major>.<minor>.<maintenance> format" do
-      expect(described_class.format).to match("11.2222.33333333333333333")
+      expect(described_class.string_format).to match("11.2222.33333333333333333")
     end
 
     it "matches single digit v<major>.<minor>.<maintenance> format" do
-      expect(described_class.format).to match("v1.2.3")
+      expect(described_class.string_format).to match("v1.2.3")
     end
 
     it "matches multiple digit v<major>.<minor>.<maintenance> format" do
-      expect(described_class.format).to match("v11111111111111111.222.33333")
+      expect(described_class.string_format).to match("v11111111111111111.222.33333")
     end
 
     it "matches similar version" do
-      expect(described_class.format).to match(described_class.new(major: 1, minor: 2, maintenance: 3))
+      expect(described_class.string_format).to match(described_class.new(major: 1, minor: 2, maintenance: 3))
     end
 
     it "does not match without delimiters" do
-      expect(described_class.format).to_not match("123")
+      expect(described_class.string_format).to_not match("123")
     end
   end
 

@@ -11,7 +11,7 @@ module Versionaire
       %i(major minor maintenance)
     end
 
-    def self.format
+    def self.string_format
       /
         \A     # Start of string.
         v?     # Optional prefix.
