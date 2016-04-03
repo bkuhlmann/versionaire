@@ -1,3 +1,11 @@
+# v1.1.0 (2016-04-03)
+
+- Added GitHub issue and pull request templates.
+- Added deprecations to `Versionaire::Errors::Conversion` messages.
+- Added version conversion failure messages.
+- Updated version conversion error messages.
+- Refactored version converter.
+
 # v1.0.0 (2016-03-26)
 
 - Fixed conversion function format.
