@@ -12,7 +12,7 @@ module Versionaire
       when Array then aid.convert_from_array
       when Hash then aid.convert_from_hash
       when Version then object
-      else fail Errors::Conversion, "Invalid conversion. Use: String, Array, or Hash."
+      else aid.convert_from_object
     end
   end
   module_function :Version
@@ -24,21 +24,27 @@ module Versionaire
     end
 
     def convert_from_string
-      message = %(Invalid string conversion. Use: "<major>.<minor>.<maintenance>" or "v<major>.<minor>.<maintenance>".)
-      fail(Errors::Conversion, message) unless value =~ Version.string_format
+      body = %(Use: "<major>.<minor>.<maintenance>" or "v<major>.<minor>.<maintenance>".)
+      fail(Errors::Conversion, error_message(value, body)) unless value =~ Version.string_format
       Version.new string_to_arguments
     end
 
     def convert_from_array
-      message = "Use: [], [<major>], [<major>, <minor>], or [<major>, <minor>, <maintenance>]."
-      fail(Errors::Conversion, "Invalid array conversion. #{message}") unless (0..3).cover?(value.size)
+      body = "Use: [], [<major>], [<major>, <minor>], or [<major>, <minor>, <maintenance>]."
+      fail(Errors::Conversion, error_message(value, body)) unless (0..3).cover?(value.size)
       Version.new array_to_arguments
     end
 
     def convert_from_hash
-      message = "Invalid hash conversion. Use: {major: <major>, minor: <minor>, maintenance: <maintenance>}."
-      fail(Errors::Conversion, message) unless required_keys?
+      body = "Use: {major: <major>}, " \
+             "{major: <major>, minor: <minor>}, or " \
+             "{major: <major>, minor: <minor>, maintenance: <maintenance>}."
+      fail(Errors::Conversion, error_message(value, body)) unless required_keys?
       Version.new value
+    end
+
+    def convert_from_object
+      fail Errors::Conversion, error_message(value, "Use: String, Array, Hash, or Version.")
     end
 
     private
@@ -55,6 +61,10 @@ module Versionaire
 
     def required_keys?
       value.keys.all? { |key| Version.keys.include? key }
+    end
+
+    def error_message object, body
+      "Invalid version conversion: #{object}. #{body}"
     end
   end
   private_constant :VersionAid
