@@ -8,7 +8,7 @@ module Versionaire
     attr_reader :major, :minor, :maintenance
 
     def self.keys
-      %i(major minor maintenance)
+      %i[major minor maintenance]
     end
 
     def self.string_format
