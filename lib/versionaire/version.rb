@@ -11,16 +11,20 @@ module Versionaire
       %i[major minor maintenance]
     end
 
+    def self.delimiter
+      "."
+    end
+
     def self.string_format
       /
-        \A     # Start of string.
-        v?     # Optional prefix.
-        \d{1,} # Major version.
-        \.     # Delimiter.
-        \d{1,} # Minor version.
-        \.     # Delimiter.
-        \d{1,} # Maintenance version.
-        \z     # End of string.
+        \A            # Start of string.
+        v?            # Optional prefix.
+        \d{1,}        # Major version.
+        #{delimiter}  # Delimiter.
+        \d{1,}        # Minor version.
+        #{delimiter}  # Delimiter.
+        \d{1,}        # Maintenance version.
+        \z            # End of string.
       /x
     end
 
@@ -61,7 +65,7 @@ module Versionaire
     end
 
     def to_s
-      "#{major}.#{minor}.#{maintenance}"
+      "#{major}#{self.class.delimiter}#{minor}#{self.class.delimiter}#{maintenance}"
     end
     alias to_str to_s
 
