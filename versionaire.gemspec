@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.required_ruby_version = "~> 2.3"
-  spec.add_development_dependency "bundler", "~> 1.11"
+  spec.add_development_dependency "bundler", "~> 1.12"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "gemsmith", "~> 7.4"
   spec.add_development_dependency "pry"
@@ -36,7 +36,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "guard-rspec"
   spec.add_development_dependency "terminal-notifier"
   spec.add_development_dependency "terminal-notifier-guard"
-  spec.add_development_dependency "rubocop", "~> 0.37"
+  spec.add_development_dependency "rubocop", "~> 0.40"
   spec.add_development_dependency "codeclimate-test-reporter"
 
   spec.files = Dir["lib/**/*", "vendor/**/*"]
