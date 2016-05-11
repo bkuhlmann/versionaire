@@ -15,6 +15,13 @@ RSpec.describe "Versionaire.Version" do
         expect(Versionaire.Version("v1.2.3")).to eq(version)
       end
 
+      it "does not modify parameters" do
+        params = "v1.2.3"
+        Versionaire.Version params
+
+        expect(params).to eq("v1.2.3")
+      end
+
       it "fails with conversion error for invalid string" do
         result = -> { Versionaire.Version "bogus" }
         message = "Invalid version conversion: bogus. " +
@@ -41,6 +48,13 @@ RSpec.describe "Versionaire.Version" do
 
       it "converts array with three arguments" do
         expect(Versionaire.Version([1, 2, 3])).to eq(version)
+      end
+
+      it "does not modify parameters" do
+        params = [1]
+        Versionaire.Version params
+
+        expect(params).to contain_exactly(1)
       end
 
       it "fails with conversion error for array with more than three arguments" do

@@ -56,7 +56,7 @@ module Versionaire
     end
 
     def array_to_arguments
-      Version.arguments(*value.fill(0, value.size..2))
+      Version.arguments(*value.dup.fill(0, value.size..2))
     end
 
     def required_keys?
