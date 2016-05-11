@@ -1,3 +1,11 @@
+# v1.2.0 (2016-05-10)
+
+- Fixed README screencast thumbnail.
+- Fixed issue with array parameters being modified.
+- Added version delimiter class method.
+- Updated Rubocop PercentLiteralDelimiters and AndOr styles.
+- Updated to Ruby 2.3.1.
+
 # v1.1.0 (2016-04-03)
 
 - Added GitHub issue and pull request templates.
