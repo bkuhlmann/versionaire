@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = "~> 2.3"
   spec.add_development_dependency "bundler", "~> 1.12"
   spec.add_development_dependency "rake", "~> 11.0"
-  spec.add_development_dependency "gemsmith", "~> 7.6"
+  spec.add_development_dependency "gemsmith", "~> 7.7"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "pry-byebug"
   spec.add_development_dependency "pry-state"

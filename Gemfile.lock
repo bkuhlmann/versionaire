@@ -9,7 +9,7 @@ GEM
     ast (2.2.0)
     awesome_print (1.6.1)
     bond (0.5.1)
-    byebug (8.2.5)
+    byebug (9.0.2)
     codeclimate-test-reporter (0.5.0)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.1)
@@ -17,12 +17,13 @@ GEM
     docile (1.1.5)
     ffi (1.9.10)
     formatador (0.2.5)
-    gemsmith (7.6.0)
+    gemsmith (7.7.0)
       milestoner (~> 3.0)
       refinements (~> 2.2)
       thor (~> 0.19)
       thor_plus (~> 3.0)
       tocer (~> 2.2)
+      versionaire (~> 1.2)
     guard (2.13.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, <= 4.0)
@@ -61,8 +62,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (3.3.0)
-      byebug (~> 8.0)
+    pry-byebug (3.4.0)
+      byebug (~> 9.0)
       pry (~> 0.10)
     pry-state (0.1.7)
       pry (>= 0.9.10, < 0.11.0)
@@ -71,7 +72,7 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
-    refinements (2.2.0)
+    refinements (2.2.1)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -121,7 +122,7 @@ DEPENDENCIES
   bond
   bundler (~> 1.12)
   codeclimate-test-reporter
-  gemsmith (~> 7.6)
+  gemsmith (~> 7.7)
   guard-rspec
   hirb
   pry
