@@ -28,12 +28,12 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "wirb"
   spec.add_development_dependency "hirb"
   spec.add_development_dependency "awesome_print"
-  spec.add_development_dependency "rspec", "~> 3.4"
+  spec.add_development_dependency "rspec", "~> 3.5"
   spec.add_development_dependency "rb-fsevent" # Guard file events for OSX.
   spec.add_development_dependency "guard-rspec"
   spec.add_development_dependency "terminal-notifier"
   spec.add_development_dependency "terminal-notifier-guard"
-  spec.add_development_dependency "rubocop", "~> 0.40"
+  spec.add_development_dependency "rubocop", "~> 0.41"
   spec.add_development_dependency "codeclimate-test-reporter"
 
   spec.files = Dir["lib/**/*", "vendor/**/*"]
