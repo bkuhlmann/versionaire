@@ -81,7 +81,7 @@ module Versionaire
 
     def validate
       fail(Errors::InvalidNumber) if to_a.any? { |number| !number.is_a? Integer }
-      fail(Errors::NegativeNumber) if to_a.any? { |number| number < 0 }
+      fail(Errors::NegativeNumber) if to_a.any?(&:negative?)
     end
 
     def reduce other, action
