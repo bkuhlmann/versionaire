@@ -62,8 +62,9 @@ For a secure install, type the following (recommended):
     gem cert --add <(curl --location --silent https://www.alchemists.io/gem-public.pem)
     gem install versionaire --trust-policy MediumSecurity
 
-NOTE: A HighSecurity trust policy would be best but MediumSecurity enables signed gem verification while
-allowing the installation of unsigned dependencies since they are beyond the scope of this gem.
+NOTE: A HighSecurity trust policy would be best but MediumSecurity enables signed gem verification
+while allowing the installation of unsigned dependencies since they are beyond the scope of this
+gem.
 
 For an insecure install, type the following (not recommended):
 
@@ -88,8 +89,8 @@ A new version can be initialized in a variety of ways:
 
 ### Value (`#==`)
 
-Equality is deterimined by the state of the object. This means that a version is equal to another version as long as
-all of the values (i.e. state) are equal to each other. Example:
+Equality is deterimined by the state of the object. This means that a version is equal to another
+version as long as all of the values (i.e. state) are equal to each other. Example:
 
     version_a = Versionaire::Version.new major: 1
     version_b = Versionaire::Version.new major: 2
@@ -138,8 +139,8 @@ The `Versionaire::Version` function is provided for explicit casting to a versio
     Versionaire::Version major: 1, minor: 0, maintenance: 0
     Versionaire::Version version
 
-Each of these conversions will result in a version object that represents "1.0.0". When attempting to convert an
-unsupported type, a `Versionaire::Errors::Conversion` exception will be thrown.
+Each of these conversions will result in a version object that represents "1.0.0". When attempting
+to convert an unsupported type, a `Versionaire::Errors::Conversion` exception will be thrown.
 
 ### Implicit
 
@@ -193,8 +194,8 @@ Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
 
 # Code of Conduct
 
-Please note that this project is released with a [CODE OF CONDUCT](CODE_OF_CONDUCT.md). By participating in this project
-you agree to abide by its terms.
+Please note that this project is released with a [CODE OF CONDUCT](CODE_OF_CONDUCT.md). By
+participating in this project you agree to abide by its terms.
 
 # Contributions
 
@@ -212,4 +213,5 @@ Built with [Gemsmith](https://github.com/bkuhlmann/gemsmith).
 
 # Credits
 
-Developed by [Brooke Kuhlmann](https://www.alchemists.io) at [Alchemists](https://www.alchemists.io).
+Developed by [Brooke Kuhlmann](https://www.alchemists.io) at
+[Alchemists](https://www.alchemists.io).

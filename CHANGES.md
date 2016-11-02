@@ -1,3 +1,27 @@
+# v2.0.0 (2016-11-01)
+
+- Fixed Bash script header to dynamically load correct environment.
+- Fixed Rakefile to safely load Gemsmith tasks.
+- Fixed negative number check.
+- Added frozen string literal pragma.
+- Updated README to mention "Ruby" instead of "MRI".
+- Updated README versioning documentation.
+- Updated RSpec temp directory to use Bundler root path.
+- Updated gemspec with conservative versions.
+- Updated to Bundler 1.13.
+- Updated to Gemsmith 7.7.0.
+- Updated to RSpec 3.5.0.
+- Updated to Rubocop 0.44.
+- Removed CHANGELOG.md (use CHANGES.md instead).
+- Removed Rake console task.
+- Removed deprecated conversion error message strings.
+- Removed gemspec description.
+- Removed rb-fsevent development dependency from gemspec.
+- Removed terminal notifier gems from gemspec.
+- Removed unused "vendor" folder from gemspec.
+- Refactored RSpec spec helper configuration.
+- Refactored gemspec to use default security keys.
+
 # v1.2.0 (2016-05-10)
 
 - Fixed README screencast thumbnail.
