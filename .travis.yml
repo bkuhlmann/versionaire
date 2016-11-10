@@ -5,6 +5,7 @@ env:
 rvm:
 - 2.3.0
 script: bundle exec rake
+after_script: bundle exec codeclimate-test-reporter
 notifications:
   email: false
   slack:
