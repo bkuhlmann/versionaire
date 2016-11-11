@@ -1,0 +1,16 @@
+---
+TooManyStatements:
+  exclude:
+  - initialize
+  - Versionaire#Version
+UncommunicativeMethodName:
+  exclude:
+  - Versionaire#Version
+DuplicateMethodCall:
+  exclude:
+  - Versionaire::Version#+
+  - Versionaire::Version#-
+  - Versionaire::Version#to_s
+FeatureEnvy:
+  exclude:
+  - Versionaire::Version#==
