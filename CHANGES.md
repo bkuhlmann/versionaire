@@ -1,3 +1,10 @@
+# v2.1.0 (2016-11-13)
+
+- Added Code Climate engine support.
+- Added Reek support.
+- Updated to Code Climate Test Reporter 1.0.0.
+- Updated to Gemsmith 8.0.0.
+
 # v2.0.0 (2016-11-01)
 
 - Fixed Bash script header to dynamically load correct environment.
