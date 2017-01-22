@@ -29,7 +29,8 @@ RSpec.describe Versionaire::Version do
     end
 
     it "matches similar version" do
-      expect(described_class.string_format).to match(described_class.new(major: 1, minor: 2, maintenance: 3))
+      proof = described_class.new major: 1, minor: 2, maintenance: 3
+      expect(described_class.string_format).to match(proof)
     end
 
     it "does not match without delimiters" do

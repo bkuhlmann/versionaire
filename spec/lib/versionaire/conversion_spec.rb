@@ -107,7 +107,8 @@ RSpec.describe "Versionaire.Version" do
 
       it "fails with conversion error" do
         result = -> { Versionaire.Version object }
-        message = "Invalid version conversion: #[Double :object]. Use: String, Array, Hash, or Version."
+        message = "Invalid version conversion: #[Double :object]. " \
+                  "Use: String, Array, Hash, or Version."
 
         expect(&result).to raise_error(Versionaire::Errors::Conversion, message)
       end
