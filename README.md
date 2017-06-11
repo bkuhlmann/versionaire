@@ -4,7 +4,7 @@
 [![Code Climate GPA](https://codeclimate.com/github/bkuhlmann/versionaire.svg)](https://codeclimate.com/github/bkuhlmann/versionaire)
 [![Code Climate Coverage](https://codeclimate.com/github/bkuhlmann/versionaire/coverage.svg)](https://codeclimate.com/github/bkuhlmann/versionaire)
 [![Gemnasium Status](https://gemnasium.com/bkuhlmann/versionaire.svg)](https://gemnasium.com/bkuhlmann/versionaire)
-[![Travis CI Status](https://secure.travis-ci.org/bkuhlmann/versionaire.svg)](https://travis-ci.org/bkuhlmann/versionaire)
+[![Circle CI Status](https://circleci.com/gh/bkuhlmann/versionaire.svg?style=svg)](https://circleci.com/gh/bkuhlmann/versionaire)
 [![Patreon](https://img.shields.io/badge/patreon-donate-brightgreen.svg)](https://www.patreon.com/bkuhlmann)
 
 Provides immutable, thread-safe, semantic versioning.
