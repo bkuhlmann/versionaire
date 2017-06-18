@@ -11,51 +11,51 @@ Provides immutable, thread-safe, semantic versioning.
 
 <!-- Tocer[start]: Auto-generated, don't remove. -->
 
-# Table of Contents
+## Table of Contents
 
-- [Features](#features)
-- [Screencasts](#screencasts)
-- [Requirements](#requirements)
-- [Setup](#setup)
-- [Usage](#usage)
+  - [Features](#features)
+  - [Screencasts](#screencasts)
+  - [Requirements](#requirements)
+  - [Setup](#setup)
+  - [Usage](#usage)
   - [Initialization](#initialization)
-  - [Equality](#equality)
-    - [Value (`#==`)](#value-)
-    - [Hash (`#eql?`)](#hash-eql)
-    - [Case (`#===`)](#case-)
-    - [Identity (`#equal?`)](#identity-equal)
-  - [Conversions](#conversions)
-    - [Function (Casting)](#function-casting)
-    - [Implicit](#implicit)
-    - [Explicit](#explicit)
-  - [Math](#math)
-    - [Addition](#addition)
-    - [Subtraction](#subtraction)
-- [Tests](#tests)
-- [Versioning](#versioning)
-- [Code of Conduct](#code-of-conduct)
-- [Contributions](#contributions)
-- [License](#license)
-- [History](#history)
-- [Credits](#credits)
+    - [Equality](#equality)
+      - [Value (`#==`)](#value-)
+      - [Hash (`#eql?`)](#hash-eql)
+      - [Case (`#===`)](#case-)
+      - [Identity (`#equal?`)](#identity-equal)
+    - [Conversions](#conversions)
+      - [Function (Casting)](#function-casting)
+      - [Implicit](#implicit)
+      - [Explicit](#explicit)
+    - [Math](#math)
+      - [Addition](#addition)
+      - [Subtraction](#subtraction)
+  - [Tests](#tests)
+  - [Versioning](#versioning)
+  - [Code of Conduct](#code-of-conduct)
+  - [Contributions](#contributions)
+  - [License](#license)
+  - [History](#history)
+  - [Credits](#credits)
 
 <!-- Tocer[finish]: Auto-generated, don't remove. -->
 
-# Features
+## Features
 
 - Provides [Semantic Versioning](http://semver.org).
 - Provides immutable, thread-safe version instances.
 - Provides conversions (casts) from a `String`, `Array`, `Hash`, or `Version` to a `Version`.
 
-# Screencasts
+## Screencasts
 
 [![asciicast](https://asciinema.org/a/40455.png)](https://asciinema.org/a/40455)
 
-# Requirements
+## Requirements
 
 0. [Ruby 2.4.x](https://www.ruby-lang.org)
 
-# Setup
+## Setup
 
 For a secure install, type the following (recommended):
 
@@ -74,7 +74,7 @@ Add the following to your Gemfile:
 
     gem "versionaire"
 
-# Usage
+## Usage
 
 ## Initialization
 
@@ -85,9 +85,9 @@ A new version can be initialized in a variety of ways:
     Versionaire::Version.new major: 1, minor: 2                 # "1.2.0"
     Versionaire::Version.new major: 1, minor: 2, maintenance: 3 # "1.2.3"
 
-## Equality
+### Equality
 
-### Value (`#==`)
+#### Value (`#==`)
 
 Equality is deterimined by the state of the object. This means that a version is equal to another
 version as long as all of the values (i.e. state) are equal to each other. Example:
@@ -106,15 +106,15 @@ Knowning this, versions can be compared against one another too:
     version_a < version_b                   # true
     version_a.between? version_c, version_b # true
 
-### Hash (`#eql?`)
+#### Hash (`#eql?`)
 
 Behaves exactly as `#==`.
 
-### Case (`#===`)
+#### Case (`#===`)
 
 Behaves exactly as `#==`.
 
-### Identity (`#equal?`)
+#### Identity (`#equal?`)
 
 Works like any other standard Ruby object where an object is equal only to itself.
 
@@ -126,9 +126,9 @@ Works like any other standard Ruby object where an object is equal only to itsel
     version_a.equal? version_b # false
     version_a.equal? version_c # false
 
-## Conversions
+### Conversions
 
-### Function (Casting)
+#### Function (Casting)
 
 The `Versionaire::Version` function is provided for explicit casting to a version:
 
@@ -142,13 +142,13 @@ The `Versionaire::Version` function is provided for explicit casting to a versio
 Each of these conversions will result in a version object that represents "1.0.0". When attempting
 to convert an unsupported type, a `Versionaire::Errors::Conversion` exception will be thrown.
 
-### Implicit
+#### Implicit
 
 Implicit conversion to a `String` is supported:
 
     "1.0.0".match Versionaire::Version.new(major: 1) # <MatchData "1.0.0">
 
-### Explicit
+#### Explicit
 
 Explicit conversion to a `String`, `Array`, or `Hash` is supported:
 
@@ -158,17 +158,17 @@ Explicit conversion to a `String`, `Array`, or `Hash` is supported:
     version.to_a # [0, 0, 0]
     version.to_h # {major: 0, minor: 0, maintenance: 0}
 
-## Math
+### Math
 
 Versions can be added and subtracted from each other.
 
-### Addition
+#### Addition
 
     version_1 = Versionaire::Version.new major: 1, minor: 2, maintenance: 3
     version_2 = Versionaire::Version.new major: 2, minor: 5, maintenance: 7
     version_1 + version_2 # "3.7.10"
 
-### Subtraction
+#### Subtraction
 
     version_1 = Versionaire::Version.new major: 1, minor: 2, maintenance: 3
     version_2 = Versionaire::Version.new major: 1, minor: 1, maintenance: 1
@@ -178,13 +178,13 @@ Versions can be added and subtracted from each other.
     version_2 = Versionaire::Version.new major: 5
     version_1 - version_2 # Fails with a Versionaire::Errors::NegativeNumber
 
-# Tests
+## Tests
 
 To test, run:
 
     bundle exec rake
 
-# Versioning
+## Versioning
 
 Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
 
@@ -192,26 +192,26 @@ Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
 - Minor (x.Y.z) - Incremented for new, backwards compatible, public API enhancements/fixes.
 - Patch (x.y.Z) - Incremented for small, backwards compatible, bug fixes.
 
-# Code of Conduct
+## Code of Conduct
 
 Please note that this project is released with a [CODE OF CONDUCT](CODE_OF_CONDUCT.md). By
 participating in this project you agree to abide by its terms.
 
-# Contributions
+## Contributions
 
 Read [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-# License
+## License
 
 Copyright (c) 2016 [Alchemists](https://www.alchemists.io).
 Read [LICENSE](LICENSE.md) for details.
 
-# History
+## History
 
 Read [CHANGES](CHANGES.md) for details.
 Built with [Gemsmith](https://github.com/bkuhlmann/gemsmith).
 
-# Credits
+## Credits
 
 Developed by [Brooke Kuhlmann](https://www.alchemists.io) at
 [Alchemists](https://www.alchemists.io).
