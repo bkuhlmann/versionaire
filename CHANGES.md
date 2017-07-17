@@ -1,3 +1,15 @@
+# v3.2.0 (2017-07-16)
+
+- Added Circle CI support.
+- Added Git Cop code quality task.
+- Updated CONTRIBUTING documentation.
+- Updated GitHub templates.
+- Updated README headers.
+- Updated gem dependencies.
+- Updated to Awesome Print 1.8.0.
+- Updated to Gemsmith 10.0.0.
+- Removed Travis CI support.
+
 # v3.1.0 (2017-05-06)
 
 - Fixed Travis CI configuration to not update gems.
