@@ -6,7 +6,6 @@ SimpleCov.start
 
 require "pry"
 require "pry-byebug"
-require "pry-state"
 require "versionaire"
 
 Dir[File.join(File.dirname(__FILE__), "support/shared_contexts/**/*.rb")].each do |file|
