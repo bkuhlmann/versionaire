@@ -3,7 +3,7 @@
 # The gem namespace.
 module Versionaire
   # Conversion function (strict) for casting an object into a version.
-  # rubocop:disable Style/MethodName
+  # rubocop:disable Naming/MethodName
   def Version object
     converter = Converter.new object
 
