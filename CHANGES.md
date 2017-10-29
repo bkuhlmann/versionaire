@@ -1,3 +1,13 @@
+# v3.3.0 (2017-10-29)
+
+- Added Bundler Audit gem.
+- Added dynamic formatting of RSpec output.
+- Updated to Gemsmith 10.2.0.
+- Updated to Rubocop 0.50.0.
+- Updated to Rubocop 0.51.0.
+- Updated to Ruby 2.4.2.
+- Removed Pry State gem.
+
 # v3.2.0 (2017-07-16)
 
 - Added Circle CI support.
