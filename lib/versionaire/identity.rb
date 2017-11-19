@@ -12,7 +12,7 @@ module Versionaire
     end
 
     def self.version
-      "3.3.0"
+      "3.3.1"
     end
 
     def self.version_label

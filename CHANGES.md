@@ -1,3 +1,8 @@
+# v3.3.1 (2017-11-19)
+
+- Updated to Git Cop 1.7.0.
+- Updated to Rake 12.3.0.
+
 # v3.3.0 (2017-10-29)
 
 - Added Bundler Audit gem.
