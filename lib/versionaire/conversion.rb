@@ -15,6 +15,8 @@ module Versionaire
       else converter.from_object
     end
   end
+  # rubocop:enable Naming/MethodName
+
   module_function :Version
 
   # Aids with converting objects into valid versions.
