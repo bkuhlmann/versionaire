@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
     spec.cert_chain = [Gem.default_cert_path]
   end
 
-  spec.required_ruby_version = "~> 2.4"
+  spec.required_ruby_version = "~> 2.5"
   spec.add_development_dependency "awesome_print", "~> 1.8"
   spec.add_development_dependency "bond", "~> 0.5"
   spec.add_development_dependency "bundler-audit", "~> 0.6"
