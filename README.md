@@ -18,7 +18,7 @@ Provides immutable, thread-safe, semantic versioning.
   - [Requirements](#requirements)
   - [Setup](#setup)
   - [Usage](#usage)
-  - [Initialization](#initialization)
+    - [Initialization](#initialization)
     - [Equality](#equality)
       - [Value (`#==`)](#value-)
       - [Hash (`#eql?`)](#hash-eql)
@@ -57,16 +57,7 @@ Provides immutable, thread-safe, semantic versioning.
 
 ## Setup
 
-For a secure install, type the following (recommended):
-
-    gem cert --add <(curl --location --silent https://www.alchemists.io/gem-public.pem)
-    gem install versionaire --trust-policy MediumSecurity
-
-NOTE: A HighSecurity trust policy would be best but MediumSecurity enables signed gem verification
-while allowing the installation of unsigned dependencies since they are beyond the scope of this
-gem.
-
-For an insecure install, type the following (not recommended):
+Type the following to install:
 
     gem install versionaire
 
@@ -76,7 +67,7 @@ Add the following to your Gemfile:
 
 ## Usage
 
-## Initialization
+### Initialization
 
 A new version can be initialized in a variety of ways:
 
