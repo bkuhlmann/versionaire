@@ -1,3 +1,7 @@
+# v4.0.1 (2018-01-01)
+
+- Updated to Gemsmith 11.0.0.
+
 # v4.0.0 (2018-01-01)
 
 - Updated Code Climate badges.
