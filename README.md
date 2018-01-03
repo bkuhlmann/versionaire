@@ -5,7 +5,6 @@
 [![Code Climate Test Coverage](https://api.codeclimate.com/v1/badges/e61fa9230ecc0bfa6f07/test_coverage)](https://codeclimate.com/github/bkuhlmann/versionaire/test_coverage)
 [![Gemnasium Status](https://gemnasium.com/bkuhlmann/versionaire.svg)](https://gemnasium.com/bkuhlmann/versionaire)
 [![Circle CI Status](https://circleci.com/gh/bkuhlmann/versionaire.svg?style=svg)](https://circleci.com/gh/bkuhlmann/versionaire)
-[![Patreon](https://img.shields.io/badge/patreon-donate-brightgreen.svg)](https://www.patreon.com/bkuhlmann)
 
 Provides immutable, thread-safe, semantic versioning.
 
