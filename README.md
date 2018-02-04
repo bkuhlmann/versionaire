@@ -3,7 +3,6 @@
 [![Gem Version](https://badge.fury.io/rb/versionaire.svg)](http://badge.fury.io/rb/versionaire)
 [![Code Climate Maintainability](https://api.codeclimate.com/v1/badges/e61fa9230ecc0bfa6f07/maintainability)](https://codeclimate.com/github/bkuhlmann/versionaire/maintainability)
 [![Code Climate Test Coverage](https://api.codeclimate.com/v1/badges/e61fa9230ecc0bfa6f07/test_coverage)](https://codeclimate.com/github/bkuhlmann/versionaire/test_coverage)
-[![Gemnasium Status](https://gemnasium.com/bkuhlmann/versionaire.svg)](https://gemnasium.com/bkuhlmann/versionaire)
 [![Circle CI Status](https://circleci.com/gh/bkuhlmann/versionaire.svg?style=svg)](https://circleci.com/gh/bkuhlmann/versionaire)
 
 Provides immutable, thread-safe, semantic versioning.
