@@ -1,3 +1,15 @@
+# v5.0.0 (2018-03-19)
+
+- Fixed gemspec issues with missing gem signing key/certificate.
+- Updated README license information.
+- Updated gem dependencies.
+- Updated screencast tutorial.
+- Updated to Circle CI 2.0.0 configuration.
+- Updated to Rubocop 0.53.0.
+- Removed Gemnasium support.
+- Removed Patreon badge from README.
+- Removed optional `v` prefix to versions.
+
 # v4.0.1 (2018-01-01)
 
 - Updated to Gemsmith 11.0.0.
