@@ -18,7 +18,6 @@ module Versionaire
     def self.string_format
       /
         \A            # Start of string.
-        v?            # Optional prefix.
         \d{1,}        # Major version.
         #{delimiter}  # Delimiter.
         \d{1,}        # Minor version.

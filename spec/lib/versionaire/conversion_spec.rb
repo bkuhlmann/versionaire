@@ -11,15 +11,11 @@ RSpec.describe "Versionaire.Version" do
         expect(Versionaire.Version("1.2.3")).to eq(version)
       end
 
-      it "converts labeled version string" do
-        expect(Versionaire.Version("v1.2.3")).to eq(version)
-      end
-
       it "does not modify parameters" do
-        params = "v1.2.3"
+        params = "1.2.3"
         Versionaire.Version params
 
-        expect(params).to eq("v1.2.3")
+        expect(params).to eq("1.2.3")
       end
 
       it "fails with conversion error for invalid string" do
