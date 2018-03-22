@@ -12,7 +12,7 @@ module Versionaire
     end
 
     def self.version
-      "5.0.0"
+      "5.1.0"
     end
 
     def self.version_label

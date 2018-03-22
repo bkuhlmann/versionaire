@@ -1,3 +1,9 @@
+# v5.1.0 (2018-03-21)
+
+- Updated error class descriptions.
+- Removed version label.
+- Refactored Rubocop Naming/MethodName exclusion.
+
 # v5.0.0 (2018-03-19)
 
 - Fixed gemspec issues with missing gem signing key/certificate.
