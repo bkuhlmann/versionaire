@@ -26,6 +26,7 @@ Provides immutable, thread-safe, semantic versioning.
       - [Function (Casting)](#function-casting)
       - [Implicit](#implicit)
       - [Explicit](#explicit)
+    - [Comparisons](#comparisons)
     - [Math](#math)
       - [Addition](#addition)
       - [Subtraction](#subtraction)
@@ -146,6 +147,22 @@ Explicit conversion to a `String`, `Array`, or `Hash` is supported:
     version.to_s # "0.0.0"
     version.to_a # [0, 0, 0]
     version.to_h # {major: 0, minor: 0, maintenance: 0}
+
+### Comparisons
+
+All versions are comparable which means any of the operators from the `Comparable` module will work.
+Example:
+
+    v1 = Versionaire::Version "1.0.0"
+    v2 = Versionaire::Version "2.0.0"
+
+    v1 < v2 # true
+    v1 <= v2 # true
+    v1 == v2 # false (see Equality section above for details)
+    v1 > v2 # false
+    v1 >= v2 # false
+    v1.between? v1, v2 # true
+    v1.clamp v1, v2 # v1 (added in Ruby 2.4.0)
 
 ### Math
 
