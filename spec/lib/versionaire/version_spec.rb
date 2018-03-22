@@ -240,12 +240,6 @@ RSpec.describe Versionaire::Version do
     end
   end
 
-  describe "#label" do
-    it "answers version label" do
-      expect(subject.label).to eq("v1.2.3")
-    end
-  end
-
   describe "#to_s" do
     it "answers string representation" do
       expect(subject.to_s).to eq("1.2.3")

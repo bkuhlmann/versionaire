@@ -59,10 +59,6 @@ module Versionaire
       [major, minor, maintenance, self.class].hash
     end
 
-    def label
-      "v#{self}"
-    end
-
     def to_s
       "#{major}#{self.class.delimiter}#{minor}#{self.class.delimiter}#{maintenance}"
     end
