@@ -3,6 +3,7 @@
 # The gem namespace.
 module Versionaire
   # Conversion function (strict) for casting an object into a version.
+  # :reek:TooManyStatements
   def Version object
     converter = Converter.new object
 

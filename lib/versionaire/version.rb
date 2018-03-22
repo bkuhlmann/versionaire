@@ -39,13 +39,16 @@ module Versionaire
     end
 
     def + other
-      self.class.new self.class.arguments(*reduce(other, :+))
+      klass = self.class
+      klass.new klass.arguments(*reduce(other, :+))
     end
 
     def - other
-      self.class.new self.class.arguments(*reduce(other, :-))
+      klass = self.class
+      klass.new klass.arguments(*reduce(other, :-))
     end
 
+    # :reek:FeatureEnvy
     def == other
       other.is_a?(Version) && to_s == other.to_s
     end
@@ -60,7 +63,7 @@ module Versionaire
     end
 
     def to_s
-      "#{major}#{self.class.delimiter}#{minor}#{self.class.delimiter}#{maintenance}"
+      [major, minor, maintenance].join self.class.delimiter
     end
     alias to_str to_s
 
