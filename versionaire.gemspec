@@ -13,6 +13,12 @@ Gem::Specification.new do |spec|
   spec.summary = "Provides immutable, thread-safe, semantic versioning."
   spec.license = "Apache-2.0"
 
+  spec.metadata = {
+    "source_code_uri" => "https://github.com/bkuhlmann/versionaire",
+    "changelog_uri" => "https://github.com/bkuhlmann/versionaire/blob/master/CHANGES.md",
+    "bug_tracker_uri" => "https://github.com/bkuhlmann/versionaire/issues"
+  }
+
   spec.signing_key = Gem.default_key_path
   spec.cert_chain = [Gem.default_cert_path]
 
