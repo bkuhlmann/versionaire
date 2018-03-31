@@ -52,6 +52,7 @@ module Versionaire
     def == other
       other.is_a?(Version) && to_s == other.to_s
     end
+
     alias eql? ==
 
     def <=> other
@@ -65,6 +66,7 @@ module Versionaire
     def to_s
       [major, minor, maintenance].join self.class.delimiter
     end
+
     alias to_str to_s
 
     def to_a
