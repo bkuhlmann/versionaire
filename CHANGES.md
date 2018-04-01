@@ -1,3 +1,11 @@
+# v5.2.0 (2018-04-01)
+
+- Fixed spacing between aliased methods.
+- Added gemspec metadata for source, changes, and issue tracker URLs.
+- Updated to Ruby 2.5.1.
+- Removed Circle CI Bundler cache.
+- Refactored temp dir shared context as a pathname.
+
 # v5.1.0 (2018-03-21)
 
 - Updated error class descriptions.
