@@ -1,4 +1,4 @@
-# v5.2.0 (2018-04-01)
+# 5.2.0 (2018-04-01)
 
 - Fixed spacing between aliased methods.
 - Added gemspec metadata for source, changes, and issue tracker URLs.
@@ -6,13 +6,13 @@
 - Removed Circle CI Bundler cache.
 - Refactored temp dir shared context as a pathname.
 
-# v5.1.0 (2018-03-21)
+# 5.1.0 (2018-03-21)
 
 - Updated error class descriptions.
 - Removed version label.
 - Refactored Rubocop Naming/MethodName exclusion.
 
-# v5.0.0 (2018-03-19)
+# 5.0.0 (2018-03-19)
 
 - Fixed gemspec issues with missing gem signing key/certificate.
 - Updated README license information.
@@ -24,11 +24,11 @@
 - Removed Patreon badge from README.
 - Removed optional `v` prefix to versions.
 
-# v4.0.1 (2018-01-01)
+# 4.0.1 (2018-01-01)
 
 - Updated to Gemsmith 11.0.0.
 
-# v4.0.0 (2018-01-01)
+# 4.0.0 (2018-01-01)
 
 - Updated Code Climate badges.
 - Updated Code Climate configuration to Version 2.0.0.
@@ -39,12 +39,12 @@
 - Updated to Apache 2.0 license.
 - Refactored code to use Ruby 2.5.0 `Array#append` syntax.
 
-# v3.3.1 (2017-11-19)
+# 3.3.1 (2017-11-19)
 
 - Updated to Git Cop 1.7.0.
 - Updated to Rake 12.3.0.
 
-# v3.3.0 (2017-10-29)
+# 3.3.0 (2017-10-29)
 
 - Added Bundler Audit gem.
 - Added dynamic formatting of RSpec output.
@@ -54,7 +54,7 @@
 - Updated to Ruby 2.4.2.
 - Removed Pry State gem.
 
-# v3.2.0 (2017-07-16)
+# 3.2.0 (2017-07-16)
 
 - Added Circle CI support.
 - Added Git Cop code quality task.
@@ -66,7 +66,7 @@
 - Updated to Gemsmith 10.0.0.
 - Removed Travis CI support.
 
-# v3.1.0 (2017-05-06)
+# 3.1.0 (2017-05-06)
 
 - Fixed Travis CI configuration to not update gems.
 - Added code quality Rake task.
@@ -82,7 +82,7 @@
 - Removed Code Climate code comment checks.
 - Removed `.bundle` directory from `.gitignore`.
 
-# v3.0.0 (2017-01-22)
+# 3.0.0 (2017-01-22)
 
 - Updated Rubocop Metrics/LineLength to 100 characters.
 - Updated Rubocop Metrics/ParameterLists max to three.
@@ -92,7 +92,7 @@
 - Updated to Ruby 2.4.0.
 - Removed Rubocop Style/Documentation check.
 
-# v2.2.0 (2016-12-18)
+# 2.2.0 (2016-12-18)
 
 - Fixed Rakefile support for RSpec, Reek, Rubocop, and SCSS Lint.
 - Added `Gemfile.lock` to `.gitignore`.
@@ -104,14 +104,14 @@
 - Updated to Ruby 2.3.2.
 - Updated to Ruby 2.3.3.
 
-# v2.1.0 (2016-11-13)
+# 2.1.0 (2016-11-13)
 
 - Added Code Climate engine support.
 - Added Reek support.
 - Updated to Code Climate Test Reporter 1.0.0.
 - Updated to Gemsmith 8.0.0.
 
-# v2.0.0 (2016-11-01)
+# 2.0.0 (2016-11-01)
 
 - Fixed Bash script header to dynamically load correct environment.
 - Fixed Rakefile to safely load Gemsmith tasks.
@@ -135,7 +135,7 @@
 - Refactored RSpec spec helper configuration.
 - Refactored gemspec to use default security keys.
 
-# v1.2.0 (2016-05-10)
+# 1.2.0 (2016-05-10)
 
 - Fixed README screencast thumbnail.
 - Fixed issue with array parameters being modified.
@@ -143,7 +143,7 @@
 - Updated Rubocop PercentLiteralDelimiters and AndOr styles.
 - Updated to Ruby 2.3.1.
 
-# v1.1.0 (2016-04-03)
+# 1.1.0 (2016-04-03)
 
 - Added GitHub issue and pull request templates.
 - Added deprecations to `Versionaire::Errors::Conversion` messages.
@@ -151,7 +151,7 @@
 - Updated version conversion error messages.
 - Refactored version converter.
 
-# v1.0.0 (2016-03-26)
+# 1.0.0 (2016-03-26)
 
 - Fixed conversion function format.
 - Added Code Climate test coverage key to Travis CI configuration.
@@ -165,6 +165,6 @@
 - Refactored conversion function.
 - Refactored version format regular expression for readability.
 
-# v0.1.0 (2016-03-19)
+# 0.1.0 (2016-03-19)
 
 - Initial version.
