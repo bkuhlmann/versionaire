@@ -7,7 +7,7 @@ RSpec.describe Versionaire::Version do
 
   describe ".keys" do
     it "answers :major, :minor, and :maintenance" do
-      expect(described_class.keys).to contain_exactly(:major, :minor, :maintenance)
+      expect(described_class::KEYS).to contain_exactly(:major, :minor, :maintenance)
     end
   end
 

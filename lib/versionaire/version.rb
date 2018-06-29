@@ -4,31 +4,25 @@ module Versionaire
   # An immutable, semantic version value object.
   class Version
     include Comparable
-
     attr_reader :major, :minor, :maintenance
 
-    def self.keys
-      %i[major minor maintenance]
-    end
-
-    def self.delimiter
-      "."
-    end
+    KEYS = %i[major minor maintenance].freeze
+    DELIMITER = "."
 
     def self.string_format
       /
         \A            # Start of string.
         \d{1,}        # Major version.
-        #{delimiter}  # Delimiter.
+        #{DELIMITER}  # Delimiter.
         \d{1,}        # Minor version.
-        #{delimiter}  # Delimiter.
+        #{DELIMITER}  # Delimiter.
         \d{1,}        # Maintenance version.
         \z            # End of string.
       /x
     end
 
     def self.arguments major, minor, maintenance
-      Hash[keys.zip [major, minor, maintenance]]
+      Hash[KEYS.zip [major, minor, maintenance]]
     end
 
     def initialize major: 0, minor: 0, maintenance: 0
@@ -64,7 +58,7 @@ module Versionaire
     end
 
     def to_s
-      [major, minor, maintenance].join self.class.delimiter
+      [major, minor, maintenance].join self.class::DELIMITER
     end
 
     alias to_str to_s
