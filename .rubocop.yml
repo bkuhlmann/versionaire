@@ -4,3 +4,5 @@ inherit_from:
 Naming/MethodName:
   Exclude:
     - "lib/versionaire/conversion.rb"
+Style/AccessModifierDeclarations:
+  Enabled: false
