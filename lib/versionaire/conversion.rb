@@ -26,7 +26,7 @@ module Versionaire
 
     def from_string
       body = %(Use: "<major>.<minor>.<maintenance>" or "v<major>.<minor>.<maintenance>".)
-      fail(Errors::Conversion, error_message(value, body)) unless Version.string_format.match? value
+      fail(Errors::Conversion, error_message(value, body)) unless Version.regex.match? value
       Version.new string_to_arguments
     end
 

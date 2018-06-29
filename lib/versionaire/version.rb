@@ -9,7 +9,7 @@ module Versionaire
     KEYS = %i[major minor maintenance].freeze
     DELIMITER = "."
 
-    def self.string_format
+    def self.regex
       /
         \A            # Start of string.
         \d{1,}        # Major version.

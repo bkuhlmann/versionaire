@@ -11,22 +11,22 @@ RSpec.describe Versionaire::Version do
     end
   end
 
-  describe ".string_format" do
+  describe ".regex" do
     it "matches single digit <major>.<minor>.<maintenance> format" do
-      expect(described_class.string_format).to match("1.2.3")
+      expect(described_class.regex).to match("1.2.3")
     end
 
     it "matches multiple digit <major>.<minor>.<maintenance> format" do
-      expect(described_class.string_format).to match("11.2222.33333333333333333")
+      expect(described_class.regex).to match("11.2222.33333333333333333")
     end
 
     it "matches similar version" do
       proof = described_class.new major: 1, minor: 2, maintenance: 3
-      expect(described_class.string_format).to match(proof)
+      expect(described_class.regex).to match(proof)
     end
 
     it "does not match without delimiters" do
-      expect(described_class.string_format).to_not match("123")
+      expect(described_class.regex).to_not match("123")
     end
   end
 
