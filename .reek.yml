@@ -1,0 +1,4 @@
+detectors:
+  UncommunicativeMethodName:
+    exclude:
+    - Versionaire#Version
