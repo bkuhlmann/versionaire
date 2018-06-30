@@ -42,7 +42,7 @@ Provides immutable, thread-safe, semantic versioning.
 
 ## Features
 
-- Provides [Semantic Versioning](http://semver.org).
+- Provides [Semantic Versioning](https://semver.org).
 - Provides immutable, thread-safe version instances.
 - Provides conversions (casts) from a `String`, `Array`, `Hash`, or `Version` to a `Version`.
 
@@ -192,7 +192,7 @@ To test, run:
 
 ## Versioning
 
-Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
+Read [Semantic Versioning](https://semver.org) for details. Briefly, it means:
 
 - Major (X.y.z) - Incremented for any backwards incompatible public API changes.
 - Minor (x.Y.z) - Incremented for new, backwards compatible, public API enhancements/fixes.
