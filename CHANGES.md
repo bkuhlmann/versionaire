@@ -1,3 +1,15 @@
+# 6.0.0 (2018-07-01)
+
+- Updated Semantic Versioning links to be HTTPS.
+- Updated project changes to use semantic versions.
+- Updated to Gemsmith 12.0.0.
+- Updated to Git Cop 2.2.0.
+- Updated to Reek 5.0.
+- Updated to Rubocop 0.57.0.
+- Removed (disabled) Rubocop Style/AccessModifierDeclarations cop.
+- Removed Version `.keys` and `.delimiter` methods.
+- Removed version string pattern.
+
 # 5.2.0 (2018-04-01)
 
 - Fixed spacing between aliased methods.

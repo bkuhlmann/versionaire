@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 begin
-  require "bundler/gem_tasks"
   require "bundler/audit/task"
   require "gemsmith/rake/setup"
   require "git/cop/rake/setup"
