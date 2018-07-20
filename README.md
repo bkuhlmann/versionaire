@@ -52,7 +52,7 @@ Provides immutable, thread-safe, semantic versioning.
 
 ## Requirements
 
-0. [Ruby 2.5.x](https://www.ruby-lang.org)
+1. [Ruby 2.5.x](https://www.ruby-lang.org)
 
 ## Setup
 
