@@ -27,12 +27,14 @@ module Versionaire
     def from_string
       body = %(Use: "<major>.<minor>.<maintenance>" or "v<major>.<minor>.<maintenance>".)
       fail(Errors::Conversion, error_message(value, body)) unless Version.regex.match? value
+
       Version.new string_to_arguments
     end
 
     def from_array
       body = "Use: [], [<major>], [<major>, <minor>], or [<major>, <minor>, <maintenance>]."
       fail(Errors::Conversion, error_message(value, body)) unless (0..3).cover?(value.size)
+
       Version.new array_to_arguments
     end
 
@@ -41,6 +43,7 @@ module Versionaire
              "{major: <major>, minor: <minor>}, or " \
              "{major: <major>, minor: <minor>, maintenance: <maintenance>}."
       fail(Errors::Conversion, error_message(value, body)) unless required_keys?
+
       Version.new value
     end
 
@@ -68,5 +71,6 @@ module Versionaire
       "Invalid version conversion: #{object}. #{body}"
     end
   end
+
   private_constant :Converter
 end
