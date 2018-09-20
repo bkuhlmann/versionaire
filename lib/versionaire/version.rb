@@ -30,6 +30,7 @@ module Versionaire
       @minor = minor
       @maintenance = maintenance
       validate
+      freeze
     end
 
     def + other
