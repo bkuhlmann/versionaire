@@ -2,6 +2,8 @@
 
 # The gem namespace.
 module Versionaire
+  module_function
+
   # Conversion function (strict) for casting an object into a version.
   # :reek:TooManyStatements
   def Version object
@@ -15,8 +17,6 @@ module Versionaire
       else converter.from_object
     end
   end
-
-  module_function :Version
 
   # Aids with converting objects into valid versions.
   class Converter
