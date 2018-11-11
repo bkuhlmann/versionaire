@@ -26,7 +26,7 @@ RSpec.describe Versionaire::Version do
     end
 
     it "does not match without delimiters" do
-      expect(described_class.regex).to_not match("123")
+      expect(described_class.regex).not_to match("123")
     end
   end
 
@@ -40,12 +40,12 @@ RSpec.describe Versionaire::Version do
     context "with default" do
       it "does not fail with invalid number error" do
         result = -> { described_class.new }
-        expect(&result).to_not raise_error
+        expect(&result).not_to raise_error
       end
 
       it "does not fail with negative number error" do
         result = -> { described_class.new }
-        expect(&result).to_not raise_error
+        expect(&result).not_to raise_error
       end
     end
 
@@ -111,13 +111,13 @@ RSpec.describe Versionaire::Version do
 
     context "with different values" do
       it "answers false" do
-        expect(version).to_not eq(different)
+        expect(version).not_to eq(different)
       end
     end
 
     context "with different type" do
       it "answers false" do
-        expect(version).to_not eq("1.2.3")
+        expect(version).not_to eq("1.2.3")
       end
     end
   end
@@ -140,13 +140,13 @@ RSpec.describe Versionaire::Version do
 
     context "with different values" do
       it "answers false" do
-        expect(version).to_not eql(different)
+        expect(version).not_to eql(different)
       end
     end
 
     context "with different type" do
       it "answers false" do
-        expect(version).to_not eql("1.2.3")
+        expect(version).not_to eql("1.2.3")
       end
     end
   end
@@ -163,19 +163,19 @@ RSpec.describe Versionaire::Version do
 
     context "with same values" do
       it "answers false" do
-        expect(version).to_not equal(similar)
+        expect(version).not_to equal(similar)
       end
     end
 
     context "with different values" do
       it "answers false" do
-        expect(version).to_not equal(different)
+        expect(version).not_to equal(different)
       end
     end
 
     context "with different type" do
       it "answers false" do
-        expect(version).to_not equal("1.2.3")
+        expect(version).not_to equal("1.2.3")
       end
     end
   end
@@ -229,13 +229,13 @@ RSpec.describe Versionaire::Version do
 
     context "with different values" do
       it "is different" do
-        expect(version.hash).to_not eq(different.hash)
+        expect(version.hash).not_to eq(different.hash)
       end
     end
 
     context "with different type" do
       it "is different" do
-        expect(version.hash).to_not eq("1.2.3".hash)
+        expect(version.hash).not_to eq("1.2.3".hash)
       end
     end
   end
