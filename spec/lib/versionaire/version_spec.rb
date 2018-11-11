@@ -38,12 +38,7 @@ RSpec.describe Versionaire::Version do
 
   describe "#initialize" do
     context "with default" do
-      it "does not fail with invalid number error" do
-        result = -> { described_class.new }
-        expect(&result).not_to raise_error
-      end
-
-      it "does not fail with negative number error" do
+      it "does not fail" do
         result = -> { described_class.new }
         expect(&result).not_to raise_error
       end
