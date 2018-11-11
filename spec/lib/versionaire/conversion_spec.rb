@@ -99,11 +99,11 @@ RSpec.describe "Versionaire.Version" do
     end
 
     context "with unsupported object" do
-      let(:object) { double :object }
+      let(:object) { Object.new }
 
       it "fails with conversion error" do
         result = -> { Versionaire.Version object }
-        message = "Invalid version conversion: #[Double :object]. " \
+        message = "Invalid version conversion: #{object}. " \
                   "Use: String, Array, Hash, or Version."
 
         expect(&result).to raise_error(Versionaire::Errors::Conversion, message)
