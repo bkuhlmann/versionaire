@@ -2,6 +2,7 @@
 
 require "spec_helper"
 
+# rubocop:disable RSpec/DescribeClass
 RSpec.describe "Versionaire.Version" do
   let(:version) { Versionaire::Version.new major: 1, minor: 2, maintenance: 3 }
 
@@ -111,3 +112,4 @@ RSpec.describe "Versionaire.Version" do
     end
   end
 end
+# rubocop:enable RSpec/DescribeClass
