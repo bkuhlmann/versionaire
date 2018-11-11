@@ -3,7 +3,7 @@
 require "spec_helper"
 
 RSpec.describe Versionaire::Version do
-  subject { described_class.new major: 1, minor: 2, maintenance: 3 }
+  subject(:version) { described_class.new major: 1, minor: 2, maintenance: 3 }
 
   describe ".keys" do
     it "answers :major, :minor, and :maintenance" do
@@ -68,7 +68,7 @@ RSpec.describe Versionaire::Version do
     let(:other) { described_class.new major: 7, minor: 3, maintenance: 1 }
 
     it "adds versions" do
-      result = subject + other
+      result = version + other
       expect(result.to_s).to eq("8.5.4")
     end
   end
@@ -78,7 +78,7 @@ RSpec.describe Versionaire::Version do
       let(:other) { described_class.new major: 1, minor: 1, maintenance: 1 }
 
       it "subtracts versions" do
-        result = subject - other
+        result = version - other
         expect(result.to_s).to eq("0.1.2")
       end
     end
@@ -87,7 +87,7 @@ RSpec.describe Versionaire::Version do
       let(:other) { described_class.new maintenance: 30 }
 
       it "raises negative number error" do
-        result = -> { subject - other }
+        result = -> { version - other }
         expect(&result).to raise_error(Versionaire::Errors::NegativeNumber)
       end
     end
@@ -99,25 +99,25 @@ RSpec.describe Versionaire::Version do
 
     context "with same instances" do
       it "answers true" do
-        expect(subject).to eq(subject)
+        expect(version).to eq(version)
       end
     end
 
     context "with same values" do
       it "answers true" do
-        expect(subject).to eq(similar)
+        expect(version).to eq(similar)
       end
     end
 
     context "with different values" do
       it "answers false" do
-        expect(subject).to_not eq(different)
+        expect(version).to_not eq(different)
       end
     end
 
     context "with different type" do
       it "answers false" do
-        expect(subject).to_not eq("1.2.3")
+        expect(version).to_not eq("1.2.3")
       end
     end
   end
@@ -128,25 +128,25 @@ RSpec.describe Versionaire::Version do
 
     context "with same instances" do
       it "answers true" do
-        expect(subject).to eql(subject)
+        expect(version).to eql(version)
       end
     end
 
     context "with same values" do
       it "answers true" do
-        expect(subject).to eql(similar)
+        expect(version).to eql(similar)
       end
     end
 
     context "with different values" do
       it "answers false" do
-        expect(subject).to_not eql(different)
+        expect(version).to_not eql(different)
       end
     end
 
     context "with different type" do
       it "answers false" do
-        expect(subject).to_not eql("1.2.3")
+        expect(version).to_not eql("1.2.3")
       end
     end
   end
@@ -157,25 +157,25 @@ RSpec.describe Versionaire::Version do
 
     context "with same instances" do
       it "answers true" do
-        expect(subject).to equal(subject)
+        expect(version).to equal(version)
       end
     end
 
     context "with same values" do
       it "answers false" do
-        expect(subject).to_not equal(similar)
+        expect(version).to_not equal(similar)
       end
     end
 
     context "with different values" do
       it "answers false" do
-        expect(subject).to_not equal(different)
+        expect(version).to_not equal(different)
       end
     end
 
     context "with different type" do
       it "answers false" do
-        expect(subject).to_not equal("1.2.3")
+        expect(version).to_not equal("1.2.3")
       end
     end
   end
@@ -184,28 +184,28 @@ RSpec.describe Versionaire::Version do
     let(:similar) { described_class.new major: 1 }
 
     context "when greater than" do
-      subject { described_class.new major: 2 }
+      subject(:version) { described_class.new major: 2 }
 
       it "answers 1" do
-        result = subject <=> similar
+        result = version <=> similar
         expect(result).to eq(1)
       end
     end
 
     context "when equal to" do
-      subject { described_class.new major: 1 }
+      subject(:version) { described_class.new major: 1 }
 
       it "answers 0" do
-        result = subject <=> similar
+        result = version <=> similar
         expect(result).to eq(0)
       end
     end
 
     context "when less than" do
-      subject { described_class.new }
+      subject(:version) { described_class.new }
 
       it "answers -1" do
-        result = subject <=> similar
+        result = version <=> similar
         expect(result).to eq(-1)
       end
     end
@@ -217,50 +217,50 @@ RSpec.describe Versionaire::Version do
 
     context "with same instances" do
       it "is identical" do
-        expect(subject.hash).to eq(subject.hash)
+        expect(version.hash).to eq(version.hash)
       end
     end
 
     context "with same values" do
       it "is identical" do
-        expect(subject.hash).to eq(similar.hash)
+        expect(version.hash).to eq(similar.hash)
       end
     end
 
     context "with different values" do
       it "is different" do
-        expect(subject.hash).to_not eq(different.hash)
+        expect(version.hash).to_not eq(different.hash)
       end
     end
 
     context "with different type" do
       it "is different" do
-        expect(subject.hash).to_not eq("1.2.3".hash)
+        expect(version.hash).to_not eq("1.2.3".hash)
       end
     end
   end
 
   describe "#to_s" do
     it "answers string representation" do
-      expect(subject.to_s).to eq("1.2.3")
+      expect(version.to_s).to eq("1.2.3")
     end
   end
 
   describe "#to_str" do
     it "answers string representation" do
-      expect(subject.to_str).to eq("1.2.3")
+      expect(version.to_str).to eq("1.2.3")
     end
   end
 
   describe "#to_a" do
     it "answers array representation" do
-      expect(subject.to_a).to contain_exactly(1, 2, 3)
+      expect(version.to_a).to contain_exactly(1, 2, 3)
     end
   end
 
   describe "#to_h" do
     it "answers hash representation" do
-      expect(subject.to_h).to eq(major: 1, minor: 2, maintenance: 3)
+      expect(version.to_h).to eq(major: 1, minor: 2, maintenance: 3)
     end
   end
 end
