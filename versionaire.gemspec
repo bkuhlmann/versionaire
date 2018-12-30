@@ -26,7 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "awesome_print", "~> 1.8"
   spec.add_development_dependency "bond", "~> 0.5"
   spec.add_development_dependency "bundler-audit", "~> 0.6"
-  spec.add_development_dependency "codeclimate-test-reporter", "~> 1.0"
   spec.add_development_dependency "gemsmith", "~> 12.0"
   spec.add_development_dependency "git-cop", "~> 2.2"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
@@ -38,6 +37,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.8"
   spec.add_development_dependency "rubocop", "~> 0.61"
   spec.add_development_dependency "rubocop-rspec", "~> 1.30"
+  spec.add_development_dependency "simplecov", "~> 0.13"
   spec.add_development_dependency "wirb", "~> 2.1"
 
   spec.files = Dir["lib/**/*"]
