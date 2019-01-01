@@ -1,3 +1,23 @@
+# 7.0.0 (2019-01-01)
+
+- Fixed Circle CI cache for Ruby version.
+- Fixed Markdown ordered list numbering.
+- Fixed Rubocop RSpec/DescribeClass issue.
+- Fixed Rubocop RSpec/NamedSubject issues.
+- Fixed Rubocop RSpec/NotToNot issues.
+- Fixed Rubocop RSpec/RepeatedExample issue.
+- Fixed Rubocop RSpec/VerifiedDoubles issue.
+- Fixed Rubocop Style/AccessModifierDeclarations issue.
+- Fixed Rubocop `Layout/EmptyLineAfterGuardClause` errors.
+- Added Circle CI Bundler cache.
+- Added Rubocop RSpec gem.
+- Added freeze to version initializer.
+- Updated Circle CI Code Climate test reporting.
+- Updated to Contributor Covenant Code of Conduct 1.4.1.
+- Updated to RSpec 3.8.0.
+- Updated to Rubocop 0.62.0.
+- Updated to Ruby 2.6.0.
+
 # 6.0.0 (2018-07-01)
 
 - Updated Semantic Versioning links to be HTTPS.
