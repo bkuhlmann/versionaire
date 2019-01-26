@@ -7,7 +7,7 @@ RSpec.describe Versionaire::Version do
 
   describe ".keys" do
     it "answers :major, :minor, and :maintenance" do
-      expect(described_class::KEYS).to contain_exactly(:major, :minor, :maintenance)
+      expect(Versionaire::VERSION_ATTRIBUTES).to contain_exactly(:major, :minor, :maintenance)
     end
   end
 
@@ -88,93 +88,6 @@ RSpec.describe Versionaire::Version do
     end
   end
 
-  describe "#==" do
-    let(:similar) { described_class.new major: 1, minor: 2, maintenance: 3 }
-    let(:different) { described_class.new major: 2 }
-
-    context "with same instances" do
-      it "answers true" do
-        expect(version).to eq(version)
-      end
-    end
-
-    context "with same values" do
-      it "answers true" do
-        expect(version).to eq(similar)
-      end
-    end
-
-    context "with different values" do
-      it "answers false" do
-        expect(version).not_to eq(different)
-      end
-    end
-
-    context "with different type" do
-      it "answers false" do
-        expect(version).not_to eq("1.2.3")
-      end
-    end
-  end
-
-  describe "#eql?" do
-    let(:similar) { described_class.new major: 1, minor: 2, maintenance: 3 }
-    let(:different) { described_class.new major: 2 }
-
-    context "with same instances" do
-      it "answers true" do
-        expect(version).to eql(version)
-      end
-    end
-
-    context "with same values" do
-      it "answers true" do
-        expect(version).to eql(similar)
-      end
-    end
-
-    context "with different values" do
-      it "answers false" do
-        expect(version).not_to eql(different)
-      end
-    end
-
-    context "with different type" do
-      it "answers false" do
-        expect(version).not_to eql("1.2.3")
-      end
-    end
-  end
-
-  describe "#equal?" do
-    let(:similar) { described_class.new major: 1, minor: 2, maintenance: 3 }
-    let(:different) { described_class.new major: 2 }
-
-    context "with same instances" do
-      it "answers true" do
-        expect(version).to equal(version)
-      end
-    end
-
-    context "with same values" do
-      it "answers false" do
-        expect(version).not_to equal(similar)
-      end
-    end
-
-    context "with different values" do
-      it "answers false" do
-        expect(version).not_to equal(different)
-      end
-    end
-
-    context "with different type" do
-      it "answers false" do
-        expect(version).not_to equal("1.2.3")
-      end
-    end
-  end
-
   describe "#<=>" do
     let(:similar) { described_class.new major: 1 }
 
@@ -202,35 +115,6 @@ RSpec.describe Versionaire::Version do
       it "answers -1" do
         result = version <=> similar
         expect(result).to eq(-1)
-      end
-    end
-  end
-
-  describe "#hash" do
-    let(:similar) { described_class.new major: 1, minor: 2, maintenance: 3 }
-    let(:different) { described_class.new major: 2 }
-
-    context "with same instances" do
-      it "is identical" do
-        expect(version.hash).to eq(version.hash)
-      end
-    end
-
-    context "with same values" do
-      it "is identical" do
-        expect(version.hash).to eq(similar.hash)
-      end
-    end
-
-    context "with different values" do
-      it "is different" do
-        expect(version.hash).not_to eq(different.hash)
-      end
-    end
-
-    context "with different type" do
-      it "is different" do
-        expect(version.hash).not_to eq("1.2.3".hash)
       end
     end
   end

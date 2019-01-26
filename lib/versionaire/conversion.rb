@@ -64,7 +64,7 @@ module Versionaire
     end
 
     def required_keys?
-      value.keys.all? { |key| Version::KEYS.include? key }
+      value.keys.all? { |key| VERSION_ATTRIBUTES.include? key }
     end
 
     def error_message object, body

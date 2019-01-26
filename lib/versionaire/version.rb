@@ -1,34 +1,30 @@
 # frozen_string_literal: true
 
 module Versionaire
+  VERSION_ATTRIBUTES = %i[major minor maintenance].freeze
+  VERSION_DELIMITER = "."
+
   # An immutable, semantic version value object.
-  class Version
-    include Comparable
-    attr_reader :major, :minor, :maintenance
-
-    KEYS = %i[major minor maintenance].freeze
-    DELIMITER = "."
-
+  # rubocop:disable Metrics/BlockLength
+  Version = Struct.new :major, :minor, :maintenance, keyword_init: true do
     def self.regex
       /
-        \A            # Start of string.
-        \d{1,}        # Major version.
-        #{DELIMITER}  # Delimiter.
-        \d{1,}        # Minor version.
-        #{DELIMITER}  # Delimiter.
-        \d{1,}        # Maintenance version.
-        \z            # End of string.
+        \A                    # Start of string.
+        \d{1,}                # Major version.
+        #{VERSION_DELIMITER}  # Delimiter.
+        \d{1,}                # Minor version.
+        #{VERSION_DELIMITER}  # Delimiter.
+        \d{1,}                # Maintenance version.
+        \z                    # End of string.
       /x
     end
 
     def self.arguments major, minor, maintenance
-      Hash[KEYS.zip [major, minor, maintenance]]
+      Hash[VERSION_ATTRIBUTES.zip [major, minor, maintenance]]
     end
 
     def initialize major: 0, minor: 0, maintenance: 0
-      @major = major
-      @minor = minor
-      @maintenance = maintenance
+      super
       validate
       freeze
     end
@@ -43,33 +39,18 @@ module Versionaire
       klass.new klass.arguments(*reduce(other, :-))
     end
 
-    # :reek:FeatureEnvy
-    def == other
-      other.is_a?(Version) && to_s == other.to_s
-    end
-
-    alias eql? ==
-
     def <=> other
       to_s <=> other.to_s
     end
 
-    def hash
-      [major, minor, maintenance, self.class].hash
-    end
-
     def to_s
-      [major, minor, maintenance].join self.class::DELIMITER
+      [major, minor, maintenance].join VERSION_DELIMITER
     end
 
-    alias to_str to_s
+    alias_method :to_str, :to_s
 
     def to_a
       [major, minor, maintenance]
-    end
-
-    def to_h
-      {major: major, minor: minor, maintenance: maintenance}
     end
 
     private
@@ -83,4 +64,5 @@ module Versionaire
       to_a.zip(other.to_a).map { |pair| pair.reduce(action) }
     end
   end
+  # rubocop:enable Metrics/BlockLength
 end
