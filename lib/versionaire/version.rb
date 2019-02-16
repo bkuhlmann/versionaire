@@ -7,6 +7,8 @@ module Versionaire
   # An immutable, semantic version value object.
   # rubocop:disable Metrics/BlockLength
   Version = Struct.new :major, :minor, :maintenance, keyword_init: true do
+    include Comparable
+
     def self.regex
       /
         \A                    # Start of string.
@@ -38,6 +40,12 @@ module Versionaire
       klass = self.class
       klass.new klass.arguments(*reduce(other, :-))
     end
+
+    def == other
+      hash == other.hash
+    end
+
+    alias_method :eql?, :==
 
     def <=> other
       to_s <=> other.to_s

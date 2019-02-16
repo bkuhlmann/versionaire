@@ -88,6 +88,93 @@ RSpec.describe Versionaire::Version do
     end
   end
 
+  describe "#==" do
+    let(:similar) { described_class.new major: 1, minor: 2, maintenance: 3 }
+    let(:different) { described_class.new major: 2 }
+
+    context "with same instances" do
+      it "answers true" do
+        expect(version).to eq(version)
+      end
+    end
+
+    context "with same values" do
+      it "answers true" do
+        expect(version).to eq(similar)
+      end
+    end
+
+    context "with different values" do
+      it "answers false" do
+        expect(version).not_to eq(different)
+      end
+    end
+
+    context "with different type" do
+      it "answers false" do
+        expect(version).not_to eq("1.2.3")
+      end
+    end
+  end
+
+  describe "#eql?" do
+    let(:similar) { described_class.new major: 1, minor: 2, maintenance: 3 }
+    let(:different) { described_class.new major: 2 }
+
+    context "with same instances" do
+      it "answers true" do
+        expect(version).to eql(version)
+      end
+    end
+
+    context "with same values" do
+      it "answers true" do
+        expect(version).to eql(similar)
+      end
+    end
+
+    context "with different values" do
+      it "answers false" do
+        expect(version).not_to eql(different)
+      end
+    end
+
+    context "with different type" do
+      it "answers false" do
+        expect(version).not_to eql("1.2.3")
+      end
+    end
+  end
+
+  describe "#equal?" do
+    let(:similar) { described_class.new major: 1, minor: 2, maintenance: 3 }
+    let(:different) { described_class.new major: 2 }
+
+    context "with same instances" do
+      it "answers true" do
+        expect(version).to equal(version)
+      end
+    end
+
+    context "with same values" do
+      it "answers false" do
+        expect(version).not_to equal(similar)
+      end
+    end
+
+    context "with different values" do
+      it "answers false" do
+        expect(version).not_to equal(different)
+      end
+    end
+
+    context "with different type" do
+      it "answers false" do
+        expect(version).not_to equal("1.2.3")
+      end
+    end
+  end
+
   describe "#<=>" do
     let(:similar) { described_class.new major: 1 }
 
@@ -119,26 +206,155 @@ RSpec.describe Versionaire::Version do
     end
   end
 
+  describe "#<" do
+    let(:version_1) { Versionaire::Version "1.0.0" }
+    let(:version_2) { Versionaire::Version "2.0.0" }
+
+    it "answers true when less than" do
+      expect(version_1 < version_2).to eq(true)
+    end
+
+    it "answers false when not less than" do
+      expect(version_2 < version_1).to eq(false)
+    end
+
+    it "answers false when equal" do
+      expect(version_1 < Versionaire::Version("1.0.0")).to eq(false)
+    end
+  end
+
+  describe "#<=" do
+    let(:version_1) { Versionaire::Version "1.0.0" }
+    let(:version_2) { Versionaire::Version "2.0.0" }
+
+    it "answers true when less than" do
+      expect(version_1 <= version_2).to eq(true)
+    end
+
+    it "answers false when not less than" do
+      expect(version_2 <= version_1).to eq(false)
+    end
+
+    it "answers true when equal" do
+      expect(version_1 <= Versionaire::Version("1.0.0")).to eq(true)
+    end
+  end
+
+  describe "#>" do
+    let(:version_1) { Versionaire::Version "1.0.0" }
+    let(:version_2) { Versionaire::Version "2.0.0" }
+
+    it "answers true when greater than" do
+      expect(version_2 > version_1).to eq(true)
+    end
+
+    it "answers false when not greater than" do
+      expect(version_1 > version_2).to eq(false)
+    end
+
+    it "answers false when equal" do
+      expect(version_1 > Versionaire::Version("1.0.0")).to eq(false)
+    end
+  end
+
+  describe "#>=" do
+    let(:version_1) { Versionaire::Version "1.0.0" }
+    let(:version_2) { Versionaire::Version "2.0.0" }
+
+    it "answers true when greater than" do
+      expect(version_2 >= version_1).to eq(true)
+    end
+
+    it "answers false when not greater than" do
+      expect(version_1 >= version_2).to eq(false)
+    end
+
+    it "answers true when equal" do
+      expect(version_1 >= Versionaire::Version("1.0.0")).to eq(true)
+    end
+  end
+
+  describe "#between?" do
+    let(:version_1) { Versionaire::Version "1.0.0" }
+    let(:version_2) { Versionaire::Version "2.0.0" }
+    let(:version_3) { Versionaire::Version "3.0.0" }
+
+    it "answers true when between" do
+      expect(version_2.between?(version_1, version_2)).to eq(true)
+    end
+
+    it "answers false when not between" do
+      expect(version_1.between?(version_2, version_3)).to eq(false)
+    end
+  end
+
+  describe "#clamp" do
+    let(:version_1) { Versionaire::Version "1.0.0" }
+    let(:version_2) { Versionaire::Version "2.0.0" }
+    let(:version_3) { Versionaire::Version "3.0.0" }
+
+    it "answers minimum when less than" do
+      expect(version_1.clamp(version_2, version_3)).to eq(version_2)
+    end
+
+    it "answers maximum when greater than" do
+      expect(version_3.clamp(version_1, version_2)).to eq(version_2)
+    end
+
+    it "answers equal when equal" do
+      expect(version_1.clamp(version_1, version_1)).to eq(version_1)
+    end
+  end
+
+  describe "#hash" do
+    let(:similar) { described_class.new major: 1, minor: 2, maintenance: 3 }
+    let(:different) { described_class.new major: 2 }
+
+    context "with same instances" do
+      it "is identical" do
+        expect(version.hash).to eq(version.hash)
+      end
+    end
+
+    context "with same values" do
+      it "is identical" do
+        expect(version.hash).to eq(similar.hash)
+      end
+    end
+
+    context "with different values" do
+      it "is different" do
+        expect(version.hash).not_to eq(different.hash)
+      end
+    end
+
+    context "with different type" do
+      it "is different" do
+        expect(version.hash).not_to eq("1.2.3".hash)
+      end
+    end
+  end
+
   describe "#to_s" do
-    it "answers string representation" do
+    it "answers string" do
       expect(version.to_s).to eq("1.2.3")
     end
   end
 
   describe "#to_str" do
-    it "answers string representation" do
+    it "answers string" do
       expect(version.to_str).to eq("1.2.3")
     end
   end
 
   describe "#to_a" do
-    it "answers array representation" do
+    it "answers array" do
       expect(version.to_a).to contain_exactly(1, 2, 3)
     end
   end
 
   describe "#to_h" do
-    it "answers hash representation" do
+    it "answers hash" do
       expect(version.to_h).to eq(major: 1, minor: 2, maintenance: 3)
     end
   end
