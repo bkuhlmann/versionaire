@@ -1,3 +1,10 @@
+# 7.2.0 (2019-02-17)
+
+- Fixed Rubocop RSpec/DescribeClass issue.
+- Fixed version comparability.
+- Refactored converter to construct on an object.
+- Refactored version string to leverage array implementation.
+
 # 7.1.0 (2019-02-01)
 
 - Updated to Gemsmith 13.0.0.

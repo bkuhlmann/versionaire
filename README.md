@@ -153,16 +153,16 @@ Explicit conversion to a `String`, `Array`, or `Hash` is supported:
 All versions are comparable which means any of the operators from the `Comparable` module will work.
 Example:
 
-    v1 = Versionaire::Version "1.0.0"
-    v2 = Versionaire::Version "2.0.0"
+    version_1 = Versionaire::Version "1.0.0"
+    version_2 = Versionaire::Version "2.0.0"
 
-    v1 < v2 # true
-    v1 <= v2 # true
-    v1 == v2 # false (see Equality section above for details)
-    v1 > v2 # false
-    v1 >= v2 # false
-    v1.between? v1, v2 # true
-    v1.clamp v1, v2 # v1 (added in Ruby 2.4.0)
+    version_1 < version_2 # true
+    version_1 <= version_2 # true
+    version_1 == version_2 # false (see Equality section above for details)
+    version_1 > version_2 # false
+    version_1 >= version_2 # false
+    version_1.between? version_1, version_2 # true
+    version_1.clamp version_1, version_2 # version_1 (added in Ruby 2.4.0)
 
 ### Math
 
