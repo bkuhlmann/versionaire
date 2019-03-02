@@ -64,12 +64,12 @@ module Versionaire
     private
 
     def validate
-      fail(Errors::InvalidNumber) if to_a.any? { |number| !number.is_a? Integer }
-      fail(Errors::NegativeNumber) if to_a.any?(&:negative?)
+      fail Errors::InvalidNumber if to_a.any? { |number| !number.is_a? Integer }
+      fail Errors::NegativeNumber if to_a.any?(&:negative?)
     end
 
     def reduce other, action
-      to_a.zip(other.to_a).map { |pair| pair.reduce(action) }
+      to_a.zip(other.to_a).map { |pair| pair.reduce action }
     end
   end
   # rubocop:enable Metrics/BlockLength
