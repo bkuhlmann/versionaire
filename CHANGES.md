@@ -1,3 +1,9 @@
+# 7.3.0 (2019-04-01)
+
+- Fixed Rubocop Style/MethodCallWithArgsParentheses issues.
+- Updated to Ruby 2.6.2.
+- Removed RSpec standard output/error suppression.
+
 # 7.2.0 (2019-02-17)
 
 - Fixed Rubocop RSpec/DescribeClass issue.
