@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="versionaire.png" alt="Versionaire Icon"/>
+</p>
+
 # Versionaire
 
 [![Gem Version](https://badge.fury.io/rb/versionaire.svg)](http://badge.fury.io/rb/versionaire)
