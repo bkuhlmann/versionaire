@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "awesome_print", "~> 1.8"
   spec.add_development_dependency "bond", "~> 0.5"
   spec.add_development_dependency "bundler-audit", "~> 0.6"
-  spec.add_development_dependency "gemsmith", "~> 13.0"
+  spec.add_development_dependency "gemsmith", "~> 13.5"
   spec.add_development_dependency "git-cop", "~> 3.5"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
   spec.add_development_dependency "hirb", "~> 0.7"
