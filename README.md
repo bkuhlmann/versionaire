@@ -75,9 +75,9 @@ Add the following to your Gemfile:
 A new version can be initialized in a variety of ways:
 
     Versionaire::Version.new                                    # "0.0.0"
-    Versionaire::Version.new major: 1                           # "1.0.0"
-    Versionaire::Version.new major: 1, minor: 2                 # "1.2.0"
-    Versionaire::Version.new major: 1, minor: 2, maintenance: 3 # "1.2.3"
+    Versionaire::Version[major: 1]                              # "1.0.0"
+    Versionaire::Version[major: 1, minor: 2]                    # "1.2.0"
+    Versionaire::Version[major: 1, minor: 2, maintenance: 3]    # "1.2.3"
 
 ### Equality
 
@@ -86,9 +86,9 @@ A new version can be initialized in a variety of ways:
 Equality is deterimined by the state of the object. This means that a version is equal to another
 version as long as all of the values (i.e. state) are equal to each other. Example:
 
-    version_a = Versionaire::Version.new major: 1
-    version_b = Versionaire::Version.new major: 2
-    version_c = Versionaire::Version.new major: 1
+    version_a = Versionaire::Version[major: 1]
+    version_b = Versionaire::Version[major: 2]
+    version_c = Versionaire::Version[major: 1]
 
     version_a == version_a # true
     version_a == version_b # false
@@ -112,9 +112,9 @@ Behaves exactly as `#==`.
 
 Works like any other standard Ruby object where an object is equal only to itself.
 
-    version_a = Versionaire::Version.new major: 1
-    version_b = Versionaire::Version.new major: 2
-    version_c = Versionaire::Version.new major: 1
+    version_a = Versionaire::Version[major: 1]
+    version_b = Versionaire::Version[major: 2]
+    version_c = Versionaire::Version[major: 1]
 
     version_a.equal? version_a # true
     version_a.equal? version_b # false
@@ -126,7 +126,7 @@ Works like any other standard Ruby object where an object is equal only to itsel
 
 The `Versionaire::Version` function is provided for explicit casting to a version:
 
-    version = Versionaire::Version.new major: 1
+    version = Versionaire::Version[major: 1]
 
     Versionaire::Version "1.0.0"
     Versionaire::Version [1, 0, 0]
@@ -140,7 +140,7 @@ to convert an unsupported type, a `Versionaire::Errors::Conversion` exception wi
 
 Implicit conversion to a `String` is supported:
 
-    "1.0.0".match Versionaire::Version.new(major: 1) # <MatchData "1.0.0">
+    "1.0.0".match Versionaire::Version[major: 1] # <MatchData "1.0.0">
 
 #### Explicit
 
@@ -174,18 +174,18 @@ Versions can be added and subtracted from each other.
 
 #### Addition
 
-    version_1 = Versionaire::Version.new major: 1, minor: 2, maintenance: 3
-    version_2 = Versionaire::Version.new major: 2, minor: 5, maintenance: 7
+    version_1 = Versionaire::Version[major: 1, minor: 2, maintenance: 3]
+    version_2 = Versionaire::Version[major: 2, minor: 5, maintenance: 7]
     version_1 + version_2 # "3.7.10"
 
 #### Subtraction
 
-    version_1 = Versionaire::Version.new major: 1, minor: 2, maintenance: 3
-    version_2 = Versionaire::Version.new major: 1, minor: 1, maintenance: 1
+    version_1 = Versionaire::Version[major: 1, minor: 2, maintenance: 3]
+    version_2 = Versionaire::Version[major: 1, minor: 1, maintenance: 1]
     version_1 - version_2 # "0.1.2"
 
-    version_1 = Versionaire::Version.new major: 1
-    version_2 = Versionaire::Version.new major: 5
+    version_1 = Versionaire::Version[major: 1]
+    version_2 = Versionaire::Version[major: 5]
     version_1 - version_2 # Fails with a Versionaire::Errors::NegativeNumber
 
 ## Tests

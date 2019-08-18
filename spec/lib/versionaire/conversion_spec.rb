@@ -3,7 +3,7 @@
 require "spec_helper"
 
 RSpec.describe "Conversion", type: :feature do
-  let(:version) { Versionaire::Version.new major: 1, minor: 2, maintenance: 3 }
+  let(:version) { Versionaire::Version[major: 1, minor: 2, maintenance: 3] }
 
   describe ".Version" do
     context "with string" do
@@ -33,12 +33,12 @@ RSpec.describe "Conversion", type: :feature do
       end
 
       it "converts array with one argument" do
-        version = Versionaire::Version.new major: 1
+        version = Versionaire::Version[major: 1]
         expect(Versionaire.Version([1])).to eq(version)
       end
 
       it "converts array with two arguments" do
-        version = Versionaire::Version.new major: 1, minor: 2
+        version = Versionaire::Version[major: 1, minor: 2]
         expect(Versionaire.Version([1, 2])).to eq(version)
       end
 
@@ -68,7 +68,7 @@ RSpec.describe "Conversion", type: :feature do
       end
 
       it "converts hash with partial keys" do
-        version = Versionaire::Version.new minor: 2
+        version = Versionaire::Version[minor: 2]
         expect(Versionaire.Version(minor: 2)).to eq(version)
       end
 
