@@ -1,3 +1,12 @@
+# 7.3.3 (2019-09-01)
+
+- Updated README screencast tutorial.
+- Updated to Rubocop 0.73.0.
+- Updated to Rubocop Performance 1.4.0.
+- Updated to Ruby 2.6.4.
+- Refactored RSpec helper support requirements.
+- Refactored structs to use hash-like syntax.
+
 # 7.3.2 (2019-06-01)
 
 - Fixed RSpec/ContextWording issues.
