@@ -52,7 +52,7 @@ Provides immutable, thread-safe, semantic versioning.
 
 ## Screencasts
 
-[![asciicast](https://asciinema.org/a/263062.svg)](https://asciinema.org/a/263062)
+[![asciicast](https://asciinema.org/a/278658.svg)](https://asciinema.org/a/278658)
 
 ## Requirements
 
