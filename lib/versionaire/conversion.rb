@@ -25,7 +25,7 @@ module Versionaire
     end
 
     def from_string
-      body = %(Use: "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch>".)
+      body = %(Use: "<major>.<minor>.<patch>".)
       fail Errors::Conversion, error_message(object, body) unless Version.regex.match? object
 
       Version[string_to_arguments]
@@ -56,7 +56,7 @@ module Versionaire
     attr_reader :object
 
     def string_to_arguments
-      Version.arguments(*object.tr("v", "").split(".").map(&:to_i))
+      Version.arguments(*object.split(".").map(&:to_i))
     end
 
     def array_to_arguments

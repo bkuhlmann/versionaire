@@ -20,8 +20,7 @@ RSpec.describe "Conversion", type: :feature do
 
       it "fails with conversion error for invalid string" do
         result = -> { Versionaire.Version "bogus" }
-        message = "Invalid version conversion: bogus. " +
-                  %(Use: "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch>".)
+        message = %(Invalid version conversion: bogus. Use: "<major>.<minor>.<patch>".)
 
         expect(&result).to raise_error(Versionaire::Errors::Conversion, message)
       end
