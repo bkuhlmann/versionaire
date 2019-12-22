@@ -7,3 +7,7 @@ inherit_from:
 Naming/MethodName:
   Exclude:
     - "lib/versionaire/conversion.rb"
+
+Style/IpAddresses:
+  Exclude:
+    - "spec/lib/versionaire/version_spec.rb"

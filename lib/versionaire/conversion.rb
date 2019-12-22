@@ -25,7 +25,7 @@ module Versionaire
     end
 
     def from_string
-      body = %(Use: "<major>.<minor>.<patch>".)
+      body = "Use: <major>.<minor>.<patch>, <major>.<minor>, <major>, or empty string."
       fail Errors::Conversion, error_message(object, body) unless Version.regex.match? object
 
       Version[string_to_arguments]
@@ -55,8 +55,11 @@ module Versionaire
 
     attr_reader :object
 
+    # :reek:FeatureEnvy
     def string_to_arguments
-      Version.arguments(*object.split(".").map(&:to_i))
+      object.split(DELIMITER)
+            .map(&:to_i)
+            .then { |numbers| Version.arguments(*numbers.fill(0, numbers.size..2)) }
     end
 
     def array_to_arguments

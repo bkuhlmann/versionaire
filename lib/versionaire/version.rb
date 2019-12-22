@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Versionaire
-  VERSION_DELIMITER = "."
+  DELIMITER = "."
 
   # An immutable, semantic version value object.
   # rubocop:disable Metrics/BlockLength
@@ -10,13 +10,14 @@ module Versionaire
 
     def self.regex
       /
-        \A                    # Start of string.
-        \d{1,}                # Major version.
-        #{VERSION_DELIMITER}  # Delimiter.
-        \d{1,}                # Minor version.
-        #{VERSION_DELIMITER}  # Delimiter.
-        \d{1,}                # Patch version.
-        \z                    # End of string.
+        \A(                  # Start of string and OR.
+        \d*                  # Major only.
+        |                    # OR pipe.
+        \d+                  # Major.
+        #{DELIMITER}?        # Delimiter.
+        \d*                  # Minor.
+        (?:#{DELIMITER}\d+)  # Passive delimiter and patch.
+        )\z                  # End of OR and string.
       /x
     end
 
@@ -51,7 +52,7 @@ module Versionaire
     end
 
     def to_s
-      to_a.join VERSION_DELIMITER
+      to_a.join DELIMITER
     end
 
     alias_method :to_str, :to_s

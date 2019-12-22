@@ -3,32 +3,49 @@
 require "spec_helper"
 
 RSpec.describe "Conversion", type: :feature do
-  let(:version) { Versionaire::Version[major: 1, minor: 2, patch: 3] }
+  let(:version) { Versionaire::Version "1.2.3" }
 
   describe ".Version" do
     context "with string" do
-      it "converts version string" do
+      it "converts major, minor, and patch" do
         expect(Versionaire.Version("1.2.3")).to eq(version)
       end
 
+      it "converts major and minor" do
+        expect(Versionaire.Version("1.2")).to eq(Versionaire::Version("1.2.0"))
+      end
+
+      it "converts major only" do
+        expect(Versionaire.Version("1")).to eq(Versionaire::Version("1.0.0"))
+      end
+
+      it "converts empty string" do
+        expect(Versionaire.Version("")).to eq(Versionaire::Version("0.0.0"))
+      end
+
       it "does not modify parameters" do
-        params = "1.2.3"
+        params = "1"
         Versionaire.Version params
 
-        expect(params).to eq("1.2.3")
+        expect(params).to eq("1")
       end
 
       it "fails with conversion error for invalid string" do
         result = -> { Versionaire.Version "bogus" }
-        message = %(Invalid version conversion: bogus. Use: "<major>.<minor>.<patch>".)
+        message = "Invalid version conversion: bogus. " \
+                  "Use: <major>.<minor>.<patch>, <major>.<minor>, <major>, or empty string."
 
         expect(&result).to raise_error(Versionaire::Errors::Conversion, message)
       end
     end
 
     context "with array" do
-      it "converts empty array" do
-        expect(Versionaire.Version([])).to eq(Versionaire::Version.new)
+      it "converts array with three arguments" do
+        expect(Versionaire.Version([1, 2, 3])).to eq(version)
+      end
+
+      it "converts array with two arguments" do
+        expect(Versionaire.Version([1, 2])).to eq(Versionaire::Version("1.2.0"))
       end
 
       it "converts array with one argument" do
@@ -36,13 +53,8 @@ RSpec.describe "Conversion", type: :feature do
         expect(Versionaire.Version([1])).to eq(version)
       end
 
-      it "converts array with two arguments" do
-        version = Versionaire::Version[major: 1, minor: 2]
-        expect(Versionaire.Version([1, 2])).to eq(version)
-      end
-
-      it "converts array with three arguments" do
-        expect(Versionaire.Version([1, 2, 3])).to eq(version)
+      it "converts empty array" do
+        expect(Versionaire.Version([])).to eq(Versionaire::Version.new)
       end
 
       it "does not modify parameters" do
@@ -62,13 +74,27 @@ RSpec.describe "Conversion", type: :feature do
     end
 
     context "with hash" do
-      it "converts hash with required keys" do
+      it "converts major, minor, and patch" do
         expect(Versionaire.Version(major: 1, minor: 2, patch: 3)).to eq(version)
       end
 
-      it "converts hash with partial keys" do
-        version = Versionaire::Version[minor: 2]
-        expect(Versionaire.Version(minor: 2)).to eq(version)
+      it "converts major and minor" do
+        expect(Versionaire.Version(major: 1, minor: 2)).to eq(Versionaire::Version("1.2.0"))
+      end
+
+      it "converts major only" do
+        expect(Versionaire.Version(major: 1)).to eq(Versionaire::Version("1.0.0"))
+      end
+
+      it "converts empty hash" do
+        expect(Versionaire.Version({})).to eq(Versionaire::Version("0.0.0"))
+      end
+
+      it "does not modify parameters" do
+        params = {major: 1}
+        Versionaire.Version params
+
+        expect(params).to eq(major: 1)
       end
 
       it "fails with conversion error for invalid keys" do
