@@ -67,7 +67,7 @@ RSpec.describe "Conversion", type: :feature do
       it "fails with conversion error for array with more than three arguments" do
         result = -> { Versionaire.Version [1, 2, 3, 4] }
         message = "Invalid version conversion: [1, 2, 3, 4]. " \
-                  "Use: [], [<major>], [<major>, <minor>], or [<major>, <minor>, <patch>]."
+                  "Use: [<major>, <minor>, <patch>], [<major>, <minor>], [<major>], or []."
 
         expect(&result).to raise_error(Versionaire::Errors::Conversion, message)
       end
@@ -100,9 +100,8 @@ RSpec.describe "Conversion", type: :feature do
       it "fails with conversion error for invalid keys" do
         result = -> { Versionaire.Version bogus: "test" }
         message = %(Invalid version conversion: {:bogus=>"test"}. ) \
-                  "Use: {major: <major>}, " \
-                  "{major: <major>, minor: <minor>}, or " \
-                  "{major: <major>, minor: <minor>, patch: <patch>}."
+                  "Use: {major: <major>, minor: <minor>, patch: <patch>}, " \
+                  "{major: <major>, minor: <minor>}, {major: <major>}, or {}."
 
         expect(&result).to raise_error(Versionaire::Errors::Conversion, message)
       end
