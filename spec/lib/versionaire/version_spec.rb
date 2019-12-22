@@ -5,12 +5,6 @@ require "spec_helper"
 RSpec.describe Versionaire::Version do
   subject(:version) { described_class.new major: 1, minor: 2, patch: 3 }
 
-  describe ".keys" do
-    it "answers major, minor, and patch" do
-      expect(Versionaire::VERSION_ATTRIBUTES).to contain_exactly(:major, :minor, :patch)
-    end
-  end
-
   describe ".regex" do
     it "matches single digit <major>.<minor>.<patch> format" do
       expect(described_class.regex).to match("1.2.3")

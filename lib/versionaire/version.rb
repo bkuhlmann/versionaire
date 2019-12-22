@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module Versionaire
-  VERSION_ATTRIBUTES = %i[major minor patch].freeze
   VERSION_DELIMITER = "."
 
   # An immutable, semantic version value object.
@@ -22,7 +21,7 @@ module Versionaire
     end
 
     def self.arguments major, minor, patch
-      Hash[VERSION_ATTRIBUTES.zip [major, minor, patch]]
+      Hash[members.zip [major, minor, patch]]
     end
 
     def initialize major: 0, minor: 0, patch: 0
