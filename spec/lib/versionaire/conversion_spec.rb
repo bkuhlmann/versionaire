@@ -3,7 +3,7 @@
 require "spec_helper"
 
 RSpec.describe "Conversion", type: :feature do
-  let(:version) { Versionaire::Version[major: 1, minor: 2, maintenance: 3] }
+  let(:version) { Versionaire::Version[major: 1, minor: 2, patch: 3] }
 
   describe ".Version" do
     context "with string" do
@@ -21,7 +21,7 @@ RSpec.describe "Conversion", type: :feature do
       it "fails with conversion error for invalid string" do
         result = -> { Versionaire.Version "bogus" }
         message = "Invalid version conversion: bogus. " +
-                  %(Use: "<major>.<minor>.<maintenance>" or "v<major>.<minor>.<maintenance>".)
+                  %(Use: "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch>".)
 
         expect(&result).to raise_error(Versionaire::Errors::Conversion, message)
       end
@@ -56,7 +56,7 @@ RSpec.describe "Conversion", type: :feature do
       it "fails with conversion error for array with more than three arguments" do
         result = -> { Versionaire.Version [1, 2, 3, 4] }
         message = "Invalid version conversion: [1, 2, 3, 4]. " \
-                  "Use: [], [<major>], [<major>, <minor>], or [<major>, <minor>, <maintenance>]."
+                  "Use: [], [<major>], [<major>, <minor>], or [<major>, <minor>, <patch>]."
 
         expect(&result).to raise_error(Versionaire::Errors::Conversion, message)
       end
@@ -64,7 +64,7 @@ RSpec.describe "Conversion", type: :feature do
 
     context "with hash" do
       it "converts hash with required keys" do
-        expect(Versionaire.Version(major: 1, minor: 2, maintenance: 3)).to eq(version)
+        expect(Versionaire.Version(major: 1, minor: 2, patch: 3)).to eq(version)
       end
 
       it "converts hash with partial keys" do
@@ -77,7 +77,7 @@ RSpec.describe "Conversion", type: :feature do
         message = %(Invalid version conversion: {:bogus=>"test"}. ) \
                   "Use: {major: <major>}, " \
                   "{major: <major>, minor: <minor>}, or " \
-                  "{major: <major>, minor: <minor>, maintenance: <maintenance>}."
+                  "{major: <major>, minor: <minor>, patch: <patch>}."
 
         expect(&result).to raise_error(Versionaire::Errors::Conversion, message)
       end

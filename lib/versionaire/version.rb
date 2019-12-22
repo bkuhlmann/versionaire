@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module Versionaire
-  VERSION_ATTRIBUTES = %i[major minor maintenance].freeze
+  VERSION_ATTRIBUTES = %i[major minor patch].freeze
   VERSION_DELIMITER = "."
 
   # An immutable, semantic version value object.
   # rubocop:disable Metrics/BlockLength
-  Version = Struct.new :major, :minor, :maintenance, keyword_init: true do
+  Version = Struct.new :major, :minor, :patch, keyword_init: true do
     include Comparable
 
     def self.regex
@@ -16,16 +16,16 @@ module Versionaire
         #{VERSION_DELIMITER}  # Delimiter.
         \d{1,}                # Minor version.
         #{VERSION_DELIMITER}  # Delimiter.
-        \d{1,}                # Maintenance version.
+        \d{1,}                # Patch version.
         \z                    # End of string.
       /x
     end
 
-    def self.arguments major, minor, maintenance
-      Hash[VERSION_ATTRIBUTES.zip [major, minor, maintenance]]
+    def self.arguments major, minor, patch
+      Hash[VERSION_ATTRIBUTES.zip [major, minor, patch]]
     end
 
-    def initialize major: 0, minor: 0, maintenance: 0
+    def initialize major: 0, minor: 0, patch: 0
       super
       validate
       freeze
@@ -58,7 +58,7 @@ module Versionaire
     alias_method :to_str, :to_s
 
     def to_a
-      [major, minor, maintenance]
+      [major, minor, patch]
     end
 
     private

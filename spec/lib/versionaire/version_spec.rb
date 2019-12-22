@@ -3,25 +3,25 @@
 require "spec_helper"
 
 RSpec.describe Versionaire::Version do
-  subject(:version) { described_class.new major: 1, minor: 2, maintenance: 3 }
+  subject(:version) { described_class.new major: 1, minor: 2, patch: 3 }
 
   describe ".keys" do
-    it "answers :major, :minor, and :maintenance" do
-      expect(Versionaire::VERSION_ATTRIBUTES).to contain_exactly(:major, :minor, :maintenance)
+    it "answers major, minor, and patch" do
+      expect(Versionaire::VERSION_ATTRIBUTES).to contain_exactly(:major, :minor, :patch)
     end
   end
 
   describe ".regex" do
-    it "matches single digit <major>.<minor>.<maintenance> format" do
+    it "matches single digit <major>.<minor>.<patch> format" do
       expect(described_class.regex).to match("1.2.3")
     end
 
-    it "matches multiple digit <major>.<minor>.<maintenance> format" do
+    it "matches multiple digit <major>.<minor>.<patch> format" do
       expect(described_class.regex).to match("11.2222.33333333333333333")
     end
 
     it "matches similar version" do
-      proof = described_class.new major: 1, minor: 2, maintenance: 3
+      proof = described_class.new major: 1, minor: 2, patch: 3
       expect(described_class.regex).to match(proof)
     end
 
@@ -32,7 +32,7 @@ RSpec.describe Versionaire::Version do
 
   describe ".arguments" do
     it "answers constructor arguments" do
-      expect(described_class.arguments(3, 2, 1)).to eq(major: 3, minor: 2, maintenance: 1)
+      expect(described_class.arguments(3, 2, 1)).to eq(major: 3, minor: 2, patch: 1)
     end
   end
 
@@ -53,14 +53,14 @@ RSpec.describe Versionaire::Version do
 
     context "with negatives" do
       it "fails with invalid number error" do
-        result = -> { described_class.new major: -1, maintenance: -10 }
+        result = -> { described_class.new major: -1, patch: -10 }
         expect(&result).to raise_error(Versionaire::Errors::NegativeNumber)
       end
     end
   end
 
   describe "#+" do
-    let(:other) { described_class.new major: 7, minor: 3, maintenance: 1 }
+    let(:other) { described_class.new major: 7, minor: 3, patch: 1 }
 
     it "adds versions" do
       result = version + other
@@ -70,7 +70,7 @@ RSpec.describe Versionaire::Version do
 
   describe "#-" do
     context "when result remains positive" do
-      let(:other) { described_class.new major: 1, minor: 1, maintenance: 1 }
+      let(:other) { described_class.new major: 1, minor: 1, patch: 1 }
 
       it "subtracts versions" do
         result = version - other
@@ -79,7 +79,7 @@ RSpec.describe Versionaire::Version do
     end
 
     context "when result is negative" do
-      let(:other) { described_class.new maintenance: 30 }
+      let(:other) { described_class.new patch: 30 }
 
       it "raises negative number error" do
         result = -> { version - other }
@@ -89,7 +89,7 @@ RSpec.describe Versionaire::Version do
   end
 
   describe "#==" do
-    let(:similar) { described_class.new major: 1, minor: 2, maintenance: 3 }
+    let(:similar) { described_class.new major: 1, minor: 2, patch: 3 }
     let(:different) { described_class.new major: 2 }
 
     context "with same instances" do
@@ -118,7 +118,7 @@ RSpec.describe Versionaire::Version do
   end
 
   describe "#eql?" do
-    let(:similar) { described_class.new major: 1, minor: 2, maintenance: 3 }
+    let(:similar) { described_class.new major: 1, minor: 2, patch: 3 }
     let(:different) { described_class.new major: 2 }
 
     context "with same instances" do
@@ -147,7 +147,7 @@ RSpec.describe Versionaire::Version do
   end
 
   describe "#equal?" do
-    let(:similar) { described_class.new major: 1, minor: 2, maintenance: 3 }
+    let(:similar) { described_class.new major: 1, minor: 2, patch: 3 }
     let(:different) { described_class.new major: 2 }
 
     context "with same instances" do
@@ -307,7 +307,7 @@ RSpec.describe Versionaire::Version do
   end
 
   describe "#hash" do
-    let(:similar) { described_class.new major: 1, minor: 2, maintenance: 3 }
+    let(:similar) { described_class.new major: 1, minor: 2, patch: 3 }
     let(:different) { described_class.new major: 2 }
 
     context "with same instances" do
@@ -355,7 +355,7 @@ RSpec.describe Versionaire::Version do
 
   describe "#to_h" do
     it "answers hash" do
-      expect(version.to_h).to eq(major: 1, minor: 2, maintenance: 3)
+      expect(version.to_h).to eq(major: 1, minor: 2, patch: 3)
     end
   end
 end

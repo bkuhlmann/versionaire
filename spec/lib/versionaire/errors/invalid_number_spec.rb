@@ -7,7 +7,7 @@ RSpec.describe Versionaire::Errors::InvalidNumber do
 
   describe "#initialize" do
     it "answers default message" do
-      expect(error.message).to eq("Major, minor, and maintenance must be a number.")
+      expect(error.message).to eq("Major, minor, and patch must be a number.")
     end
   end
 end

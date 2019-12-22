@@ -49,7 +49,7 @@ applications.
 
 - Provides [Semantic Versioning](https://semver.org).
 - Provides immutable, thread-safe version instances.
-- Provides conversions (casts) from a `String`, `Array`, `Hash`, or `Version` to a `Version`.
+- Converts (casts) from a `String`, `Array`, `Hash`, or `Version` to a `Version`.
 
 ## Screencasts
 
@@ -78,7 +78,7 @@ A new version can be initialized in a variety of ways:
     Versionaire::Version.new                                    # "0.0.0"
     Versionaire::Version[major: 1]                              # "1.0.0"
     Versionaire::Version[major: 1, minor: 2]                    # "1.2.0"
-    Versionaire::Version[major: 1, minor: 2, maintenance: 3]    # "1.2.3"
+    Versionaire::Version[major: 1, minor: 2, patch: 3]          # "1.2.3"
 
 ### Equality
 
@@ -131,7 +131,7 @@ The `Versionaire::Version` function is provided for explicit casting to a versio
 
     Versionaire::Version "1.0.0"
     Versionaire::Version [1, 0, 0]
-    Versionaire::Version major: 1, minor: 0, maintenance: 0
+    Versionaire::Version major: 1, minor: 0, patch: 0
     Versionaire::Version version
 
 Each of these conversions will result in a version object that represents "1.0.0". When attempting
@@ -151,7 +151,7 @@ Explicit conversion to a `String`, `Array`, or `Hash` is supported:
 
     version.to_s # "0.0.0"
     version.to_a # [0, 0, 0]
-    version.to_h # {major: 0, minor: 0, maintenance: 0}
+    version.to_h # {major: 0, minor: 0, patch: 0}
 
 ### Comparisons
 
@@ -175,14 +175,14 @@ Versions can be added and subtracted from each other.
 
 #### Addition
 
-    version_1 = Versionaire::Version[major: 1, minor: 2, maintenance: 3]
-    version_2 = Versionaire::Version[major: 2, minor: 5, maintenance: 7]
+    version_1 = Versionaire::Version[major: 1, minor: 2, patch: 3]
+    version_2 = Versionaire::Version[major: 2, minor: 5, patch: 7]
     version_1 + version_2 # "3.7.10"
 
 #### Subtraction
 
-    version_1 = Versionaire::Version[major: 1, minor: 2, maintenance: 3]
-    version_2 = Versionaire::Version[major: 1, minor: 1, maintenance: 1]
+    version_1 = Versionaire::Version[major: 1, minor: 2, patch: 3]
+    version_2 = Versionaire::Version[major: 1, minor: 1, patch: 1]
     version_1 - version_2 # "0.1.2"
 
     version_1 = Versionaire::Version[major: 1]
