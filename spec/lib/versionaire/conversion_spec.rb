@@ -23,13 +23,6 @@ RSpec.describe "Conversion", type: :feature do
         expect(Versionaire.Version("")).to eq(Versionaire::Version("0.0.0"))
       end
 
-      it "does not modify parameters" do
-        params = "1"
-        Versionaire.Version params
-
-        expect(params).to eq("1")
-      end
-
       it "fails with conversion error for invalid string" do
         result = -> { Versionaire.Version "bogus" }
         message = "Invalid version conversion: bogus. " \
@@ -57,13 +50,6 @@ RSpec.describe "Conversion", type: :feature do
         expect(Versionaire.Version([])).to eq(Versionaire::Version.new)
       end
 
-      it "does not modify parameters" do
-        params = [1]
-        Versionaire.Version params
-
-        expect(params).to contain_exactly(1)
-      end
-
       it "fails with conversion error for array with more than three arguments" do
         result = -> { Versionaire.Version [1, 2, 3, 4] }
         message = "Invalid version conversion: [1, 2, 3, 4]. " \
@@ -88,13 +74,6 @@ RSpec.describe "Conversion", type: :feature do
 
       it "converts empty hash" do
         expect(Versionaire.Version({})).to eq(Versionaire::Version("0.0.0"))
-      end
-
-      it "does not modify parameters" do
-        params = {major: 1}
-        Versionaire.Version params
-
-        expect(params).to eq(major: 1)
       end
 
       it "fails with conversion error for invalid keys" do

@@ -7,21 +7,22 @@ module Versionaire
   # Conversion function (strict) for casting an object into a version.
   # :reek:TooManyStatements
   def Version object
-    converter = Converter.new object
-
-    case object
-      when String then converter.from_string
-      when Array then converter.from_array
-      when Hash then converter.from_hash
-      when Version then object
-      else converter.from_object
+    Converter.new(object).then do |converter|
+      case object
+        when String then converter.from_string
+        when Array then converter.from_array
+        when Hash then converter.from_hash
+        when Version then object
+        else converter.from_object
+      end
     end
   end
 
   # Aids with converting objects into valid versions.
   class Converter
-    def initialize object
+    def initialize object, filler: Filler.new
       @object = object
+      @filler = filler
     end
 
     def from_string
@@ -52,17 +53,17 @@ module Versionaire
 
     private
 
-    attr_reader :object
+    attr_reader :object, :filler
 
-    # :reek:FeatureEnvy
     def string_to_arguments
       object.split(DELIMITER)
             .map(&:to_i)
-            .then { |numbers| Version.arguments(*numbers.fill(0, numbers.size..2)) }
+            .then { |numbers| filler.call numbers }
+            .then { |arguments| Version.arguments(*arguments) }
     end
 
     def array_to_arguments
-      Version.arguments(*object.dup.fill(0, object.size..2))
+      Version.arguments(*filler.call(object))
     end
 
     def required_keys?
