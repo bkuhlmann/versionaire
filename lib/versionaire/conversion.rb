@@ -29,14 +29,14 @@ module Versionaire
       body = "Use: <major>.<minor>.<patch>, <major>.<minor>, <major>, or empty string."
       fail Errors::Conversion, error_message(object, body) unless Version.regex.match? object
 
-      Version[string_to_arguments]
+      Version[**string_to_arguments]
     end
 
     def from_array
       body = "Use: [<major>, <minor>, <patch>], [<major>, <minor>], [<major>], or []."
       fail Errors::Conversion, error_message(object, body) unless (0..3).cover? object.size
 
-      Version[array_to_arguments]
+      Version[**array_to_arguments]
     end
 
     def from_hash
@@ -44,7 +44,7 @@ module Versionaire
              "{major: <major>, minor: <minor>}, {major: <major>}, or {}."
       fail Errors::Conversion, error_message(object, body) unless required_keys?
 
-      Version[object]
+      Version[**object]
     end
 
     def from_object

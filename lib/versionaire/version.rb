@@ -32,13 +32,11 @@ module Versionaire
     end
 
     def + other
-      klass = self.class
-      klass.new klass.arguments(*reduce(other, :+))
+      self.class.then { |klass| klass.new(**klass.arguments(*reduce(other, :+))) }
     end
 
     def - other
-      klass = self.class
-      klass.new klass.arguments(*reduce(other, :-))
+      self.class.then { |klass| klass.new(**klass.arguments(*reduce(other, :-))) }
     end
 
     def == other
