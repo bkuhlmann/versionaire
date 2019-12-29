@@ -23,13 +23,10 @@ Gem::Specification.new do |spec|
   spec.cert_chain = [Gem.default_cert_path]
 
   spec.required_ruby_version = "~> 2.7"
-  spec.add_development_dependency "awesome_print", "~> 1.8"
-  spec.add_development_dependency "bond", "~> 0.5"
   spec.add_development_dependency "bundler-audit", "~> 0.6"
   spec.add_development_dependency "gemsmith", "~> 13.5"
   spec.add_development_dependency "git-cop", "~> 3.5"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
-  spec.add_development_dependency "hirb", "~> 0.7"
   spec.add_development_dependency "pry", "~> 0.10"
   spec.add_development_dependency "pry-byebug", "~> 3.5"
   spec.add_development_dependency "rake", "~> 13.0"
@@ -40,7 +37,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rubocop-rake", "~> 0.5"
   spec.add_development_dependency "rubocop-rspec", "~> 1.37"
   spec.add_development_dependency "simplecov", "~> 0.17"
-  spec.add_development_dependency "wirb", "~> 2.1"
 
   spec.files = Dir["lib/**/*"]
   spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
