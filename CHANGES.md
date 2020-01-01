@@ -1,3 +1,27 @@
+# 8.0.0 (2020-01-01)
+
+- Added filler.
+- Added gem console.
+- Added partial version string conversion support.
+- Fixed error output to emphasize full versions.
+- Fixed SimpleCov setup in RSpec spec helper.
+- Refactored converter to use filler.
+- Removed maintenance version.
+- Removed remnants of "v" prefix support.
+- Removed unnecessary Bash script documentation.
+- Removed unused development dependencies.
+- Removed version attributes constant.
+- Updated gem summary.
+- Updated Pry development dependencies.
+- Updated README screencast.
+- Updated to Rubocop 0.77.0.
+- Updated to Rubocop 0.78.0.
+- Updated to Rubocop Performance 1.5.0.
+- Updated to Rubocop Rake 0.5.0.
+- Updated to Rubocop RSpec 1.37.0.
+- Updated to Ruby 2.7.0.
+- Updated to SimpleCov 0.17.0.
+
 # 7.3.4 (2019-11-01)
 
 - Added Rubocop Rake support.
