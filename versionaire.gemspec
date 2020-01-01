@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = "~> 2.7"
   spec.add_development_dependency "bundler-audit", "~> 0.6"
   # spec.add_development_dependency "gemsmith", "~> 13.5"
-  # spec.add_development_dependency "git-cop", "~> 3.5"
+  # spec.add_development_dependency "git-cop", "~> 4.0"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
   spec.add_development_dependency "pry", "~> 0.12"
   spec.add_development_dependency "pry-byebug", "~> 3.7"
