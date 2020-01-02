@@ -53,7 +53,7 @@ applications.
 
 ## Screencasts
 
-[![asciicast](https://asciinema.org/a/278658.svg)](https://asciinema.org/a/278658)
+[![asciicast](https://asciinema.org/a/291457.svg)](https://asciinema.org/a/291457)
 
 ## Requirements
 
