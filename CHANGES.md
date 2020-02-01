@@ -1,3 +1,13 @@
+# 8.0.1 (2020-02-01)
+
+- Updated README project requirements
+- Updated README screencast tutorial
+- Updated to Gemsmith 14.0.0
+- Updated to Git Cop 4.0.0
+- Updated to Reek 5.6.0
+- Updated to Rubocop 0.79.0
+- Updated to SimpleCov 0.18.0
+
 # 8.0.0 (2020-01-01)
 
 - Added filler.
