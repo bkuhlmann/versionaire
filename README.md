@@ -18,6 +18,8 @@ applications.
   - [Screencasts](#screencasts)
   - [Requirements](#requirements)
   - [Setup](#setup)
+    - [Production](#production)
+    - [Development](#development)
   - [Usage](#usage)
     - [Initialization](#initialization)
     - [Equality](#equality)
@@ -59,13 +61,27 @@ applications.
 
 ## Setup
 
-Type the following to install:
+### Production
+
+To install, run:
 
     gem install versionaire
 
 Add the following to your Gemfile:
 
     gem "versionaire"
+
+### Development
+
+To contribute, run:
+
+    git clone https://github.com/bkuhlmann/versionaire.git
+    cd versionaire
+    bin/setup
+
+You can also use the IRB console for direct access to all objects:
+
+    bin/console
 
 ## Usage
 
