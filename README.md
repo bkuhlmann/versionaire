@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="versionaire.png" alt="Versionaire Icon"/>
+  <img src="https://www.alchemists.io/images/projects/versionaire/icon.png" alt="Versionaire Icon"/>
 </p>
 
 # Versionaire
