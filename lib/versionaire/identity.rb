@@ -3,20 +3,9 @@
 module Versionaire
   # Gem identity information.
   module Identity
-    def self.name
-      "versionaire"
-    end
-
-    def self.label
-      "Versionaire"
-    end
-
-    def self.version
-      "8.0.1"
-    end
-
-    def self.version_label
-      "#{label} #{version}"
-    end
+    NAME = "versionaire"
+    LABEL = "Versionaire"
+    VERSION = "8.0.1"
+    VERSION_LABEL = "#{LABEL} #{VERSION}"
   end
 end

@@ -3,8 +3,8 @@
 require_relative "lib/versionaire/identity"
 
 Gem::Specification.new do |spec|
-  spec.name = Versionaire::Identity.name
-  spec.version = Versionaire::Identity.version
+  spec.name = Versionaire::Identity::NAME
+  spec.version = Versionaire::Identity::VERSION
   spec.platform = Gem::Platform::RUBY
   spec.authors = ["Brooke Kuhlmann"]
   spec.email = ["brooke@alchemists.io"]
