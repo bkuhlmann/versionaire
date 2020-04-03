@@ -22,7 +22,7 @@ toc::[]
 
 == Screencasts
 
-[link=https://www.alchemists.io/screencasts/versionaire.html]
+[link=https://www.alchemists.io/screencasts/versionaire]
 image::https://www.alchemists.io/images/screencasts/versionaire/cover-original.png[Screencast,role=focal_point]
 
 == Requirements
