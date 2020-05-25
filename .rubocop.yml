@@ -4,10 +4,6 @@ inherit_from:
   - https://raw.githubusercontent.com/bkuhlmann/code_quality/master/configurations/rubocop/performance.yml
   - https://raw.githubusercontent.com/bkuhlmann/code_quality/master/configurations/rubocop/rspec.yml
 
-Naming/MethodName:
-  Exclude:
-    - "lib/versionaire/conversion.rb"
-
 Style/IpAddresses:
   Exclude:
     - "spec/lib/versionaire/version_spec.rb"
