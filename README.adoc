@@ -27,7 +27,7 @@ image::https://www.alchemists.io/images/screencasts/versionaire/cover-original.p
 
 == Requirements
 
-. https://www.ruby-lang.org[Ruby 2.7.x].
+. https://www.ruby-lang.org[Ruby].
 
 == Setup
 
