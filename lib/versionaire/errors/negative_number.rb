@@ -5,7 +5,7 @@ module Versionaire
     # Thrown when numbers are negative.
     class NegativeNumber < Base
       def initialize message = "Major, minor, and patch must be a positive number."
-        super
+        super message
       end
     end
   end

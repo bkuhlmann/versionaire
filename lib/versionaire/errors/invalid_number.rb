@@ -5,7 +5,7 @@ module Versionaire
     # Thrown when not using numbers.
     class InvalidNumber < Base
       def initialize message = "Major, minor, and patch must be a number."
-        super
+        super message
       end
     end
   end
