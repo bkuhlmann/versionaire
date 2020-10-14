@@ -4,7 +4,6 @@ module Versionaire
   DELIMITER = "."
 
   # An immutable, semantic version value object.
-  # rubocop:disable Metrics/BlockLength
   Version = Struct.new :major, :minor, :patch, keyword_init: true do
     include Comparable
 
@@ -70,5 +69,4 @@ module Versionaire
       to_a.zip(other.to_a).map { |pair| pair.reduce action }
     end
   end
-  # rubocop:enable Metrics/BlockLength
 end
