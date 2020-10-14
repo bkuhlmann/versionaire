@@ -31,8 +31,6 @@ image::https://www.alchemists.io/images/screencasts/versionaire/cover.svg[Screen
 
 == Setup
 
-=== Production
-
 To install, run:
 
 [source,bash]
@@ -45,24 +43,6 @@ Add the following to your Gemfile:
 [source,ruby]
 ----
 gem "versionaire"
-----
-
-=== Development
-
-To contribute, run:
-
-[source,bash]
-----
-git clone https://github.com/bkuhlmann/versionaire.git
-cd versionaire
-bin/setup
-----
-
-You can also use the IRB console for direct access to all objects:
-
-[source,bash]
-----
-bin/console
 ----
 
 == Usage
@@ -213,6 +193,24 @@ version_1 - version_2 # "0.1.2"
 version_1 = Versionaire::Version[major: 1]
 version_2 = Versionaire::Version[major: 5]
 version_1 - version_2 # Fails with a Versionaire::Errors::NegativeNumber
+----
+
+== Development
+
+To contribute, run:
+
+[source,bash]
+----
+git clone https://github.com/bkuhlmann/versionaire.git
+cd versionaire
+bin/setup
+----
+
+You can also use the IRB console for direct access to all objects:
+
+[source,bash]
+----
+bin/console
 ----
 
 == Tests
