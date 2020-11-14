@@ -1,5 +1,13 @@
 = Changes
 
+== 8.4.0 (2020-11-14)
+
+- Added Alchemists style guide badge
+- Added Bundler Leak development dependency
+- Updated Rubocop gems
+- Updated to Bundler Audit 0.7.0
+- Updated to RSpec 3.10.0
+
 == 8.3.0 (2020-10-18)
 
 * Fixed Lint/UselessMethodDefinition issues
