@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Versionaire
+  # Ensures an array can be filled to a certain size with default elements.
   class Filler
     def initialize pad = 0, max: 2
       @pad = pad
