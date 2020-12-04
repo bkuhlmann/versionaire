@@ -2,10 +2,10 @@
 
 require "spec_helper"
 
-RSpec.describe "Conversion", type: :feature do
-  let(:version) { Versionaire::Version "1.2.3" }
+RSpec.describe "Conversion" do
+  let(:version) { Versionaire::Version[major: 1, minor: 2, patch: 3] }
 
-  describe ".Version" do
+  describe "Versionaire.Version" do
     context "with string" do
       it "converts major, minor, and patch" do
         expect(Versionaire.Version("1.2.3")).to eq(version)
@@ -25,10 +25,12 @@ RSpec.describe "Conversion", type: :feature do
 
       it "fails with conversion error for invalid string" do
         result = -> { Versionaire.Version "bogus" }
-        message = "Invalid version conversion: bogus. " \
-                  "Use: <major>.<minor>.<patch>, <major>.<minor>, <major>, or empty string."
 
-        expect(&result).to raise_error(Versionaire::Errors::Conversion, message)
+        expect(&result).to raise_error(
+          Versionaire::Errors::Conversion,
+          "Invalid version conversion: bogus. " \
+          "Use: <major>.<minor>.<patch>, <major>.<minor>, <major>, or empty string."
+        )
       end
     end
 
@@ -52,10 +54,12 @@ RSpec.describe "Conversion", type: :feature do
 
       it "fails with conversion error for array with more than three arguments" do
         result = -> { Versionaire.Version [1, 2, 3, 4] }
-        message = "Invalid version conversion: [1, 2, 3, 4]. " \
-                  "Use: [<major>, <minor>, <patch>], [<major>, <minor>], [<major>], or []."
 
-        expect(&result).to raise_error(Versionaire::Errors::Conversion, message)
+        expect(&result).to raise_error(
+          Versionaire::Errors::Conversion,
+          "Invalid version conversion: [1, 2, 3, 4]. " \
+          "Use: [<major>, <minor>, <patch>], [<major>, <minor>], [<major>], or []."
+        )
       end
     end
 
@@ -78,11 +82,13 @@ RSpec.describe "Conversion", type: :feature do
 
       it "fails with conversion error for invalid keys" do
         result = -> { Versionaire.Version bogus: "test" }
-        message = %(Invalid version conversion: {:bogus=>"test"}. ) \
-                  "Use: {major: <major>, minor: <minor>, patch: <patch>}, " \
-                  "{major: <major>, minor: <minor>}, {major: <major>}, or {}."
 
-        expect(&result).to raise_error(Versionaire::Errors::Conversion, message)
+        expect(&result).to raise_error(
+          Versionaire::Errors::Conversion,
+          %(Invalid version conversion: {:bogus=>"test"}. ) \
+          "Use: {major: <major>, minor: <minor>, patch: <patch>}, " \
+          "{major: <major>, minor: <minor>}, {major: <major>}, or {}."
+        )
       end
     end
 
@@ -95,9 +101,11 @@ RSpec.describe "Conversion", type: :feature do
     context "with unsupported primitive" do
       it "fails with conversion error" do
         result = -> { Versionaire.Version 1 }
-        message = "Invalid version conversion: 1. Use: String, Array, Hash, or Version."
 
-        expect(&result).to raise_error(Versionaire::Errors::Conversion, message)
+        expect(&result).to raise_error(
+          Versionaire::Errors::Conversion,
+          "Invalid version conversion: 1. Use: String, Array, Hash, or Version."
+        )
       end
     end
 
@@ -106,10 +114,12 @@ RSpec.describe "Conversion", type: :feature do
 
       it "fails with conversion error" do
         result = -> { Versionaire.Version object }
-        message = "Invalid version conversion: #{object}. " \
-                  "Use: String, Array, Hash, or Version."
 
-        expect(&result).to raise_error(Versionaire::Errors::Conversion, message)
+        expect(&result).to raise_error(
+          Versionaire::Errors::Conversion,
+          "Invalid version conversion: #{object}. " \
+          "Use: String, Array, Hash, or Version."
+        )
       end
     end
   end
