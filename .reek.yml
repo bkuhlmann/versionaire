@@ -1,4 +1,8 @@
 detectors:
   UncommunicativeMethodName:
     exclude:
+    - Cast#Version
     - Versionaire#Version
+  UtilityFunction:
+    exclude:
+    - Versionaire::Cast#Version
