@@ -1,6 +1,4 @@
 detectors:
-  IrresponsibleModule:
-    enabled: false
   UncommunicativeMethodName:
     exclude:
     - Versionaire#Version
