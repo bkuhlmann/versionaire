@@ -1,12 +1,23 @@
 = Changes
 
+== 8.5.0 (2020-12-04)
+
+* Fixed Rubocop Performance/MethodObjectAsBlock issues
+* Added Refinements development dependency
+* Added filler description
+* Added version cast
+* Updated to Gemsmith 14.8.0
+* Updated to Git Lint 1.3.0
+* Removed Reek irresponsible module configuration
+* Refactored conversion spec
+
 == 8.4.0 (2020-11-14)
 
-- Added Alchemists style guide badge
-- Added Bundler Leak development dependency
-- Updated Rubocop gems
-- Updated to Bundler Audit 0.7.0
-- Updated to RSpec 3.10.0
+* Added Alchemists style guide badge
+* Added Bundler Leak development dependency
+* Updated Rubocop gems
+* Updated to Bundler Audit 0.7.0
+* Updated to RSpec 3.10.0
 
 == 8.3.0 (2020-10-18)
 

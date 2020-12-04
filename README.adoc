@@ -55,10 +55,10 @@ A new version can be initialized in a variety of ways:
 
 [source,ruby]
 ----
-Versionaire::Version.new                                    # "0.0.0"
-Versionaire::Version[major: 1]                              # "1.0.0"
-Versionaire::Version[major: 1, minor: 2]                    # "1.2.0"
-Versionaire::Version[major: 1, minor: 2, patch: 3]          # "1.2.3"
+Versionaire::Version.new                            # "0.0.0"
+Versionaire::Version[major: 1]                      # "1.0.0"
+Versionaire::Version[major: 1, minor: 2]            # "1.2.0"
+Versionaire::Version[major: 1, minor: 2, patch: 3]  # "1.2.3"
 ----
 
 === Equality
@@ -74,18 +74,18 @@ version_a = Versionaire::Version[major: 1]
 version_b = Versionaire::Version[major: 2]
 version_c = Versionaire::Version[major: 1]
 
-version_a == version_a # true
-version_a == version_b # false
-version_a == version_c # true
+version_a == version_a  # true
+version_a == version_b  # false
+version_a == version_c  # true
 ----
 
 Knowning this, versions can be compared against one another too:
 
 [source,ruby]
 ----
-version_a > version_b                   # false
-version_a < version_b                   # true
-version_a.between? version_c, version_b # true
+version_a > version_b                    # false
+version_a < version_b                    # true
+version_a.between? version_c, version_b  # true
 ----
 
 ==== Hash (`#eql?`)
@@ -106,16 +106,16 @@ version_a = Versionaire::Version[major: 1]
 version_b = Versionaire::Version[major: 2]
 version_c = Versionaire::Version[major: 1]
 
-version_a.equal? version_a # true
-version_a.equal? version_b # false
-version_a.equal? version_c # false
+version_a.equal? version_a  # true
+version_a.equal? version_b  # false
+version_a.equal? version_c  # false
 ----
 
 === Conversions
 
-==== Function (Casting)
+==== Function
 
-The `Versionaire::Version` function is provided for explicit casting to a version:
+Use the `Versionaire::Version` function to explicitly cast to a version:
 
 [source,ruby]
 ----
@@ -129,6 +129,29 @@ Versionaire::Version version
 
 Each of these conversions will result in a version object that represents "`1.0.0`". When attempting
 to convert an unsupported type, a `+Versionaire::Errors::Conversion+` exception will be thrown.
+
+==== Refinement
+
+Building upon the examples shown above, there is an even more elegant solution where you can use
+this gem's built-in link:https://www.alchemists.io/articles/ruby_refinements[refinement] support:
+
+[source,ruby]
+----
+using Versionaire::Cast
+
+version = Versionaire::Version[major: 1]
+
+Version "1.0.0"
+Version [1, 0, 0]
+Version major: 1, minor: 0, patch: 0
+Version version
+----
+
+By adding `using Versionaire::Cast` to your implementation, this allows Versionaire to refine
+`Kernel` so you have a top-level `Version` conversion function much like Kernel's native support for
+`Integer`, `String`, `Array`, `Hash`, etc. The benefit to this approach is it reduces the amount of
+typing, doesn't polute your entire object space like a monkey patch would, and provides a idiomatic
+approach to casting like any other primitive.
 
 ==== Implicit
 
