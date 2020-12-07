@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
+Bundler.require :test, :tools
 
 require "simplecov"
 SimpleCov.start { enable_coverage :branch }
 
-require "pry"
-require "pry-byebug"
-require "refinements"
 require "versionaire"
+require "refinements"
 
 using Refinements::Pathnames
 
