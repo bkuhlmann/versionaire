@@ -18,11 +18,11 @@ end
 
 group :development do
   gem "gemsmith", "~> 14.9"
-  gem "guard-rspec", "~> 4.7", require: false
   gem "rake", "~> 13.0"
 end
 
 group :test do
+  gem "guard-rspec", "~> 4.7", require: false
   gem "refinements", "~> 7.16"
   gem "rspec", "~> 3.10"
 end
