@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "refinements/arrays"
+
 # The gem namespace.
 module Versionaire
   module_function
@@ -20,9 +22,10 @@ module Versionaire
 
   # Aids with converting objects into valid versions.
   class Converter
-    def initialize object, filler: Filler.new
+    using Refinements::Arrays
+
+    def initialize object
       @object = object
-      @filler = filler
     end
 
     def from_string
@@ -58,12 +61,12 @@ module Versionaire
     def string_to_arguments
       object.split(DELIMITER)
             .map(&:to_i)
-            .then { |numbers| filler.call numbers }
+            .then { |numbers| numbers.pad 0, max: 3 }
             .then { |arguments| Version.arguments(*arguments) }
     end
 
     def array_to_arguments
-      Version.arguments(*filler.call(object))
+      Version.arguments(*object.pad(0, max: 3))
     end
 
     def required_keys?
