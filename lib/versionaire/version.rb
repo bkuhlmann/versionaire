@@ -56,6 +56,10 @@ module Versionaire
       to_s <=> other.to_s
     end
 
+    def up key, value = 1
+      revalue(key => value) { |previous, current| previous + current }
+    end
+
     def to_s
       to_a.join DELIMITER
     end

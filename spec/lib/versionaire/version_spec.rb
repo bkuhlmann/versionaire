@@ -386,6 +386,24 @@ RSpec.describe Versionaire::Version do
     end
   end
 
+  describe "#up" do
+    it "answers next sequential major version" do
+      expect(version.up(:major)).to eq(described_class[major: 2, minor: 2, patch: 3])
+    end
+
+    it "answers next sequential minor version" do
+      expect(version.up(:minor)).to eq(described_class[major: 1, minor: 3, patch: 3])
+    end
+
+    it "answers next sequential patch version" do
+      expect(version.up(:patch)).to eq(described_class[major: 1, minor: 2, patch: 4])
+    end
+
+    it "answers next version for given value" do
+      expect(version.up(:major, 10)).to eq(described_class[major: 11, minor: 2, patch: 3])
+    end
+  end
+
   describe "#to_s" do
     it "answers string" do
       expect(version.to_s).to eq("1.2.3")
