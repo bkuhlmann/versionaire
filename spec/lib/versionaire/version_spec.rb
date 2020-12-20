@@ -386,6 +386,29 @@ RSpec.describe Versionaire::Version do
     end
   end
 
+  describe "#down" do
+    it "answers previous sequential major version" do
+      expect(version.down(:major)).to eq(described_class[major: 0, minor: 2, patch: 3])
+    end
+
+    it "answers previous sequential minor version" do
+      expect(version.down(:minor)).to eq(described_class[major: 1, minor: 1, patch: 3])
+    end
+
+    it "answers previous sequential patch version" do
+      expect(version.down(:patch)).to eq(described_class[major: 1, minor: 2, patch: 2])
+    end
+
+    it "answers previous version for given value" do
+      expect(version.down(:minor, 2)).to eq(described_class[major: 1, minor: 0, patch: 3])
+    end
+
+    it "fails when decreased to a negative version" do
+      expectation = proc { version.down :major, 2 }
+      expect(&expectation).to raise_error(Versionaire::Errors::NegativeNumber, /must be.+positive/)
+    end
+  end
+
   describe "#up" do
     it "answers next sequential major version" do
       expect(version.up(:major)).to eq(described_class[major: 2, minor: 2, patch: 3])
