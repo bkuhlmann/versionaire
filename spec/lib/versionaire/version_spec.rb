@@ -61,21 +61,21 @@ RSpec.describe Versionaire::Version do
   describe "#initialize" do
     context "with default" do
       it "does not fail" do
-        result = -> { described_class.new }
+        result = proc { described_class.new }
         expect(&result).not_to raise_error
       end
     end
 
     context "with strings" do
       it "fails with invalid number error" do
-        result = -> { described_class.new major: "1" }
+        result = proc { described_class.new major: "1" }
         expect(&result).to raise_error(Versionaire::Errors::InvalidNumber)
       end
     end
 
     context "with negatives" do
       it "fails with invalid number error" do
-        result = -> { described_class.new major: -1, patch: -10 }
+        result = proc { described_class.new major: -1, patch: -10 }
         expect(&result).to raise_error(Versionaire::Errors::NegativeNumber)
       end
     end
@@ -133,7 +133,7 @@ RSpec.describe Versionaire::Version do
       let(:other) { described_class.new patch: 30 }
 
       it "raises negative number error" do
-        result = -> { version - other }
+        result = proc { version - other }
         expect(&result).to raise_error(Versionaire::Errors::NegativeNumber)
       end
     end

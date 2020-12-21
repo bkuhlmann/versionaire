@@ -26,7 +26,7 @@ RSpec.describe Versionaire::Cast do
       end
 
       it "fails with conversion error for invalid string" do
-        result = -> { Version "bogus" }
+        result = proc { Version "bogus" }
 
         expect(&result).to raise_error(
           Versionaire::Errors::Conversion,
@@ -55,7 +55,7 @@ RSpec.describe Versionaire::Cast do
       end
 
       it "fails with conversion error for array with more than three arguments" do
-        result = -> { Version [1, 2, 3, 4] }
+        result = proc { Version [1, 2, 3, 4] }
 
         expect(&result).to raise_error(
           Versionaire::Errors::Conversion,
@@ -83,7 +83,7 @@ RSpec.describe Versionaire::Cast do
       end
 
       it "fails with conversion error for invalid keys" do
-        result = -> { Version bogus: "test" }
+        result = proc { Version bogus: "test" }
 
         expect(&result).to raise_error(
           Versionaire::Errors::Conversion,
@@ -102,7 +102,7 @@ RSpec.describe Versionaire::Cast do
 
     context "with unsupported primitive" do
       it "fails with conversion error" do
-        result = -> { Version 1 }
+        result = proc { Version 1 }
 
         expect(&result).to raise_error(
           Versionaire::Errors::Conversion,
@@ -115,7 +115,7 @@ RSpec.describe Versionaire::Cast do
       let(:object) { Object.new }
 
       it "fails with conversion error" do
-        result = -> { Version object }
+        result = proc { Version object }
 
         expect(&result).to raise_error(
           Versionaire::Errors::Conversion,
