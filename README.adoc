@@ -159,7 +159,7 @@ Implicit conversion to a `+String+` is supported:
 
 [source,ruby]
 ----
-"1.0.0".match Versionaire::Version[major: 1] # <MatchData "1.0.0">
+"1.0.0".match Versionaire::Version[major: 1]  # <MatchData "1.0.0">
 ----
 
 ==== Explicit
@@ -170,9 +170,9 @@ Explicit conversion to a `String`, `Array`, or `Hash` is supported:
 ----
 version = Versionaire::Version.new
 
-version.to_s # "0.0.0"
-version.to_a # [0, 0, 0]
-version.to_h # {major: 0, minor: 0, patch: 0}
+version.to_s  # "0.0.0"
+version.to_a  # [0, 0, 0]
+version.to_h  # {major: 0, minor: 0, patch: 0}
 ----
 
 === Comparisons
@@ -185,39 +185,76 @@ work. Example:
 version_1 = Versionaire::Version "1.0.0"
 version_2 = Versionaire::Version "2.0.0"
 
-version_1 < version_2 # true
-version_1 <= version_2 # true
-version_1 == version_2 # false (see Equality section above for details)
-version_1 > version_2 # false
-version_1 >= version_2 # false
-version_1.between? version_1, version_2 # true
-version_1.clamp version_1, version_2 # version_1 (added in Ruby 2.4.0)
+version_1 < version_2                    # true
+version_1 <= version_2                   # true
+version_1 == version_2                   # false (see Equality section above for details)
+version_1 > version_2                    # false
+version_1 >= version_2                   # false
+version_1.between? version_1, version_2  # true
+version_1.clamp version_1, version_2     # version_1 (added in Ruby 2.4.0)
 ----
 
 === Math
 
-Versions can be added and subtracted from each other.
+Versions can be added, subtracted, sequentially increased, or sequentially decreased from each
+other.
 
 ==== Addition
+
+Versions can be added together to produce a resulting version sum.
 
 [source,ruby]
 ----
 version_1 = Versionaire::Version[major: 1, minor: 2, patch: 3]
 version_2 = Versionaire::Version[major: 2, minor: 5, patch: 7]
-version_1 + version_2 # "3.7.10"
+version_1 + version_2  # "3.7.10"
 ----
 
 ==== Subtraction
+
+Versions can be substracted from each other as long as there isn't a negative result.
 
 [source,ruby]
 ----
 version_1 = Versionaire::Version[major: 1, minor: 2, patch: 3]
 version_2 = Versionaire::Version[major: 1, minor: 1, patch: 1]
-version_1 - version_2 # "0.1.2"
+version_1 - version_2  # "0.1.2"
 
 version_1 = Versionaire::Version[major: 1]
 version_2 = Versionaire::Version[major: 5]
-version_1 - version_2 # Fails with a Versionaire::Errors::NegativeNumber
+version_1 - version_2  # Versionaire::Errors::NegativeNumber
+----
+
+==== Up
+
+Versions can be sequentially increased or given a specific version to jump to.
+
+[source,ruby]
+----
+version = Versionaire::Version[major: 1, minor: 1, patch: 1]
+version.up :major     # => "2.1.1"
+version.up :major, 3  # => "4.1.1"
+version.up :minor     # => "1.2.1"
+version.up :minor, 3  # => "1.4.1"
+version.up :patch     # => "1.1.2"
+version.up :patch, 3  # => "1.1.4"
+----
+
+==== Down
+
+Versions can be sequentially decreased or given a specific version to jump to as long as the result
+is not negative.
+
+[source,ruby]
+----
+version = Versionaire::Version[major: 5, minor: 5, patch: 5]
+version.down :major     # => "4.5.5"
+version.down :major, 3  # => "2.5.5"
+version.down :minor     # => "5.4.5"
+version.down :minor, 3  # => "5.2.5"
+version.down :patch     # => "5.5.4"
+version.down :patch, 3  # => "5.5.2"
+version.down :major, 6  # => Versionaire::Errors::NegativeNumber
 ----
 
 == Development

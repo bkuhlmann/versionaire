@@ -1,5 +1,19 @@
 = Changes
 
+== 8.7.0 (2020-12-21)
+
+* Fixed Circle CI configuration for Bundler config path
+* Added Circle CI explicit Bundle install configuration
+* Added Refinements runtime requirement
+* Added Version down
+* Added Version setter validation
+* Added Version up
+* Refactored Version array to be an alias of values
+* Refactored Version to use Struct refinement
+* Refactored converter to use Array refinements
+* Refactored converter to use Struct refinements
+* Refactored specs to use procs instead of lambdas
+
 == 8.6.0 (2020-12-13)
 
 * Fixed spec helper setup by not including test group
