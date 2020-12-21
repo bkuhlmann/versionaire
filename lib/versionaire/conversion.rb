@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "refinements/arrays"
+require "refinements/structs"
 
 # The gem namespace.
 module Versionaire
@@ -23,6 +24,7 @@ module Versionaire
   # Aids with converting objects into valid versions.
   class Converter
     using Refinements::Arrays
+    using Refinements::Structs
 
     def initialize object
       @object = object
@@ -32,14 +34,14 @@ module Versionaire
       body = "Use: <major>.<minor>.<patch>, <major>.<minor>, <major>, or empty string."
       fail Errors::Conversion, error_message(object, body) unless Version.regex.match? object
 
-      Version[**string_to_arguments]
+      string_to_version
     end
 
     def from_array
       body = "Use: [<major>, <minor>, <patch>], [<major>, <minor>], [<major>], or []."
       fail Errors::Conversion, error_message(object, body) unless (0..3).cover? object.size
 
-      Version[**array_to_arguments]
+      Version.with_positions(*object.pad(0, max: 3))
     end
 
     def from_hash
@@ -58,15 +60,11 @@ module Versionaire
 
     attr_reader :object, :filler
 
-    def string_to_arguments
+    def string_to_version
       object.split(DELIMITER)
             .map(&:to_i)
             .then { |numbers| numbers.pad 0, max: 3 }
-            .then { |arguments| Version.arguments(*arguments) }
-    end
-
-    def array_to_arguments
-      Version.arguments(*object.pad(0, max: 3))
+            .then { |arguments| Version.with_positions(*arguments) }
     end
 
     def required_keys?
