@@ -81,6 +81,35 @@ RSpec.describe Versionaire::Version do
     end
   end
 
+  describe "#[]=" do
+    it "answers assigned value" do
+      duplicate = version.dup
+      duplicate[:major] = 5
+
+      expect(duplicate.major).to eq(5)
+    end
+
+    it "answers same value as assigned" do
+      value = version.dup[:major] = 5
+      expect(value).to eq(5)
+    end
+
+    it "fails with frozen error" do
+      result = proc { version[:major] = "1" }
+      expect(&result).to raise_error(FrozenError)
+    end
+
+    it "fails with invalid number" do
+      result = proc { version.dup[:major] = "1" }
+      expect(&result).to raise_error(Versionaire::Errors::InvalidNumber)
+    end
+
+    it "fails with negative number" do
+      result = proc { version.dup[:major] = -1 }
+      expect(&result).to raise_error(Versionaire::Errors::NegativeNumber)
+    end
+  end
+
   describe "#+" do
     let(:other) { described_class.new major: 7, minor: 3, patch: 1 }
 

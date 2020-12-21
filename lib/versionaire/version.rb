@@ -30,6 +30,10 @@ module Versionaire
       freeze
     end
 
+    def []= key, value
+      super(key, value).tap { validate }
+    end
+
     def + other
       self.class.then { |klass| klass.new(**klass.arguments(*reduce(other, :+))) }
     end
