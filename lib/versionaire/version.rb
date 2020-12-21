@@ -69,10 +69,7 @@ module Versionaire
     end
 
     alias_method :to_str, :to_s
-
-    def to_a
-      [major, minor, patch]
-    end
+    alias_method :values, :to_a
 
     private
 
