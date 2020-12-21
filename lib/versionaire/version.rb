@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
+require "refinements/structs"
+
 module Versionaire
   DELIMITER = "."
 
   # An immutable, semantic version value object.
   Version = Struct.new :major, :minor, :patch, keyword_init: true do
     include Comparable
+
+    using Refinements::Structs
 
     def self.regex
       /
@@ -35,11 +39,11 @@ module Versionaire
     end
 
     def + other
-      self.class.then { |klass| klass.new(**klass.arguments(*reduce(other, :+))) }
+      revalue(other.to_h) { |previous, current| previous + current }
     end
 
     def - other
-      self.class.then { |klass| klass.new(**klass.arguments(*reduce(other, :-))) }
+      revalue(other.to_h) { |previous, current| previous - current }
     end
 
     def == other
@@ -67,10 +71,6 @@ module Versionaire
     def validate
       fail Errors::InvalidNumber if to_a.any? { |number| !number.is_a? Integer }
       fail Errors::NegativeNumber if to_a.any?(&:negative?)
-    end
-
-    def reduce other, action
-      to_a.zip(other.to_a).map { |pair| pair.reduce action }
     end
   end
 end
