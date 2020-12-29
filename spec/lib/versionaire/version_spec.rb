@@ -52,12 +52,6 @@ RSpec.describe Versionaire::Version do
     end
   end
 
-  describe ".arguments" do
-    it "answers constructor arguments" do
-      expect(described_class.arguments(3, 2, 1)).to eq(major: 3, minor: 2, patch: 1)
-    end
-  end
-
   describe "#initialize" do
     context "with default" do
       it "does not fail" do

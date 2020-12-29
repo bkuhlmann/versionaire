@@ -24,10 +24,6 @@ module Versionaire
       /x
     end
 
-    def self.arguments major, minor, patch
-      Hash[members.zip [major, minor, patch]]
-    end
-
     def initialize major: 0, minor: 0, patch: 0
       super
       validate
