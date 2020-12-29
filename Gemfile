@@ -7,7 +7,7 @@ gemspec
 group :code_quality do
   gem "bundler-audit", "~> 0.7"
   gem "bundler-leak", "~> 0.2"
-  gem "git-lint", "~> 1.3"
+  # gem "git-lint", "~> 1.4"
   gem "reek", "~> 6.0"
   gem "rubocop", "~> 1.5"
   gem "rubocop-performance", "~> 1.9"
@@ -18,7 +18,7 @@ group :code_quality do
 end
 
 group :development do
-  gem "gemsmith", "~> 14.9"
+  # gem "gemsmith", "~> 14.11"
   gem "rake", "~> 13.0"
 end
 
