@@ -1,5 +1,17 @@
 = Changes
 
+== 9.0.0 (2020-12-29)
+
+* Updated to Ruby 3.0.0
+* Updated to Refinements 8.0.0
+* Added Rubocop Layout/SpaceBeforeBrackets configuration
+* Removed version arguments
+* Removed filler
+* Updated version regex as pattern
+* Updated conversion error to be a cast error
+* Updated conversion as function file
+* Updated version delimiter
+
 == 8.7.0 (2020-12-21)
 
 * Fixed Circle CI configuration for Bundler config path
