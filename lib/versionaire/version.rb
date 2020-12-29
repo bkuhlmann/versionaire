@@ -11,7 +11,7 @@ module Versionaire
 
     using Refinements::Structs
 
-    def self.regex
+    def self.pattern
       /
         \A(                  # Start of string and OR.
         \d*                  # Major only.

@@ -32,7 +32,7 @@ module Versionaire
 
     def from_string
       body = "Use: <major>.<minor>.<patch>, <major>.<minor>, <major>, or empty string."
-      fail Errors::Conversion, error_message(object, body) unless Version.regex.match? object
+      fail Errors::Conversion, error_message(object, body) unless Version.pattern.match? object
 
       string_to_version
     end
