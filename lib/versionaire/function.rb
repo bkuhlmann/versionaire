@@ -61,7 +61,7 @@ module Versionaire
     attr_reader :object, :filler
 
     def string_to_version
-      object.split(DELIMITER)
+      object.split(Version.delimiter)
             .map(&:to_i)
             .then { |numbers| numbers.pad 0, max: 3 }
             .then { |arguments| Version.with_positions(*arguments) }

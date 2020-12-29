@@ -3,13 +3,15 @@
 require "refinements/structs"
 
 module Versionaire
-  DELIMITER = "."
-
   # An immutable, semantic version value object.
   Version = Struct.new :major, :minor, :patch, keyword_init: true do
     include Comparable
 
     using Refinements::Structs
+
+    def self.delimiter
+      "."
+    end
 
     def self.pattern
       /
@@ -17,9 +19,9 @@ module Versionaire
         \d*                  # Major only.
         |                    # OR pipe.
         \d+                  # Major.
-        #{DELIMITER}?        # Delimiter.
+        #{delimiter}?        # Delimiter.
         \d*                  # Minor.
-        (?:#{DELIMITER}\d+)  # Passive delimiter and patch.
+        (?:#{delimiter}\d+)  # Passive delimiter and patch.
         )\z                  # End of OR and string.
       /x
     end
@@ -61,7 +63,7 @@ module Versionaire
     end
 
     def to_s
-      to_a.join DELIMITER
+      to_a.join self.class.delimiter
     end
 
     alias_method :to_str, :to_s
