@@ -32,14 +32,14 @@ module Versionaire
 
     def from_string
       body = "Use: <major>.<minor>.<patch>, <major>.<minor>, <major>, or empty string."
-      fail Errors::Conversion, error_message(object, body) unless Version.pattern.match? object
+      fail Errors::Cast, error_message(object, body) unless Version.pattern.match? object
 
       string_to_version
     end
 
     def from_array
       body = "Use: [<major>, <minor>, <patch>], [<major>, <minor>], [<major>], or []."
-      fail Errors::Conversion, error_message(object, body) unless (0..3).cover? object.size
+      fail Errors::Cast, error_message(object, body) unless (0..3).cover? object.size
 
       Version.with_positions(*object.pad(0, max: 3))
     end
@@ -47,13 +47,13 @@ module Versionaire
     def from_hash
       body = "Use: {major: <major>, minor: <minor>, patch: <patch>}, " \
              "{major: <major>, minor: <minor>}, {major: <major>}, or {}."
-      fail Errors::Conversion, error_message(object, body) unless required_keys?
+      fail Errors::Cast, error_message(object, body) unless required_keys?
 
       Version[**object]
     end
 
     def from_object
-      fail Errors::Conversion, error_message(object, "Use: String, Array, Hash, or Version.")
+      fail Errors::Cast, error_message(object, "Use: String, Array, Hash, or Version.")
     end
 
     private

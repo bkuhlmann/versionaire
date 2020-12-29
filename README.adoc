@@ -128,7 +128,7 @@ Versionaire::Version version
 ----
 
 Each of these conversions will result in a version object that represents "`1.0.0`". When attempting
-to convert an unsupported type, a `+Versionaire::Errors::Conversion+` exception will be thrown.
+to convert an unsupported type, a `+Versionaire::Errors::Cast+` exception will be thrown.
 
 ==== Refinement
 
