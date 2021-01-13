@@ -1,8 +1,8 @@
 detectors:
   UncommunicativeMethodName:
     exclude:
-    - Cast#Version
+    - Kernel#Version
     - Versionaire#Version
   UtilityFunction:
     exclude:
-    - Versionaire::Cast#Version
+    - Kernel#Version
