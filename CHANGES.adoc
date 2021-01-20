@@ -1,5 +1,13 @@
 = Changes
 
+== 9.1.0 (2021-01-19)
+
+* Updated Reek configuration with 6.0.3 changes - Brooke Kuhlmann
+* Updated to Gemsmith 15.0.0 - Brooke Kuhlmann
+* Updated to Git Lint 2.0.0 - Brooke Kuhlmann
+* Updated to Rubocop 1.8.0 - Brooke Kuhlmann
+* Refactored RSpec temporary directory shared context - Brooke Kuhlmann
+
 == 9.0.0 (2020-12-29)
 
 * Updated to Ruby 3.0.0
