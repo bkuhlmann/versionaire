@@ -1,5 +1,15 @@
 = Changes
 
+== 9.1.1 (2021-04-18)
+
+* Added Ruby garbage collection compaction - Brooke Kuhlmann
+* Updated Code Quality URLs - Brooke Kuhlmann
+* Updated to Circle CI 2.1.0 - Brooke Kuhlmann
+* Updated to Docker Alpine Ruby image - Brooke Kuhlmann
+* Updated to Rubocop 1.10.0 - Brooke Kuhlmann
+* Updated to Ruby 3.0.1 - Brooke Kuhlmann
+* Refactored implementation to use endless methods - Brooke Kuhlmann
+
 == 9.1.0 (2021-01-19)
 
 * Updated Reek configuration with 6.0.3 changes - Brooke Kuhlmann

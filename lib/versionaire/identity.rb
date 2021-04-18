@@ -5,7 +5,7 @@ module Versionaire
   module Identity
     NAME = "versionaire"
     LABEL = "Versionaire"
-    VERSION = "9.1.0"
+    VERSION = "9.1.1"
     VERSION_LABEL = "#{LABEL} #{VERSION}"
   end
 end
