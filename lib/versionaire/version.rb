@@ -9,9 +9,7 @@ module Versionaire
 
     using Refinements::Structs
 
-    def self.delimiter
-      "."
-    end
+    def self.delimiter = "."
 
     def self.pattern
       /
@@ -54,17 +52,11 @@ module Versionaire
       to_s <=> other.to_s
     end
 
-    def down key, value = 1
-      revalue(key => value) { |previous, current| previous - current }
-    end
+    def down(key, value = 1) = revalue(key => value) { |previous, current| previous - current }
 
-    def up key, value = 1
-      revalue(key => value) { |previous, current| previous + current }
-    end
+    def up(key, value = 1) = revalue(key => value) { |previous, current| previous + current }
 
-    def to_s
-      to_a.join self.class.delimiter
-    end
+    def to_s = to_a.join(self.class.delimiter)
 
     alias_method :to_str, :to_s
     alias_method :values, :to_a

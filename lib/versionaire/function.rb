@@ -67,13 +67,9 @@ module Versionaire
             .then { |arguments| Version.with_positions(*arguments) }
     end
 
-    def required_keys?
-      object.keys.all? { |key| Version.members.include? key }
-    end
+    def required_keys? = object.keys.all? { |key| Version.members.include? key }
 
-    def error_message object, body
-      "Invalid version conversion: #{object}. #{body}"
-    end
+    def error_message(object, body) = "Invalid version conversion: #{object}. #{body}"
   end
 
   private_constant :Converter
