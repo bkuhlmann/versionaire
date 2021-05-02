@@ -257,6 +257,46 @@ version.down :patch, 3  # => "5.5.2"
 version.down :major, 6  # => Versionaire::Errors::NegativeNumber
 ----
 
+=== Extensions
+
+This project supports libraries which might desire native `Version` types. Each extension _must be
+explicitly required_ in order to be used since they are _optional_ by default. See below for
+details.
+
+==== OptionParser
+
+link:https://github.com/ruby/optparse[OptionParser] is one of Ruby's
+link:https://stdgems.org[default gems] which can accept additional types not native to Ruby by
+default. To extend `OptionParser` with the `Version` type, all you need to do is add these two lines
+to your implementation:
+
+. `require "versionaire/extensions/option_parser"` - This will load dependencies and register the
+  `Version` type with `OptionParser`.
+. `instance.on "--tag VERSION", Versionaire::Version` - Specifying `Versionaire::Version` as the
+  second argument will ensure `OptionParser` properly casts command line input as a `Version` type.
+
+Here's an example implementation that demonstrates full usage:
+
+[source,ruby]
+----
+require "versionaire/extensions/option_parser"
+
+options = {}
+
+parser = OptionParser.new do |instance|
+  instance.on "--tag VERSION", Versionaire::Version, "Casts to version." do |value|
+    options[:version] = value
+  end
+end
+
+parser.parse! %w[--tag 1.2.3]
+puts options
+----
+
+The above will ensure `--tag 1.2.3` is parsed as `{:version=>#<struct Versionaire::Version major=1,
+minor=2, patch=3>}` within your `options` variable. Should `OptionParser` parse an invalid version,
+you'll get a `OptionParser::InvalidArgument` instead.
+
 == Development
 
 To contribute, run:
