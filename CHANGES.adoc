@@ -1,5 +1,9 @@
 = Changes
 
+== 9.2.0 (2021-05-02)
+
+* Added option parser extension - Brooke Kuhlmann
+
 == 9.1.1 (2021-04-18)
 
 * Added Ruby garbage collection compaction - Brooke Kuhlmann
