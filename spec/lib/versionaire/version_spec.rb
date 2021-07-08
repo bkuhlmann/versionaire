@@ -137,12 +137,6 @@ RSpec.describe Versionaire::Version do
     let(:similar) { described_class.new major: 1, minor: 2, patch: 3 }
     let(:different) { described_class.new major: 2 }
 
-    context "with same instances" do
-      it "answers true" do
-        expect(version).to eq(version)
-      end
-    end
-
     context "with same values" do
       it "answers true" do
         expect(version).to eq(similar)
@@ -165,12 +159,6 @@ RSpec.describe Versionaire::Version do
   describe "#eql?" do
     let(:similar) { described_class.new major: 1, minor: 2, patch: 3 }
     let(:different) { described_class.new major: 2 }
-
-    context "with same instances" do
-      it "answers true" do
-        expect(version).to eql(version)
-      end
-    end
 
     context "with same values" do
       it "answers true" do
@@ -354,12 +342,6 @@ RSpec.describe Versionaire::Version do
   describe "#hash" do
     let(:similar) { described_class.new major: 1, minor: 2, patch: 3 }
     let(:different) { described_class.new major: 2 }
-
-    context "with same instances" do
-      it "is identical" do
-        expect(version.hash).to eq(version.hash)
-      end
-    end
 
     context "with same values" do
       it "is identical" do
