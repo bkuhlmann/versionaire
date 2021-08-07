@@ -1,5 +1,12 @@
 = Changes
 
+== 9.2.1 (2021-08-07)
+
+* Fixed Rubocop RSpec/IdenticalEqualityAssertion issues - Brooke Kuhlmann
+* Updated to Rubocop 1.14.0 - Brooke Kuhlmann
+* Updated to Ruby 3.0.2 - Brooke Kuhlmann
+* Removed Bundler Audit - Brooke Kuhlmann
+
 == 9.2.0 (2021-05-02)
 
 * Added option parser extension - Brooke Kuhlmann
