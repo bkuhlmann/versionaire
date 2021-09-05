@@ -6,6 +6,6 @@ module Versionaire
     NAME = "versionaire"
     LABEL = "Versionaire"
     VERSION = "9.2.1"
-    VERSION_LABEL = "#{LABEL} #{VERSION}"
+    VERSION_LABEL = "#{LABEL} #{VERSION}".freeze
   end
 end
