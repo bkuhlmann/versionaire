@@ -11,8 +11,10 @@ image::https://img.shields.io/badge/code_style-alchemists-brightgreen.svg[Alchem
 [link=https://circleci.com/gh/bkuhlmann/versionaire]
 image::https://circleci.com/gh/bkuhlmann/versionaire.svg?style=svg[Circle CI Status]
 
-Provides an immutable, thread-safe, and semantic version type when managing versions within your
-applications.
+Ruby doesn't provide a primitive version type by default. Versionaire fills this gap by providing an
+immutable, thread-safe, and link:https://semver.org[Semantic Version] in order to use versions
+within your applications. This new version type behaves and feels a lot like other primitives (i.e.
+`String`, `Array`, `Hash`, etc) and can even be cast/converted from other primitives.
 
 toc::[]
 
@@ -150,7 +152,7 @@ Version version
 By adding `using Versionaire::Cast` to your implementation, this allows Versionaire to refine
 `Kernel` so you have a top-level `Version` conversion function much like Kernel's native support for
 `Integer`, `String`, `Array`, `Hash`, etc. The benefit to this approach is it reduces the amount of
-typing, doesn't polute your entire object space like a monkey patch would, and provides a idiomatic
+typing, doesn't pollute your entire object space like a monkey patch would, and provides a idiomatic
 approach to casting like any other primitive.
 
 ==== Implicit
