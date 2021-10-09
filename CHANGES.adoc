@@ -1,5 +1,12 @@
 = Changes
 
+== 9.3.0 (2021-10-09)
+
+* Added Debug gem - Brooke Kuhlmann
+* Updated to Refinements 8.4.0 - Brooke Kuhlmann
+* Removed Pry dependencies - Brooke Kuhlmann
+* Removed RSpec spec helper GC automatic compaction - Brooke Kuhlmann
+
 == 9.2.2 (2021-09-05)
 
 * Fixed Rubocop Style/MutableConstant issue - Brooke Kuhlmann
