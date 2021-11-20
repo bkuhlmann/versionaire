@@ -352,10 +352,11 @@ to this project and much more.
 
 Read link:LICENSE.adoc[LICENSE] for details.
 
-== History
+== Changes
 
 Read link:CHANGES.adoc[CHANGES] for details.
 
 == Credits
 
-Engineered by link:https://www.alchemists.io/team/brooke_kuhlmann[Brooke Kuhlmann].
+* Built with link:https://www.alchemists.io/projects/gemsmith[Gemsmith].
+* Engineered by link:https://www.alchemists.io/team/brooke_kuhlmann[Brooke Kuhlmann].
