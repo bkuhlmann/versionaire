@@ -1,5 +1,12 @@
 = Changes
 
+== 9.4.0 (2021-11-20)
+
+* Added README community link - Brooke Kuhlmann
+* Added gemspec MFA opt in requirement - Brooke Kuhlmann
+* Updated to Refinements 8.5.0 - Brooke Kuhlmann
+* Removed notes from pull request template - Brooke Kuhlmann
+
 == 9.3.0 (2021-10-09)
 
 * Added Debug gem - Brooke Kuhlmann
