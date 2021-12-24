@@ -34,23 +34,15 @@ module Versionaire
       super(key, value).tap { validate }
     end
 
-    def + other
-      revalue(other.to_h) { |previous, current| previous + current }
-    end
+    def +(other) = revalue(other.to_h) { |previous, current| previous + current }
 
-    def - other
-      revalue(other.to_h) { |previous, current| previous - current }
-    end
+    def -(other) = revalue(other.to_h) { |previous, current| previous - current }
 
-    def == other
-      hash == other.hash
-    end
+    def ==(other) = hash == other.hash
 
     alias_method :eql?, :==
 
-    def <=> other
-      to_s <=> other.to_s
-    end
+    def <=>(other) = to_s <=> other.to_s
 
     def down(key, value = 1) = revalue(key => value) { |previous, current| previous - current }
 
