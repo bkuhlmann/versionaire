@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 RSpec.shared_context "with temporary directory" do
-  let(:temp_dir) { Bundler.root.join "tmp", "rspec" }
+  using Refinements::Pathnames
+
+  let(:temp_dir) { Bundler.root.join "tmp/rspec" }
 
   around do |example|
-    FileUtils.mkdir_p temp_dir
+    temp_dir.make_path
     example.run
-    FileUtils.rm_rf temp_dir
+    temp_dir.remove_tree
   end
 end
