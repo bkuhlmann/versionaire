@@ -27,7 +27,7 @@ RSpec.describe "Function" do
         result = proc { Versionaire.Version "bogus" }
 
         expect(&result).to raise_error(
-          Versionaire::Errors::Cast,
+          Versionaire::Error,
           "Invalid version conversion: bogus. " \
           "Use: <major>.<minor>.<patch>, <major>.<minor>, <major>, or empty string."
         )
@@ -58,7 +58,7 @@ RSpec.describe "Function" do
         result = proc { Versionaire.Version [1, 2, 3, 4] }
 
         expect(&result).to raise_error(
-          Versionaire::Errors::Cast,
+          Versionaire::Error,
           "Invalid version conversion: [1, 2, 3, 4]. " \
           "Use: [<major>, <minor>, <patch>], [<major>, <minor>], [<major>], or []."
         )
@@ -90,7 +90,7 @@ RSpec.describe "Function" do
         result = proc { Versionaire.Version bogus: "test" }
 
         expect(&result).to raise_error(
-          Versionaire::Errors::Cast,
+          Versionaire::Error,
           %(Invalid version conversion: {:bogus=>"test"}. ) \
           "Use: {major: <major>, minor: <minor>, patch: <patch>}, " \
           "{major: <major>, minor: <minor>}, {major: <major>}, or {}."
@@ -109,7 +109,7 @@ RSpec.describe "Function" do
         result = proc { Versionaire.Version 1 }
 
         expect(&result).to raise_error(
-          Versionaire::Errors::Cast,
+          Versionaire::Error,
           "Invalid version conversion: 1. Use: String, Array, Hash, or Version."
         )
       end
@@ -122,7 +122,7 @@ RSpec.describe "Function" do
         result = proc { Versionaire.Version object }
 
         expect(&result).to raise_error(
-          Versionaire::Errors::Cast,
+          Versionaire::Error,
           "Invalid version conversion: #{object}. Use: String, Array, Hash, or Version."
         )
       end

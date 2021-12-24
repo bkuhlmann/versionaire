@@ -62,14 +62,14 @@ RSpec.describe Versionaire::Version do
     context "with string value" do
       it "fails with invalid number error" do
         result = proc { described_class.new major: "1" }
-        expect(&result).to raise_error(Versionaire::Errors::InvalidNumber)
+        expect(&result).to raise_error(Versionaire::Error)
       end
     end
 
     context "with negative value" do
       it "fails with invalid number error" do
         result = proc { described_class.new major: -1 }
-        expect(&result).to raise_error(Versionaire::Errors::NegativeNumber)
+        expect(&result).to raise_error(Versionaire::Error)
       end
     end
   end
@@ -94,12 +94,12 @@ RSpec.describe Versionaire::Version do
 
     it "fails with invalid number" do
       result = proc { version.dup[:major] = "1" }
-      expect(&result).to raise_error(Versionaire::Errors::InvalidNumber)
+      expect(&result).to raise_error(Versionaire::Error)
     end
 
     it "fails with negative number" do
       result = proc { version.dup[:major] = -1 }
-      expect(&result).to raise_error(Versionaire::Errors::NegativeNumber)
+      expect(&result).to raise_error(Versionaire::Error)
     end
   end
 
@@ -127,7 +127,7 @@ RSpec.describe Versionaire::Version do
 
       it "raises negative number error" do
         result = proc { version - other }
-        expect(&result).to raise_error(Versionaire::Errors::NegativeNumber)
+        expect(&result).to raise_error(Versionaire::Error)
       end
     end
   end
@@ -380,7 +380,7 @@ RSpec.describe Versionaire::Version do
 
     it "fails when decreased to a negative version" do
       expectation = proc { version.down :major, 2 }
-      expect(&expectation).to raise_error(Versionaire::Errors::NegativeNumber, /must be.+positive/)
+      expect(&expectation).to raise_error(Versionaire::Error, /must be.+positive/)
     end
   end
 

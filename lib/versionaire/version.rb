@@ -56,8 +56,11 @@ module Versionaire
     private
 
     def validate
-      fail Errors::InvalidNumber if to_a.any? { |number| !number.is_a? Integer }
-      fail Errors::NegativeNumber if to_a.any?(&:negative?)
+      fail Error, "Major, minor, and patch must be a number." if to_a.any? do |number|
+                                                                   !number.is_a? Integer
+                                                                 end
+
+      fail Error, "Major, minor, and patch must be a positive number." if to_a.any?(&:negative?)
     end
   end
 end
