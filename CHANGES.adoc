@@ -1,5 +1,31 @@
 = Changes
 
+== 10.0.0 (2021-12-26)
+
+* Fixed Hippocratic license structure - Brooke Kuhlmann
+* Fixed README changes and credits sections - Brooke Kuhlmann
+* Fixed contributing documentation - Brooke Kuhlmann
+* Fixed version initialize specs - Brooke Kuhlmann
+* Added Rakefile Bundler gem tasks - Brooke Kuhlmann
+* Added base error - Brooke Kuhlmann
+* Added project citation information - Brooke Kuhlmann
+* Updated GitHub issue template - Brooke Kuhlmann
+* Updated Rubocop sub-project gem dependencies - Brooke Kuhlmann
+* Updated implemenation to use new error class - Brooke Kuhlmann
+* Updated to Amazing Print 1.4.0 - Brooke Kuhlmann
+* Updated to Debug 1.4.0 - Brooke Kuhlmann
+* Updated to Hippocratic License 3.0.0 - Brooke Kuhlmann
+* Updated to Refinements 9.0.0 - Brooke Kuhlmann
+* Updated to Rubocop 1.24.0 - Brooke Kuhlmann
+* Updated to Ruby 3.0.3 - Brooke Kuhlmann
+* Updated to Ruby 3.1.0 - Brooke Kuhlmann
+* Updated to SimpleCov 0.21.2 - Brooke Kuhlmann
+* Removed Gemsmith depenendecy - Brooke Kuhlmann
+* Removed legacy error classes - Brooke Kuhlmann
+* Refactored RSpec temporary directory shared context - Brooke Kuhlmann
+* Refactored function specs to use explicit version - Brooke Kuhlmann
+* Refactored version to use endless methods - Brooke Kuhlmann
+
 == 9.4.0 (2021-11-20)
 
 * Added README community link - Brooke Kuhlmann

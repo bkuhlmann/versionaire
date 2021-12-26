@@ -6,7 +6,7 @@ gemspec
 
 group :code_quality do
   gem "bundler-leak", "~> 0.2"
-  gem "git-lint", "~> 2.0"
+  # gem "git-lint", "~> 2.0"
   gem "reek", "~> 6.0"
   gem "rubocop", "~> 1.24"
   gem "rubocop-performance", "~> 1.12"
