@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata = {
     "bug_tracker_uri" => "https://github.com/bkuhlmann/versionaire/issues",
-    "changelog_uri" => "https://www.alchemists.io/projects/versionaire/changes.html",
+    "changelog_uri" => "https://www.alchemists.io/projects/versionaire/versions",
     "documentation_uri" => "https://www.alchemists.io/projects/versionaire",
     "rubygems_mfa_required" => "true",
     "source_code_uri" => "https://github.com/bkuhlmann/versionaire"
