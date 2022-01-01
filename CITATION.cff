@@ -2,9 +2,9 @@ cff-version: 1.2.0
 message: Please use the following metadata when citing this project in your work.
 title: Versionaire
 abstract: Provides an immutable, thread-safe, and semantic version type.
-version: 10.0.0
+version: 10.0.1
 license: Hippocratic-3.0
-date-released: 2021-12-26
+date-released: 2022-01-01
 authors:
   - family-names: Kuhlmann
     given-names: Brooke
