@@ -1,5 +1,14 @@
 = Versions
 
+== 10.1.0 (2022-01-23)
+
+* Added Ruby version to Gemfile - Brooke Kuhlmann
+* Added identity to gem specification - Brooke Kuhlmann
+* Updated to Reek 6.1.0 - Brooke Kuhlmann
+* Updated to Refinements 9.1.0 - Brooke Kuhlmann
+* Updated to Rubocop 1.25.0 - Brooke Kuhlmann
+* Refactored Git ignore - Brooke Kuhlmann
+
 == 10.0.1 (2022-01-01)
 
 * Updated README policy section links - Brooke Kuhlmann
