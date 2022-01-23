@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "lib/versionaire/identity"
-
 Gem::Specification.new do |spec|
-  spec.name = Versionaire::Identity::NAME
-  spec.version = Versionaire::Identity::VERSION
+  spec.name = "versionaire"
+  spec.version = "10.0.1"
   spec.platform = Gem::Platform::RUBY
   spec.authors = ["Brooke Kuhlmann"]
   spec.email = ["brooke@alchemists.io"]
@@ -16,6 +14,7 @@ Gem::Specification.new do |spec|
     "bug_tracker_uri" => "https://github.com/bkuhlmann/versionaire/issues",
     "changelog_uri" => "https://www.alchemists.io/projects/versionaire/versions",
     "documentation_uri" => "https://www.alchemists.io/projects/versionaire",
+    "label" => "Versionaire",
     "rubygems_mfa_required" => "true",
     "source_code_uri" => "https://github.com/bkuhlmann/versionaire"
   }
@@ -26,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = "~> 3.1"
   spec.add_dependency "refinements", "~> 9.1"
 
-  spec.files = Dir["lib/**/*"]
+  spec.files = Dir["*.gemspec", "lib/**/*"]
   spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
   spec.require_paths = ["lib"]
 end
