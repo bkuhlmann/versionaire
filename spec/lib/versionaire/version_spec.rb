@@ -243,15 +243,15 @@ RSpec.describe Versionaire::Version do
     let(:version_2) { Versionaire::Version "2.0.0" }
 
     it "answers true when less than" do
-      expect(version_1 < version_2).to eq(true)
+      expect(version_1 < version_2).to be(true)
     end
 
     it "answers false when not less than" do
-      expect(version_2 < version_1).to eq(false)
+      expect(version_2 < version_1).to be(false)
     end
 
     it "answers false when equal" do
-      expect(version_1 < Versionaire::Version("1.0.0")).to eq(false)
+      expect(version_1 < Versionaire::Version("1.0.0")).to be(false)
     end
   end
 
@@ -260,15 +260,15 @@ RSpec.describe Versionaire::Version do
     let(:version_2) { Versionaire::Version "2.0.0" }
 
     it "answers true when less than" do
-      expect(version_1 <= version_2).to eq(true)
+      expect(version_1 <= version_2).to be(true)
     end
 
     it "answers false when not less than" do
-      expect(version_2 <= version_1).to eq(false)
+      expect(version_2 <= version_1).to be(false)
     end
 
     it "answers true when equal" do
-      expect(version_1 <= Versionaire::Version("1.0.0")).to eq(true)
+      expect(version_1 <= Versionaire::Version("1.0.0")).to be(true)
     end
   end
 
@@ -277,15 +277,15 @@ RSpec.describe Versionaire::Version do
     let(:version_2) { Versionaire::Version "2.0.0" }
 
     it "answers true when greater than" do
-      expect(version_2 > version_1).to eq(true)
+      expect(version_2 > version_1).to be(true)
     end
 
     it "answers false when not greater than" do
-      expect(version_1 > version_2).to eq(false)
+      expect(version_1 > version_2).to be(false)
     end
 
     it "answers false when equal" do
-      expect(version_1 > Versionaire::Version("1.0.0")).to eq(false)
+      expect(version_1 > Versionaire::Version("1.0.0")).to be(false)
     end
   end
 
@@ -294,15 +294,15 @@ RSpec.describe Versionaire::Version do
     let(:version_2) { Versionaire::Version "2.0.0" }
 
     it "answers true when greater than" do
-      expect(version_2 >= version_1).to eq(true)
+      expect(version_2 >= version_1).to be(true)
     end
 
     it "answers false when not greater than" do
-      expect(version_1 >= version_2).to eq(false)
+      expect(version_1 >= version_2).to be(false)
     end
 
     it "answers true when equal" do
-      expect(version_1 >= Versionaire::Version("1.0.0")).to eq(true)
+      expect(version_1 >= Versionaire::Version("1.0.0")).to be(true)
     end
   end
 
@@ -312,11 +312,11 @@ RSpec.describe Versionaire::Version do
     let(:version_3) { Versionaire::Version "3.0.0" }
 
     it "answers true when between" do
-      expect(version_2.between?(version_1, version_2)).to eq(true)
+      expect(version_2.between?(version_1, version_2)).to be(true)
     end
 
     it "answers false when not between" do
-      expect(version_1.between?(version_2, version_3)).to eq(false)
+      expect(version_1.between?(version_2, version_3)).to be(false)
     end
   end
 
