@@ -1,5 +1,13 @@
 = Versions
 
+== 10.2.3 (2022-04-23)
+
+* Added GitHub sponsorship configuration - Brooke Kuhlmann
+* Updated to Caliber 0.6.0 - Brooke Kuhlmann
+* Updated to Caliber 0.7.0 - Brooke Kuhlmann
+* Updated to Git Lint 4.0.0 - Brooke Kuhlmann
+* Updated to Ruby 3.1.2 - Brooke Kuhlmann
+
 == 10.2.2 (2022-04-09)
 
 * Fixed Circle CI configuration to check Gemfile and gemspec - Brooke Kuhlmann
