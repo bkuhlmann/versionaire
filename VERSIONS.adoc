@@ -1,5 +1,11 @@
 = Versions
 
+== 10.3.0 (2022-05-07)
+
+* Added gemspec funding URI - Brooke Kuhlmann
+* Updated to Caliber 0.8.0 - Brooke Kuhlmann
+* Updated to Refinements 9.4.0 - Brooke Kuhlmann
+
 == 10.2.3 (2022-04-23)
 
 * Added GitHub sponsorship configuration - Brooke Kuhlmann
