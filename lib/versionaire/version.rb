@@ -53,7 +53,6 @@ module Versionaire
     def to_s = to_a.join(self.class.delimiter)
 
     alias_method :to_str, :to_s
-    alias_method :values, :to_a
 
     private
 
