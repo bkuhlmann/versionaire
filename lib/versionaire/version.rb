@@ -48,6 +48,8 @@ module Versionaire
 
     def up(key, value = 1) = revalue(key => value) { |previous, current| previous + current }
 
+    def inspect = to_s.inspect
+
     def to_s = to_a.join(self.class.delimiter)
 
     alias_method :to_str, :to_s

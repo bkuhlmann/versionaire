@@ -170,6 +170,17 @@ version.to_a  # [0, 0, 0]
 version.to_h  # {major: 0, minor: 0, patch: 0}
 ----
 
+=== Inspections
+
+You can inspect a version which is the equivalent of an escaped string representation. Example:
+
+[source,ruby]
+----
+using Versionaire::Cast
+
+Version("1.2.3").inspect  # "\"1.2.3\""
+----
+
 === Comparisons
 
 All versions are comparable which means any of the operators from the `+Comparable+` module will

@@ -361,6 +361,12 @@ RSpec.describe Versionaire::Version do
     end
   end
 
+  describe "inspect" do
+    it "answer escaped version string" do
+      expect(version.inspect).to eq(%("1.2.3"))
+    end
+  end
+
   describe "#down" do
     it "answers previous sequential major version" do
       expect(version.down(:major)).to eq(described_class[major: 0, minor: 2, patch: 3])
@@ -402,18 +408,6 @@ RSpec.describe Versionaire::Version do
     end
   end
 
-  describe "#to_s" do
-    it "answers string" do
-      expect(version.to_s).to eq("1.2.3")
-    end
-  end
-
-  describe "#to_str" do
-    it "answers string" do
-      expect(version.to_str).to eq("1.2.3")
-    end
-  end
-
   describe "#to_a" do
     it "answers array" do
       expect(version.to_a).to contain_exactly(1, 2, 3)
@@ -423,6 +417,18 @@ RSpec.describe Versionaire::Version do
   describe "#to_h" do
     it "answers hash" do
       expect(version.to_h).to eq(major: 1, minor: 2, patch: 3)
+    end
+  end
+
+  describe "#to_s" do
+    it "answers string" do
+      expect(version.to_s).to eq("1.2.3")
+    end
+  end
+
+  describe "#to_str" do
+    it "answers string" do
+      expect(version.to_str).to eq("1.2.3")
     end
   end
 end
