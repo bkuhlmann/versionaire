@@ -50,6 +50,8 @@ module Versionaire
 
     def inspect = to_s.inspect
 
+    def to_proc = method(:[]).to_proc
+
     def to_s = to_a.join(self.class.delimiter)
 
     alias_method :to_str, :to_s

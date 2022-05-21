@@ -420,6 +420,26 @@ RSpec.describe Versionaire::Version do
     end
   end
 
+  describe "#to_proc" do
+    it "answers a proc" do
+      expect(version.to_proc).to be_a(Proc)
+    end
+
+    it "answers valid attribute" do
+      expect(version.to_proc.call(:patch)).to eq(3)
+    end
+
+    it "answers values when mapped" do
+      versions = [version, version]
+      expect(versions.map(&:minor)).to contain_exactly(2, 2)
+    end
+
+    it "fails with invalid attribute" do
+      expectation = proc { version.to_proc.call :bogus }
+      expect(&expectation).to raise_error(NameError, /bogus/)
+    end
+  end
+
   describe "#to_s" do
     it "answers string" do
       expect(version.to_s).to eq("1.2.3")

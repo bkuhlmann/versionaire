@@ -150,7 +150,7 @@ approach to casting like any other primitive.
 
 ==== Implicit
 
-Implicit conversion to a `+String+` is supported:
+Implicit conversion to a `String` is supported:
 
 [source,ruby]
 ----
@@ -159,15 +159,28 @@ Implicit conversion to a `+String+` is supported:
 
 ==== Explicit
 
-Explicit conversion to a `String`, `Array`, or `Hash` is supported:
+Explicit conversion to a `String`, `Array`, `Hash`, or `Proc` is supported:
 
 [source,ruby]
 ----
 version = Versionaire::Version.new
 
-version.to_s  # "0.0.0"
-version.to_a  # [0, 0, 0]
-version.to_h  # {major: 0, minor: 0, patch: 0}
+version.to_s     # "0.0.0"
+version.to_a     # [0, 0, 0]
+version.to_h     # {major: 0, minor: 0, patch: 0}
+version.to_proc  # #<Proc:0x000000010b015b88 (lambda)>
+----
+
+To elaborate on procs further, this means the following is possible:
+
+[source,ruby]
+----
+using Versionaire::Cast
+
+version = Version "1.2.3"
+
+version.to_proc.call :major               # 1
+[version, version, version].map(&:minor)  # [2, 2, 2]
 ----
 
 === Inspections
