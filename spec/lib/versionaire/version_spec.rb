@@ -148,9 +148,21 @@ RSpec.describe Versionaire::Version do
       end
     end
 
-    context "with different type" do
+    context "with different type (string)" do
       it "answers false" do
         expect(version).not_to eq("1.2.3")
+      end
+    end
+
+    context "with different type (array)" do
+      it "answers false" do
+        expect(version).not_to eq([1, 2, 3])
+      end
+    end
+
+    context "with different type (hash)" do
+      it "answers false" do
+        expect(version).not_to eq({major: 1, minor: 2, patch: 3})
       end
     end
   end
