@@ -1,5 +1,12 @@
 = Versions
 
+== 10.5.0 (2022-07-17)
+
+* Added additional equality type checks to the version spec - Brooke Kuhlmann
+* Updated to Caliber 0.11.0 - Brooke Kuhlmann
+* Updated to Debug 1.6.0 - Brooke Kuhlmann
+* Updated to Refinements 9.6.0 - Brooke Kuhlmann
+
 == 10.4.0 (2022-05-28)
 
 * Added version inspection - Brooke Kuhlmann
