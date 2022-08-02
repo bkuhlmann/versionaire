@@ -2,20 +2,23 @@
 :toclevels: 5
 :figure-caption!:
 
+:semver_link: link:https://semver.org[Semantic Versioning]
+
 = Versionaire
 
-Ruby doesn't provide a primitive version type by default. Versionaire fills this gap by providing an
-immutable, thread-safe, and link:https://semver.org[Semantic Version] in order to use versions
-within your applications. This new version type behaves and feels a lot like other primitives (i.e.
-`String`, `Array`, `Hash`, etc) and can even be cast/converted from other primitives.
+Ruby doesn't provide a primitive version type by default so Versionaire fills this gap by providing immutable and thread-safe {semver_link} so you can leverage versions within your applications. This new `Version` type behaves and feels a lot like other primitives (i.e. `String`, `Array`, `Hash`, etc) and can even be cast/converted from other primitives.
+
+
 
 toc::[]
 
 == Features
 
-* Provides https://semver.org[Semantic Versioning].
+* Provides _strict_ {semver_link} which means `<major>.<minor>.<patch>`.
 * Provides immutable, thread-safe version instances.
 * Converts (casts) from a `String`, `Array`, `Hash`, or `Version` to a `Version`.
+* Disallows `<major>.<minor>.<patch>-<pre-release>` usage even though {semver_link} suggests that you _may_ use pre-release information.
+* Disallows `<major>.<minor>.<patch>+<build_metadata>` usage even though {semver_link} suggests that you _may_ use build metadata.
 
 == Screencasts
 
