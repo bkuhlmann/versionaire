@@ -325,7 +325,7 @@ To contribute, run:
 
 [source,bash]
 ----
-git clone https://github.com/bkuhlmann/versionaire.git
+git clone https://github.com/bkuhlmann/versionaire
 cd versionaire
 bin/setup
 ----
