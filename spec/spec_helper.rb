@@ -13,8 +13,8 @@ unless ENV["NO_COVERAGE"]
   end
 end
 
-require "versionaire"
 require "refinements"
+require "versionaire"
 
 using Refinements::Pathnames
 

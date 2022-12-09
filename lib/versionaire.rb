@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "versionaire/error"
-require "versionaire/version"
-require "versionaire/function"
 require "versionaire/cast"
+require "versionaire/error"
+require "versionaire/function"
+require "versionaire/version"
