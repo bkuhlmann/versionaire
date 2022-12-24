@@ -25,8 +25,9 @@ module Versionaire
     using Refinements::Arrays
     using Refinements::Structs
 
-    def initialize object
+    def initialize object, model: Version
       @object = object
+      @model = model
     end
 
     def from_string
@@ -40,7 +41,7 @@ module Versionaire
       body = "Use: [<major>, <minor>, <patch>], [<major>, <minor>], [<major>], or []."
       fail Error, error_message(object, body) unless (0..3).cover? object.size
 
-      Version.with_positions(*object.pad(0, max: 3))
+      model.with_positions(*object.pad(0, max: 3))
     end
 
     def from_hash
@@ -57,16 +58,16 @@ module Versionaire
 
     private
 
-    attr_reader :object, :filler
+    attr_reader :object, :model
 
     def string_to_version
       object.split(DELIMITER)
             .map(&:to_i)
             .then { |numbers| numbers.pad 0, max: 3 }
-            .then { |arguments| Version.with_positions(*arguments) }
+            .then { |arguments| model.with_positions(*arguments) }
     end
 
-    def required_keys? = object.keys.all? { |key| Version.members.include? key }
+    def required_keys? = object.keys.all? { |key| model.members.include? key }
 
     def error_message(object, body) = "Invalid version conversion: #{object}. #{body}"
   end
