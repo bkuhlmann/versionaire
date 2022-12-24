@@ -9,17 +9,15 @@ module Versionaire
 
     using Refinements::Structs
 
-    def self.delimiter = "."
-
     def self.pattern
       /
         \A(                  # Start of string and OR.
         \d*                  # Major only.
         |                    # OR pipe.
         \d+                  # Major.
-        #{delimiter}?        # Delimiter.
+        #{DELIMITER}?        # Delimiter.
         \d*                  # Minor.
-        (?:#{delimiter}\d+)  # Passive delimiter and patch.
+        (?:#{DELIMITER}\d+)  # Passive delimiter and patch.
         )\z                  # End of OR and string.
       /x
     end
@@ -52,7 +50,7 @@ module Versionaire
 
     def to_proc = method(:[]).to_proc
 
-    def to_s = to_a.join(self.class.delimiter)
+    def to_s = to_a.join DELIMITER
 
     alias_method :to_str, :to_s
 

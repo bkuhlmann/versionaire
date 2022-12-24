@@ -4,3 +4,7 @@ require "versionaire/cast"
 require "versionaire/error"
 require "versionaire/function"
 require "versionaire/version"
+
+module Versionaire
+  DELIMITER = "."
+end
