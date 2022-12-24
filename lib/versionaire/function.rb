@@ -8,7 +8,6 @@ module Versionaire
   module_function
 
   # Conversion function (strict) for casting an object into a version.
-  # :reek:TooManyStatements
   def Version object
     Converter.new(object).then do |converter|
       case object

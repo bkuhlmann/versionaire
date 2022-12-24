@@ -1,4 +1,7 @@
 detectors:
+  TooManyStatements:
+    exclude:
+      - Versionaire#Version
   UncommunicativeMethodName:
     exclude:
     - Kernel#Version
