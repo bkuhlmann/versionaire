@@ -9,4 +9,4 @@ Performance/Sum:
     - "lib/versionaire/version.rb"
 Style/IpAddresses:
   Exclude:
-    - "spec/lib/versionaire/version_spec.rb"
+    - "spec/lib/versionaire/versionaire_spec.rb"

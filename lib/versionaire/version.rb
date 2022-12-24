@@ -9,19 +9,6 @@ module Versionaire
 
     using Refinements::Structs
 
-    def self.pattern
-      /
-        \A(                  # Start of string and OR.
-        \d*                  # Major only.
-        |                    # OR pipe.
-        \d+                  # Major.
-        #{DELIMITER}?        # Delimiter.
-        \d*                  # Minor.
-        (?:#{DELIMITER}\d+)  # Passive delimiter and patch.
-        )\z                  # End of OR and string.
-      /x
-    end
-
     def initialize major: 0, minor: 0, patch: 0
       super
       validate
