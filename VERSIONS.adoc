@@ -1,5 +1,19 @@
 = Versions
 
+== 11.0.0 (2022-12-25)
+
+* Fixed Reek TooManyStatements issue with function - Brooke Kuhlmann
+* Fixed RuboCop Style/RequireOrder issues - Brooke Kuhlmann
+* Added RSpec binstub - Brooke Kuhlmann
+* Updated to Debug 1.7.0 - Brooke Kuhlmann
+* Updated to RSpec 3.12.0 - Brooke Kuhlmann
+* Updated to Refinements 10.0.0 - Brooke Kuhlmann
+* Updated to Ruby 3.1.3 - Brooke Kuhlmann
+* Updated to Ruby 3.2.0 - Brooke Kuhlmann
+* Updated version delimiter to be a constant - Brooke Kuhlmann
+* Updated version pattern to be a constant - Brooke Kuhlmann
+* Refactored converter so version model is injected - Brooke Kuhlmann
+
 == 10.6.0 (2022-10-22)
 
 * Fixed Rakefile RSpec initialization - Brooke Kuhlmann

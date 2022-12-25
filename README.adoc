@@ -8,8 +8,6 @@
 
 Ruby doesn't provide a primitive version type by default so Versionaire fills this gap by providing immutable and thread-safe {semver_link} so you can leverage versions within your applications. This new `Version` type behaves and feels a lot like other primitives (i.e. `String`, `Array`, `Hash`, etc) and can even be cast/converted from other primitives.
 
-
-
 toc::[]
 
 == Features
