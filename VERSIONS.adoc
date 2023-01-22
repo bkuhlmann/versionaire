@@ -1,5 +1,14 @@
 = Versions
 
+== 11.0.1 (2023-01-22)
+
+* Fixed Guardfile to use RSpec binstub - Brooke Kuhlmann
+* Added Rake binstub - Brooke Kuhlmann
+* Updated to Caliber 0.21.0 - Brooke Kuhlmann
+* Updated to Git Lint 5.0.0 - Brooke Kuhlmann
+* Updated to SimpleCov 0.22.0 - Brooke Kuhlmann
+* Refactored RSpec helper to use spec root constant - Brooke Kuhlmann
+
 == 11.0.0 (2022-12-25)
 
 * Fixed Reek TooManyStatements issue with function - Brooke Kuhlmann
