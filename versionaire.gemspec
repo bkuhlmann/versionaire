@@ -5,14 +5,14 @@ Gem::Specification.new do |spec|
   spec.version = "11.0.1"
   spec.authors = ["Brooke Kuhlmann"]
   spec.email = ["brooke@alchemists.io"]
-  spec.homepage = "https://www.alchemists.io/projects/versionaire"
+  spec.homepage = "https://alchemists.io/projects/versionaire"
   spec.summary = "Provides an immutable, thread-safe, and semantic version type."
   spec.license = "Hippocratic-2.1"
 
   spec.metadata = {
     "bug_tracker_uri" => "https://github.com/bkuhlmann/versionaire/issues",
-    "changelog_uri" => "https://www.alchemists.io/projects/versionaire/versions",
-    "documentation_uri" => "https://www.alchemists.io/projects/versionaire",
+    "changelog_uri" => "https://alchemists.io/projects/versionaire/versions",
+    "documentation_uri" => "https://alchemists.io/projects/versionaire",
     "funding_uri" => "https://github.com/sponsors/bkuhlmann",
     "label" => "Versionaire",
     "rubygems_mfa_required" => "true",

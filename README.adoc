@@ -20,8 +20,8 @@ toc::[]
 
 == Screencasts
 
-[link=https://www.alchemists.io/screencasts/versionaire]
-image::https://www.alchemists.io/images/screencasts/versionaire/cover.svg[Screencast,600,240,role=focal_point]
+[link=https://alchemists.io/screencasts/versionaire]
+image::https://alchemists.io/images/screencasts/versionaire/cover.svg[Screencast,600,240,role=focal_point]
 
 == Requirements
 
@@ -129,7 +129,7 @@ to convert an unsupported type, a `+Versionaire::Errors::Cast+` exception will b
 ==== Refinement
 
 Building upon the examples shown above, there is an even more elegant solution where you can use
-this gem's built-in link:https://www.alchemists.io/articles/ruby_refinements[refinement] support:
+this gem's built-in link:https://alchemists.io/articles/ruby_refinements[refinement] support:
 
 [source,ruby]
 ----
@@ -344,19 +344,19 @@ To test, run:
 bin/rake
 ----
 
-== link:https://www.alchemists.io/policies/license[License]
+== link:https://alchemists.io/policies/license[License]
 
-== link:https://www.alchemists.io/policies/security[Security]
+== link:https://alchemists.io/policies/security[Security]
 
-== link:https://www.alchemists.io/policies/code_of_conduct[Code of Conduct]
+== link:https://alchemists.io/policies/code_of_conduct[Code of Conduct]
 
-== link:https://www.alchemists.io/policies/contributions[Contributions]
+== link:https://alchemists.io/policies/contributions[Contributions]
 
-== link:https://www.alchemists.io/projects/versionaire/versions[Versions]
+== link:https://alchemists.io/projects/versionaire/versions[Versions]
 
-== link:https://www.alchemists.io/community[Community]
+== link:https://alchemists.io/community[Community]
 
 == Credits
 
-* Built with link:https://www.alchemists.io/projects/gemsmith[Gemsmith].
-* Engineered by link:https://www.alchemists.io/team/brooke_kuhlmann[Brooke Kuhlmann].
+* Built with link:https://alchemists.io/projects/gemsmith[Gemsmith].
+* Engineered by link:https://alchemists.io/team/brooke_kuhlmann[Brooke Kuhlmann].
