@@ -1,5 +1,13 @@
 = Versions
 
+== 11.0.2 (2023-03-22)
+
+* Updated Reek dependency to not be required - Brooke Kuhlmann
+* Updated site URLs to use bare domain - Brooke Kuhlmann
+* Updated to Caliber 0.25.0 - Brooke Kuhlmann
+* Updated to Ruby 3.2.1 - Brooke Kuhlmann
+* Refactored Pathname require tree refinement to pass single argument - Brooke Kuhlmann
+
 == 11.0.1 (2023-01-22)
 
 * Fixed Guardfile to use RSpec binstub - Brooke Kuhlmann
