@@ -29,18 +29,34 @@ image::https://alchemists.io/images/screencasts/versionaire/cover.svg[Screencast
 
 == Setup
 
-To install, run:
+To install _with_ security, run:
+
+[source,bash]
+----
+# 💡 Skip this line if you already have the public certificate installed.
+gem cert --add <(curl --compressed --location https://alchemists.io/gems.pem)
+gem install versionaire --trust-policy HighSecurity
+----
+
+To install _without_ security, run:
 
 [source,bash]
 ----
 gem install versionaire
 ----
 
-Add the following to your Gemfile:
+You can also add the gem directly to your project:
+
+[source,bash]
+----
+bundle add versionaire
+----
+
+Once the gem is installed, you only need to require it:
 
 [source,ruby]
 ----
-gem "versionaire"
+require "versionaire"
 ----
 
 == Usage
