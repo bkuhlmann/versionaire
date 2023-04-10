@@ -1,4 +1,6 @@
 detectors:
+  LongParameterList:
+    enabled: false
   TooManyStatements:
     exclude:
       - Versionaire#Version
