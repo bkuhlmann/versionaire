@@ -204,102 +204,102 @@ RSpec.describe Versionaire::Version do
   end
 
   describe "#<" do
-    let(:version_1) { Versionaire::Version "1.0.0" }
-    let(:version_2) { Versionaire::Version "2.0.0" }
+    let(:one) { Versionaire::Version "1.0.0" }
+    let(:two) { Versionaire::Version "2.0.0" }
 
     it "answers true when less than" do
-      expect(version_1 < version_2).to be(true)
+      expect(one < two).to be(true)
     end
 
     it "answers false when not less than" do
-      expect(version_2 < version_1).to be(false)
+      expect(two < one).to be(false)
     end
 
     it "answers false when equal" do
-      expect(version_1 < Versionaire::Version("1.0.0")).to be(false)
+      expect(one < Versionaire::Version("1.0.0")).to be(false)
     end
   end
 
   describe "#<=" do
-    let(:version_1) { Versionaire::Version "1.0.0" }
-    let(:version_2) { Versionaire::Version "2.0.0" }
+    let(:one) { Versionaire::Version "1.0.0" }
+    let(:two) { Versionaire::Version "2.0.0" }
 
     it "answers true when less than" do
-      expect(version_1 <= version_2).to be(true)
+      expect(one <= two).to be(true)
     end
 
     it "answers false when not less than" do
-      expect(version_2 <= version_1).to be(false)
+      expect(two <= one).to be(false)
     end
 
     it "answers true when equal" do
-      expect(version_1 <= Versionaire::Version("1.0.0")).to be(true)
+      expect(one <= Versionaire::Version("1.0.0")).to be(true)
     end
   end
 
   describe "#>" do
-    let(:version_1) { Versionaire::Version "1.0.0" }
-    let(:version_2) { Versionaire::Version "2.0.0" }
+    let(:one) { Versionaire::Version "1.0.0" }
+    let(:two) { Versionaire::Version "2.0.0" }
 
     it "answers true when greater than" do
-      expect(version_2 > version_1).to be(true)
+      expect(two > one).to be(true)
     end
 
     it "answers false when not greater than" do
-      expect(version_1 > version_2).to be(false)
+      expect(one > two).to be(false)
     end
 
     it "answers false when equal" do
-      expect(version_1 > Versionaire::Version("1.0.0")).to be(false)
+      expect(one > Versionaire::Version("1.0.0")).to be(false)
     end
   end
 
   describe "#>=" do
-    let(:version_1) { Versionaire::Version "1.0.0" }
-    let(:version_2) { Versionaire::Version "2.0.0" }
+    let(:one) { Versionaire::Version "1.0.0" }
+    let(:two) { Versionaire::Version "2.0.0" }
 
     it "answers true when greater than" do
-      expect(version_2 >= version_1).to be(true)
+      expect(two >= one).to be(true)
     end
 
     it "answers false when not greater than" do
-      expect(version_1 >= version_2).to be(false)
+      expect(one >= two).to be(false)
     end
 
     it "answers true when equal" do
-      expect(version_1 >= Versionaire::Version("1.0.0")).to be(true)
+      expect(one >= Versionaire::Version("1.0.0")).to be(true)
     end
   end
 
   describe "#between?" do
-    let(:version_1) { Versionaire::Version "1.0.0" }
-    let(:version_2) { Versionaire::Version "2.0.0" }
-    let(:version_3) { Versionaire::Version "3.0.0" }
+    let(:one) { Versionaire::Version "1.0.0" }
+    let(:two) { Versionaire::Version "2.0.0" }
+    let(:three) { Versionaire::Version "3.0.0" }
 
     it "answers true when between" do
-      expect(version_2.between?(version_1, version_2)).to be(true)
+      expect(two.between?(one, two)).to be(true)
     end
 
     it "answers false when not between" do
-      expect(version_1.between?(version_2, version_3)).to be(false)
+      expect(one.between?(two, three)).to be(false)
     end
   end
 
   describe "#clamp" do
-    let(:version_1) { Versionaire::Version "1.0.0" }
-    let(:version_2) { Versionaire::Version "2.0.0" }
-    let(:version_3) { Versionaire::Version "3.0.0" }
+    let(:one) { Versionaire::Version "1.0.0" }
+    let(:two) { Versionaire::Version "2.0.0" }
+    let(:three) { Versionaire::Version "3.0.0" }
 
     it "answers minimum when less than" do
-      expect(version_1.clamp(version_2, version_3)).to eq(version_2)
+      expect(one.clamp(two, three)).to eq(two)
     end
 
     it "answers maximum when greater than" do
-      expect(version_3.clamp(version_1, version_2)).to eq(version_2)
+      expect(three.clamp(one, two)).to eq(two)
     end
 
     it "answers equal when equal" do
-      expect(version_1.clamp(version_1, version_1)).to eq(version_1)
+      expect(one.clamp(one, one)).to eq(one)
     end
   end
 
