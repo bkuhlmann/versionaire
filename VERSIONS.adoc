@@ -1,5 +1,13 @@
 = Versions
 
+== 11.0.3 (2023-04-30)
+
+* Fixed RuboCop RSpec/IndexedLet issues - Brooke Kuhlmann
+* Updated Reek configuration to disable long parameter lists - Brooke Kuhlmann
+* Updated setup instructions to secure and insecure installs - Brooke Kuhlmann
+* Updated to Caliber 0.30.0 - Brooke Kuhlmann
+* Updated to Ruby 3.2.2 - Brooke Kuhlmann
+
 == 11.0.2 (2023-03-22)
 
 * Updated Reek dependency to not be required - Brooke Kuhlmann
