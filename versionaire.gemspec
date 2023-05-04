@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |spec|
   spec.name = "versionaire"
-  spec.version = "11.0.3"
+  spec.version = "12.0.0"
   spec.authors = ["Brooke Kuhlmann"]
   spec.email = ["brooke@alchemists.io"]
   spec.homepage = "https://alchemists.io/projects/versionaire"
-  spec.summary = "Provides an immutable, thread-safe, and semantic version type."
+  spec.summary = "An immutable, thread-safe, and semantic version type."
   spec.license = "Hippocratic-2.1"
 
   spec.metadata = {
