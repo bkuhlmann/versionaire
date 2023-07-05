@@ -373,6 +373,40 @@ RSpec.describe Versionaire::Version do
     end
   end
 
+  describe "#bump" do
+    it "answers next major version" do
+      expect(version.bump(:major)).to eq(described_class[major: 2])
+    end
+
+    it "answers frozen major version" do
+      expect(version.bump(:major)).to be_frozen
+    end
+
+    it "answers next minor version" do
+      expect(version.bump(:minor)).to eq(described_class[major: 1, minor: 3, patch: 0])
+    end
+
+    it "answers frozen minor version" do
+      expect(version.bump(:minor)).to be_frozen
+    end
+
+    it "answers next patch version" do
+      expect(version.bump(:patch)).to eq(described_class[major: 1, minor: 2, patch: 4])
+    end
+
+    it "answers frozen patch version" do
+      expect(version.bump(:patch)).to be_frozen
+    end
+
+    it "fails with invalid key" do
+      expectation = proc { version.bump :bogus }
+
+      expect(&expectation).to raise_error(
+        Versionaire::Error, "Invalid key: :bogus. Use: major, minor, or patch."
+      )
+    end
+  end
+
   describe "#to_a" do
     it "answers array" do
       expect(version.to_a).to contain_exactly(1, 2, 3)

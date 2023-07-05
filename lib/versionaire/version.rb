@@ -7,6 +7,7 @@ module Versionaire
   Version = Struct.new :major, :minor, :patch, keyword_init: true do
     include Comparable
 
+    using Refinements::Arrays
     using Refinements::Structs
 
     def initialize major: 0, minor: 0, patch: 0
@@ -33,6 +34,15 @@ module Versionaire
 
     def up(key, value = 1) = revalue(key => value) { |previous, current| previous + current }
 
+    def bump key
+      case key
+        when :major then bump_major
+        when :minor then bump_minor
+        when :patch then bump_patch
+        else fail Error, %(Invalid key: #{key.inspect}. Use: #{members.to_sentence "or"}.)
+      end
+    end
+
     def inspect = to_s.inspect
 
     def to_proc = method(:[]).to_proc
@@ -50,5 +60,11 @@ module Versionaire
 
       fail Error, "Major, minor, and patch must be a positive number." if to_a.any?(&:negative?)
     end
+
+    def bump_major = merge(major: major + 1, minor: 0, patch: 0).freeze
+
+    def bump_minor = merge(major:, minor: minor + 1, patch: 0).freeze
+
+    def bump_patch = merge(major:, minor:, patch: patch + 1).freeze
   end
 end
