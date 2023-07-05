@@ -1,9 +1,6 @@
 inherit_gem:
   caliber: config/all.yml
 
-Layout/SpaceBeforeBrackets:
-  Exclude:
-    - "spec/lib/versionaire/cast_spec.rb"
 Performance/Sum:
   Exclude:
     - "lib/versionaire/version.rb"
