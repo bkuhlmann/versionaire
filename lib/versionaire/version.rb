@@ -20,9 +20,9 @@ module Versionaire
       super(key, value).tap { validate }
     end
 
-    def +(other) = revalue(other.to_h) { |previous, current| previous + current }
+    def +(other) = (revalue(other.to_h) { |previous, current| previous + current }).freeze
 
-    def -(other) = revalue(other.to_h) { |previous, current| previous - current }
+    def -(other) = (revalue(other.to_h) { |previous, current| previous - current }).freeze
 
     def ==(other) = hash == other.hash
 
@@ -30,9 +30,13 @@ module Versionaire
 
     def <=>(other) = to_s <=> other.to_s
 
-    def down(key, value = 1) = revalue(key => value) { |previous, current| previous - current }
+    def down key, value = 1
+      (revalue(key => value) { |previous, current| previous - current }).freeze
+    end
 
-    def up(key, value = 1) = revalue(key => value) { |previous, current| previous + current }
+    def up key, value = 1
+      (revalue(key => value) { |previous, current| previous + current }).freeze
+    end
 
     def bump key
       case key

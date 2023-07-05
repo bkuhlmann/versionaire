@@ -63,25 +63,29 @@ RSpec.describe Versionaire::Version do
       result = version + other
       expect(result.to_s).to eq("8.5.4")
     end
+
+    it "answers frozen result" do
+      expect(version + other).to be_frozen
+    end
   end
 
   describe "#-" do
-    context "when result remains positive" do
-      let(:other) { described_class.new major: 1, minor: 1, patch: 1 }
+    let(:other) { described_class.new major: 1, minor: 1, patch: 1 }
 
-      it "subtracts versions" do
-        result = version - other
-        expect(result.to_s).to eq("0.1.2")
-      end
+    it "answers new version when result remains positive" do
+      result = version - other
+      expect(result.to_s).to eq("0.1.2")
     end
 
-    context "when result is negative" do
-      let(:other) { described_class.new patch: 30 }
+    it "fails when result is negative" do
+      other = described_class.new patch: 30
+      result = proc { version - other }
 
-      it "raises negative number error" do
-        result = proc { version - other }
-        expect(&result).to raise_error(Versionaire::Error)
-      end
+      expect(&result).to raise_error(Versionaire::Error)
+    end
+
+    it "answers frozen result" do
+      expect(version - other).to be_frozen
     end
   end
 
@@ -349,6 +353,10 @@ RSpec.describe Versionaire::Version do
       expect(version.down(:minor, 2)).to eq(described_class[major: 1, minor: 0, patch: 3])
     end
 
+    it "answers frozen result" do
+      expect(version.down(:major)).to be_frozen
+    end
+
     it "fails when decreased to a negative version" do
       expectation = proc { version.down :major, 2 }
       expect(&expectation).to raise_error(Versionaire::Error, /must be.+positive/)
@@ -370,6 +378,10 @@ RSpec.describe Versionaire::Version do
 
     it "answers next version for given value" do
       expect(version.up(:major, 10)).to eq(described_class[major: 11, minor: 2, patch: 3])
+    end
+
+    it "answers frozen result" do
+      expect(version.up(:major)).to be_frozen
     end
   end
 
