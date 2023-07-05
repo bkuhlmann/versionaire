@@ -2,6 +2,7 @@
 :toclevels: 5
 :figure-caption!:
 
+:option_parser_link: link:https://alchemists.io/articles/ruby_option_parser[OptionParser]
 :semver_link: link:https://semver.org[Semantic Versioning]
 
 = Versionaire
@@ -77,8 +78,7 @@ Versionaire::Version[major: 1, minor: 2, patch: 3]  # "1.2.3"
 
 ==== Value (`+#==+`)
 
-Equality is deterimined by the state of the object. This means that a version is equal to another
-version as long as all of the values (i.e. state) are equal to each other. Example:
+Equality is determined by the state of the object. This means that a version is equal to another version as long as all of the values (i.e. state) are equal to each other. Example:
 
 [source,ruby]
 ----
@@ -91,7 +91,7 @@ version_a == version_b  # false
 version_a == version_c  # true
 ----
 
-Knowning this, versions can be compared against one another too:
+Knowing this, versions can be compared against one another too:
 
 [source,ruby]
 ----
@@ -140,12 +140,11 @@ Versionaire::Version version
 ----
 
 Each of these conversions will result in a version object that represents "`1.0.0`". When attempting
-to convert an unsupported type, a `+Versionaire::Errors::Cast+` exception will be thrown.
+to convert an unsupported type, a `Versionaire::Error` exception will be thrown.
 
 ==== Refinement
 
-Building upon the examples shown above, there is an even more elegant solution where you can use
-this gem's built-in link:https://alchemists.io/articles/ruby_refinements[refinement] support:
+Building upon the above examples, a more elegant solution is to use a link:https://alchemists.io/articles/ruby_refinements[refinement]:
 
 [source,ruby]
 ----
@@ -230,6 +229,29 @@ version_1.between? version_1, version_2  # true
 version_1.clamp version_1, version_2     # version_1 (added in Ruby 2.4.0)
 ----
 
+=== Bumping
+
+Versions can be bumped to next logical version with respect current version. Example:
+
+[source,ruby]
+----
+version = Versionaire::Version.new  # #<struct Versionaire::Version major=0, minor=0, patch=0>
+version.bump :major                 # #<struct Versionaire::Version major=1, minor=0, patch=0>
+version.bump :minor                 # #<struct Versionaire::Version major=0, minor=1, patch=0>
+version.bump :patch                 # #<struct Versionaire::Version major=0, minor=0, patch=1>
+
+Versionaire::Version[major: 1, minor: 2, patch: 3].bump :major
+#<struct Versionaire::Version major=2, minor=0, patch=0>
+
+Versionaire::Version[major: 1, minor: 2, patch: 3].bump :minor
+#<struct Versionaire::Version major=1, minor=3, patch=0>
+
+Versionaire::Version[major: 1, minor: 2, patch: 3].bump :patch
+#<struct Versionaire::Version major=1, minor=2, patch=4>
+----
+
+You'll notice, when bumping the major or minor versions, lower precision gets zeroed out in order to provide the next logical version.
+
 === Math
 
 Versions can be added, subtracted, sequentially increased, or sequentially decreased from each
@@ -258,7 +280,7 @@ version_1 - version_2  # "0.1.2"
 
 version_1 = Versionaire::Version[major: 1]
 version_2 = Versionaire::Version[major: 5]
-version_1 - version_2  # Versionaire::Errors::NegativeNumber
+version_1 - version_2  # Versionaire::Error
 ----
 
 ==== Up
@@ -290,7 +312,7 @@ version.down :minor     # => "5.4.5"
 version.down :minor, 3  # => "5.2.5"
 version.down :patch     # => "5.5.4"
 version.down :patch, 3  # => "5.5.2"
-version.down :major, 6  # => Versionaire::Errors::NegativeNumber
+version.down :major, 6  # => Versionaire::Error
 ----
 
 === Extensions
@@ -301,15 +323,10 @@ details.
 
 ==== OptionParser
 
-link:https://github.com/ruby/optparse[OptionParser] is one of Ruby's
-link:https://stdgems.org[default gems] which can accept additional types not native to Ruby by
-default. To extend `OptionParser` with the `Version` type, all you need to do is add these two lines
-to your implementation:
+{option_parser_link} is one of Ruby's link:https://stdgems.org[default gems] which can accept additional types not native to Ruby by default. To extend `OptionParser` with the `Version` type, all you need to do is add these two lines to your implementation:
 
-. `require "versionaire/extensions/option_parser"` - This will load dependencies and register the
-  `Version` type with `OptionParser`.
-. `instance.on "--tag VERSION", Versionaire::Version` - Specifying `Versionaire::Version` as the
-  second argument will ensure `OptionParser` properly casts command line input as a `Version` type.
+. `require "versionaire/extensions/option_parser"`: This will load dependencies and register the `Version` type with `OptionParser`.
+. `act.on "--tag VERSION", Versionaire::Version`: Specifying `Versionaire::Version` as the second argument will ensure `OptionParser` properly casts command line input as a `Version` type.
 
 Here's an example implementation that demonstrates full usage:
 
@@ -319,19 +336,18 @@ require "versionaire/extensions/option_parser"
 
 options = {}
 
-parser = OptionParser.new do |instance|
-  instance.on "--tag VERSION", Versionaire::Version, "Casts to version." do |value|
+parser = OptionParser.new do |act|
+  act.on "--tag VERSION", Versionaire::Version, "Casts to version." do |value|
     options[:version] = value
   end
 end
 
-parser.parse! %w[--tag 1.2.3]
+parser.parse %w[--tag 1.2.3]
 puts options
 ----
 
-The above will ensure `--tag 1.2.3` is parsed as `{:version=>#<struct Versionaire::Version major=1,
-minor=2, patch=3>}` within your `options` variable. Should `OptionParser` parse an invalid version,
-you'll get a `OptionParser::InvalidArgument` instead.
+The above will ensure `--tag 1.2.3` is parsed as `{version: #<struct Versionaire::Version major = 1,
+minor = 2, patch = 3>}` within your `options` variable. Should `OptionParser` parse an invalid version, you'll get a `OptionParser::InvalidArgument` instead.
 
 == Development
 
