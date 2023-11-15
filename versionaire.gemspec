@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.signing_key = Gem.default_key_path
   spec.cert_chain = [Gem.default_cert_path]
 
-  spec.required_ruby_version = "~> 3.2"
+  spec.required_ruby_version = [">= 3.2", "<= 3.3"]
   spec.add_dependency "refinements", "~> 11.0"
 
   spec.files = Dir["*.gemspec", "lib/**/*"]
