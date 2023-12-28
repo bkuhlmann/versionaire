@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
-require "refinements/structs"
+require "refinements/array"
+require "refinements/struct"
 
 module Versionaire
   # An immutable, semantic version value object.
   Version = Struct.new :major, :minor, :patch, keyword_init: true do
     include Comparable
 
-    using Refinements::Arrays
-    using Refinements::Structs
+    using Refinements::Array
+    using Refinements::Struct
 
     def initialize major: 0, minor: 0, patch: 0
       super
