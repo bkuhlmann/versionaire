@@ -4,25 +4,21 @@
 
 :option_parser_link: link:https://alchemists.io/articles/ruby_option_parser[OptionParser]
 :semver_link: link:https://semver.org[Semantic Versioning]
+:strict_semver_link: link:https://alchemists.io/articles/strict_semantic_versioning[Strict Semantic Versioning]
 
 = Versionaire
 
-Ruby doesn't provide a primitive version type by default so Versionaire fills this gap by providing immutable and thread-safe {semver_link} so you can leverage versions within your applications. This new `Version` type behaves and feels a lot like other primitives (i.e. `String`, `Array`, `Hash`, etc) and can even be cast/converted from other primitives.
+Ruby doesn't provide a primitive version type by default so Versionaire fills this gap by providing immutable and thread-safe {strict_semver_link} so you can leverage versions within your applications. This new `Version` type behaves and feels a lot like other primitives (i.e. `String`, `Array`, `Hash`, `Proc`, etc) and can be cast/converted from other primitives.
 
 toc::[]
 
 == Features
 
-* Provides _strict_ {semver_link} which means `<major>.<minor>.<patch>`.
+* Provides {strict_semver_link} which means `<major>.<minor>.<patch>`.
 * Provides immutable, thread-safe version instances.
-* Converts (casts) from a `String`, `Array`, `Hash`, or `Version` to a `Version`.
-* Disallows `<major>.<minor>.<patch>-<pre-release>` usage even though {semver_link} suggests that you _may_ use pre-release information.
-* Disallows `<major>.<minor>.<patch>+<build_metadata>` usage even though {semver_link} suggests that you _may_ use build metadata.
-
-== Screencasts
-
-[link=https://alchemists.io/screencasts/versionaire]
-image::https://alchemists.io/images/screencasts/versionaire/cover.svg[Screencast,600,240,role=focal_point]
+* Converts (casts) from a `String`, `Array`, `Hash`, `Proc`, or `Version` to a `Version`.
+* Disallows `<major>.<minor>.<patch>-<pre-release>` usage even though {semver_link} suggests you _may_ use pre-release information.
+* Disallows `<major>.<minor>.<patch>+<build_metadata>` usage even though {semver_link} suggests you _may_ use build metadata.
 
 == Requirements
 
@@ -139,8 +135,9 @@ Versionaire::Version major: 1, minor: 0, patch: 0
 Versionaire::Version version
 ----
 
-Each of these conversions will result in a version object that represents "`1.0.0`". When attempting
-to convert an unsupported type, a `Versionaire::Error` exception will be thrown.
+Each of these conversions will result in a version object that represents "`1.0.0`".
+
+When attempting to convert an unsupported type, a `Versionaire::Error` exception will be thrown.
 
 ==== Refinement
 
@@ -160,9 +157,8 @@ Version version
 
 By adding `using Versionaire::Cast` to your implementation, this allows Versionaire to refine
 `Kernel` so you have a top-level `Version` conversion function much like Kernel's native support for
-`Integer`, `String`, `Array`, `Hash`, etc. The benefit to this approach is it reduces the amount of
-typing, doesn't pollute your entire object space like a monkey patch would, and provides a idiomatic
-approach to casting like any other primitive.
+`Integer`, `String`, `Array`, `Hash`, etc. The benefit to this approach is to reduce the amount of
+typing so you don't pollute your entire object space, like a monkey patch, while providing an idiomatic approach to casting like any other primitive.
 
 ==== Implicit
 
@@ -187,7 +183,7 @@ version.to_h     # {major: 0, minor: 0, patch: 0}
 version.to_proc  # #<Proc:0x000000010b015b88 (lambda)>
 ----
 
-To elaborate on procs further, this means the following is possible:
+To elaborate on procs, this means the following is possible where you might want to collect all minor verions values or make use of version information in other useful ways:
 
 [source,ruby]
 ----
