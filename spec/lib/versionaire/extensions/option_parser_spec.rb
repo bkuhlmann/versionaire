@@ -23,6 +23,6 @@ RSpec.describe OptionParser do
 
   it "fails when input doesn't resemble a version" do
     expectation = proc { parser.parse! %w[--tag unknown] }
-    expect(&expectation).to raise_error(OptionParser::InvalidArgument, /unknown/)
+    expect(&expectation).to raise_error(described_class::InvalidArgument, /unknown/)
   end
 end
