@@ -1,5 +1,15 @@
 = Versions
 
+== 13.2.0 (2024-03-03)
+
+* ✅ Fixed RuboCop RSpec/DescribedClass issue - Brooke Kuhlmann
+* ✅ Fixed RuboCop Style/RedundantLineContinuation false positive - Brooke Kuhlmann
+* 🔼 Updated RuboCop to use XDG local configuration - Brooke Kuhlmann
+* 🔼 Updated to Caliber 0.51.0 - Brooke Kuhlmann
+* 🔼 Updated to Git Lint 7.1.0 - Brooke Kuhlmann
+* 🔼 Updated to RSpec 3.13.0 - Brooke Kuhlmann
+* 🔼 Updated to Refinements 12.1.0 - Brooke Kuhlmann
+
 == 13.1.0 (2024-02-19)
 
 * 🟢 Added repl_type_completor gem - Brooke Kuhlmann
