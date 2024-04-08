@@ -85,14 +85,12 @@ RSpec.describe Versionaire::Cast do
       it "fails with conversion error for invalid keys" do
         result = proc { Version bogus: "test" }
 
-        # rubocop:todo Style/RedundantLineContinuation
         expect(&result).to raise_error(
           Versionaire::Error,
           %(Invalid version conversion: {:bogus=>"test"}. ) \
           "Use: {major: <major>, minor: <minor>, patch: <patch>}, " \
           "{major: <major>, minor: <minor>}, {major: <major>}, or {}."
         )
-        # rubocop:enable Style/RedundantLineContinuation
       end
     end
 
