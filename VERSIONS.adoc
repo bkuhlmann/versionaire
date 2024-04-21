@@ -1,5 +1,13 @@
 = Versions
 
+== 13.3.0 (2024-04-21)
+
+* ✅ Fixed RuboCop Style/RedundantLineContinuation issues - Brooke Kuhlmann
+* 🔼 Updated setup script as a Ruby script - Brooke Kuhlmann
+* 🔼 Updated to Amazing Print 1.6.0 - Brooke Kuhlmann
+* 🔼 Updated to Git Lint 7.3.0 - Brooke Kuhlmann
+* 🔼 Updated to Rake 13.2.0 - Brooke Kuhlmann
+
 == 13.2.0 (2024-03-03)
 
 * ✅ Fixed RuboCop RSpec/DescribedClass issue - Brooke Kuhlmann
