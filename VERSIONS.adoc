@@ -1,5 +1,10 @@
 = Versions
 
+== 13.3.1 (2024-05-16)
+
+* 🔼 Updated RSpec configuration to ignore backtraces in pending specs - Brooke Kuhlmann
+* 🔼 Updated to Ruby 3.3.1 - Brooke Kuhlmann
+
 == 13.3.0 (2024-04-21)
 
 * ✅ Fixed RuboCop Style/RedundantLineContinuation issues - Brooke Kuhlmann
