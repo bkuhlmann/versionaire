@@ -18,7 +18,7 @@ module Versionaire
     end
 
     def []= key, value
-      super(key, value).tap { validate }
+      super.tap { validate }
     end
 
     def +(other) = (revalue(other.to_h) { |previous, current| previous + current }).freeze
