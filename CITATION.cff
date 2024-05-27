@@ -13,5 +13,6 @@ authors:
 keywords:
  - ruby
  - semantic versioning
-repository-code: https://alchemists.io/projects/versionaire
+repository-code: https://github.com/bkuhlmann/versionaire
 repository-artifact: https://rubygems.org/gems/versionaire
+url: https://alchemists.io/projects/versionaire
