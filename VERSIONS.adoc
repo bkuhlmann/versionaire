@@ -1,5 +1,11 @@
 = Versions
 
+== 13.6.0 (2024-08-17)
+
+* 🔼 Updated to Refinements 12.7.0 - Brooke Kuhlmann
+* 🔼 Updated to Ruby 3.3.4 - Brooke Kuhlmann
+* ⛔️ Removed Guard - Brooke Kuhlmann
+
 == 13.5.0 (2024-07-08)
 
 * 🔼 Updated to Caliber 0.58.0 - Brooke Kuhlmann
