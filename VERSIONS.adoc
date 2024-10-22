@@ -1,5 +1,10 @@
 = Versions
 
+== 13.9.0 (2024-10-22)
+
+* 🔼 Updated to Refinements 12.10.0 - Brooke Kuhlmann
+* 🔁 Refactored version casting to no longer use struct with positions - Brooke Kuhlmann
+
 == 13.8.0 (2024-10-07)
 
 * 🔼 Updated to Refinements 12.9.0 - Brooke Kuhlmann
