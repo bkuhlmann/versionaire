@@ -5,7 +5,7 @@ require "refinements/struct"
 
 module Versionaire
   # An immutable, semantic version value object.
-  Version = Struct.new :major, :minor, :patch, keyword_init: true do
+  Version = Struct.new :major, :minor, :patch do
     include Comparable
 
     using Refinements::Array

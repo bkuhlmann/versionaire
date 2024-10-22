@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "refinements/array"
-require "refinements/struct"
 
 # The gem namespace.
 module Versionaire
@@ -23,7 +22,6 @@ module Versionaire
   # Aids with converting objects into valid versions.
   class Converter
     using Refinements::Array
-    using Refinements::Struct
 
     def initialize object, model: Version
       @object = object
@@ -41,7 +39,7 @@ module Versionaire
       body = "Use: [<major>, <minor>, <patch>], [<major>, <minor>], [<major>], or []."
       fail Error, error_message(object, body) unless (0..3).cover? object.size
 
-      model.with_positions(*object.pad(0, 3))
+      model.new(**attributes_for(object.pad(0, 3)))
     end
 
     def from_hash
@@ -64,8 +62,10 @@ module Versionaire
       object.split(DELIMITER)
             .map(&:to_i)
             .then { |numbers| numbers.pad 0, 3 }
-            .then { |arguments| model.with_positions(*arguments) }
+            .then { |values| model.new(**attributes_for(values)) }
     end
+
+    def attributes_for(values) = model.members.zip(values).to_h
 
     def required_keys? = object.keys.all? { |key| model.members.include? key }
 
