@@ -1,9 +1,6 @@
 inherit_gem:
   caliber: config/all.yml
 
-Performance/Sum:
-  Exclude:
-    - "lib/versionaire/version.rb"
 Style/IpAddresses:
   Exclude:
     - "spec/lib/versionaire/versionaire_spec.rb"
