@@ -27,45 +27,12 @@ RSpec.describe Versionaire::Version do
     end
   end
 
-  describe "#[]=" do
-    it "answers assigned value" do
-      duplicate = version.dup
-      duplicate[:major] = 5
-
-      expect(duplicate.major).to eq(5)
-    end
-
-    it "answers same value as assigned" do
-      value = version.dup[:major] = 5
-      expect(value).to eq(5)
-    end
-
-    it "fails with frozen error" do
-      result = proc { version[:major] = "1" }
-      expect(&result).to raise_error(FrozenError)
-    end
-
-    it "fails with invalid number" do
-      result = proc { version.dup[:major] = "1" }
-      expect(&result).to raise_error(Versionaire::Error)
-    end
-
-    it "fails with negative number" do
-      result = proc { version.dup[:major] = -1 }
-      expect(&result).to raise_error(Versionaire::Error)
-    end
-  end
-
   describe "#+" do
     let(:other) { described_class.new major: 7, minor: 3, patch: 1 }
 
     it "adds versions" do
       result = version + other
       expect(result.to_s).to eq("8.5.4")
-    end
-
-    it "answers frozen result" do
-      expect(version + other).to be_frozen
     end
   end
 
@@ -82,10 +49,6 @@ RSpec.describe Versionaire::Version do
       result = proc { version - other }
 
       expect(&result).to raise_error(Versionaire::Error)
-    end
-
-    it "answers frozen result" do
-      expect(version - other).to be_frozen
     end
   end
 
@@ -353,10 +316,6 @@ RSpec.describe Versionaire::Version do
       expect(version.down(:minor, 2)).to eq(described_class[major: 1, minor: 0, patch: 3])
     end
 
-    it "answers frozen result" do
-      expect(version.down(:major)).to be_frozen
-    end
-
     it "fails when decreased to a negative version" do
       expectation = proc { version.down :major, 2 }
       expect(&expectation).to raise_error(Versionaire::Error, /must be.+positive/)
@@ -379,10 +338,6 @@ RSpec.describe Versionaire::Version do
     it "answers next version for given value" do
       expect(version.up(:major, 10)).to eq(described_class[major: 11, minor: 2, patch: 3])
     end
-
-    it "answers frozen result" do
-      expect(version.up(:major)).to be_frozen
-    end
   end
 
   describe "#bump" do
@@ -390,24 +345,12 @@ RSpec.describe Versionaire::Version do
       expect(version.bump(:major)).to eq(described_class[major: 2])
     end
 
-    it "answers frozen major version" do
-      expect(version.bump(:major)).to be_frozen
-    end
-
     it "answers next minor version" do
       expect(version.bump(:minor)).to eq(described_class[major: 1, minor: 3, patch: 0])
     end
 
-    it "answers frozen minor version" do
-      expect(version.bump(:minor)).to be_frozen
-    end
-
     it "answers next patch version" do
       expect(version.bump(:patch)).to eq(described_class[major: 1, minor: 2, patch: 4])
-    end
-
-    it "answers frozen patch version" do
-      expect(version.bump(:patch)).to be_frozen
     end
 
     it "fails with invalid key" do

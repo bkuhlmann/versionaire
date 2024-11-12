@@ -1,29 +1,22 @@
 # frozen_string_literal: true
 
 require "refinements/array"
-require "refinements/struct"
 
 module Versionaire
   # An immutable, semantic version value object.
-  Version = Struct.new :major, :minor, :patch do
+  Version = Data.define :major, :minor, :patch do
     include Comparable
 
     using Refinements::Array
-    using Refinements::Struct
 
     def initialize major: 0, minor: 0, patch: 0
       super
       validate
-      freeze
     end
 
-    def []= key, value
-      super.tap { validate }
-    end
+    def +(other) = add other
 
-    def +(other) = (revalue(other.to_h) { |previous, current| previous + current }).freeze
-
-    def -(other) = (revalue(other.to_h) { |previous, current| previous - current }).freeze
+    def -(other) = substract other
 
     def ==(other) = hash == other.hash
 
@@ -31,13 +24,9 @@ module Versionaire
 
     def <=>(other) = to_s <=> other.to_s
 
-    def down key, value = 1
-      (revalue(key => value) { |previous, current| previous - current }).freeze
-    end
+    def down(key, value = 1) = substract({key => value})
 
-    def up key, value = 1
-      (revalue(key => value) { |previous, current| previous + current }).freeze
-    end
+    def up(key, value = 1) = add({key => value})
 
     def bump key
       case key
@@ -50,26 +39,37 @@ module Versionaire
 
     def inspect = to_s.inspect
 
-    def to_proc = method(:[]).to_proc
+    def to_proc = method(:public_send).to_proc
 
     def to_s = to_a.join DELIMITER
 
     alias_method :to_str, :to_s
 
+    alias_method :to_a, :deconstruct
+
     private
 
     def validate
-      fail Error, "Major, minor, and patch must be a number." if to_a.any? do |number|
-                                                                   !number.is_a? Integer
-                                                                 end
-
+      fail Error, "Major, minor, and patch must be a number." unless to_a.all? Integer
       fail Error, "Major, minor, and patch must be a positive number." if to_a.any?(&:negative?)
     end
 
-    def bump_major = merge(major: major + 1, minor: 0, patch: 0).freeze
+    def add other
+      attributes = other.to_h
+      attributes.each { |key, value| attributes[key] = public_send(key) + value }
+      with(**attributes)
+    end
 
-    def bump_minor = merge(major:, minor: minor + 1, patch: 0).freeze
+    def substract other
+      attributes = other.to_h
+      attributes.each { |key, value| attributes[key] = public_send(key) - value }
+      with(**attributes)
+    end
 
-    def bump_patch = merge(major:, minor:, patch: patch + 1).freeze
+    def bump_major = with major: major + 1, minor: 0, patch: 0
+
+    def bump_minor = with major:, minor: minor + 1, patch: 0
+
+    def bump_patch = with major:, minor:, patch: patch + 1
   end
 end
