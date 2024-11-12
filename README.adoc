@@ -231,19 +231,14 @@ Versions can be bumped to next logical version with respect current version. Exa
 
 [source,ruby]
 ----
-version = Versionaire::Version.new  # #<struct Versionaire::Version major=0, minor=0, patch=0>
-version.bump :major                 # #<struct Versionaire::Version major=1, minor=0, patch=0>
-version.bump :minor                 # #<struct Versionaire::Version major=0, minor=1, patch=0>
-version.bump :patch                 # #<struct Versionaire::Version major=0, minor=0, patch=1>
+version = Versionaire::Version.new  # "0.0.0"
+version.bump :patch                 # "0.0.1"
+version.bump :minor                 # "0.1.0"
+version.bump :major                 # "1.0.0"
 
-Versionaire::Version[major: 1, minor: 2, patch: 3].bump :major
-#<struct Versionaire::Version major=2, minor=0, patch=0>
-
-Versionaire::Version[major: 1, minor: 2, patch: 3].bump :minor
-#<struct Versionaire::Version major=1, minor=3, patch=0>
-
-Versionaire::Version[major: 1, minor: 2, patch: 3].bump :patch
-#<struct Versionaire::Version major=1, minor=2, patch=4>
+Versionaire::Version[major: 1, minor: 2, patch: 3].bump :major  # "2.0.0"
+Versionaire::Version[major: 1, minor: 2, patch: 3].bump :minor  # "1.3.0"
+Versionaire::Version[major: 1, minor: 2, patch: 3].bump :patch  # "1.2.4"
 ----
 
 You'll notice, when bumping the major or minor versions, lower precision gets zeroed out in order to provide the next logical version.
@@ -342,8 +337,7 @@ parser.parse %w[--tag 1.2.3]
 puts options
 ----
 
-The above will ensure `--tag 1.2.3` is parsed as `{version: #<struct Versionaire::Version major = 1,
-minor = 2, patch = 3>}` within your `options` variable. Should `OptionParser` parse an invalid version, you'll get a `OptionParser::InvalidArgument` instead.
+The above will ensure `--tag 1.2.3` is parsed as `{version: "1.2.3"}` within your `options` variable. Should `OptionParser` parse an invalid version, you'll get a `OptionParser::InvalidArgument` instead.
 
 == Development
 
