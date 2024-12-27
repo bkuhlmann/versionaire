@@ -91,7 +91,7 @@ RSpec.describe "Function" do
 
         expect(&result).to raise_error(
           Versionaire::Error,
-          %(Invalid version conversion: {:bogus=>"test"}. ) \
+          %(Invalid version conversion: {bogus: "test"}. ) \
           "Use: {major: <major>, minor: <minor>, patch: <patch>}, " \
           "{major: <major>, minor: <minor>}, {major: <major>}, or {}."
         )
