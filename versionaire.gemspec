@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.cert_chain = [Gem.default_cert_path]
 
   spec.required_ruby_version = ">= 3.4"
-  spec.add_dependency "refinements", "~> 13.5"
+  spec.add_dependency "refinements", "~> 13.6"
 
   spec.files = Dir["*.gemspec", "lib/**/*"]
   spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
