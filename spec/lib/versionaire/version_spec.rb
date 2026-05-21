@@ -362,6 +362,28 @@ RSpec.describe Versionaire::Version do
     end
   end
 
+  describe "#kind" do
+    it "answers major when minor and patch are zero" do
+      version = described_class[major: 1, minor: 0, patch: 0]
+      expect(version.kind).to be(:major)
+    end
+
+    it "answers minor when patch is zero zero" do
+      version = described_class[major: 1, minor: 1, patch: 0]
+      expect(version.kind).to be(:minor)
+    end
+
+    it "answers patch when patch is positive" do
+      version = described_class[major: 1, minor: 1, patch: 1]
+      expect(version.kind).to be(:patch)
+    end
+
+    it "answers nascent when major, minor, and patch are zero" do
+      version = described_class[major: 0, minor: 0, patch: 0]
+      expect(version.kind).to be(:nascent)
+    end
+  end
+
   describe "#major?" do
     it "answers true when major is positive, minor is zero, and patch is zero" do
       version = described_class[major: 1, minor: 0, patch: 0]

@@ -39,6 +39,14 @@ module Versionaire
 
     def inspect = to_s.inspect
 
+    def kind
+      if major? then :major
+      elsif minor? then :minor
+      elsif patch? then :patch
+      else :nascent
+      end
+    end
+
     def major? = major.positive? && minor.zero? && patch.zero?
 
     def minor?
