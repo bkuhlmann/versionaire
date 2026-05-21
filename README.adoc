@@ -183,7 +183,7 @@ version.to_h     # {major: 0, minor: 0, patch: 0}
 version.to_proc  # #<Proc:0x000000010b015b88 (lambda)>
 ----
 
-To elaborate on procs, this means the following is possible where you might want to collect all minor verions values or make use of version information in other useful ways:
+To elaborate on procs, this means the following is possible where you might want to collect all minor version values or make use of version information in other useful ways:
 
 [source,ruby]
 ----
@@ -195,6 +195,20 @@ version.to_proc.call :major               # 1
 [version, version, version].map(&:minor)  # [2, 2, 2]
 ----
 
+=== Kinds
+
+You can ask what kind the version is:
+
+[source,ruby]
+----
+Version("1.1.1").kind  # :patch
+Version("1.1.0").kind  # :minor
+Version("1.0.0").kind  # :major
+Version("0.1.0").kind  # :minor
+Version("0.0.1").kind  # :patch
+Version("0.0.0").kind  # :nascent
+----
+
 === Inspections
 
 You can inspect a version which is the equivalent of an escaped string representation. Example:
@@ -204,6 +218,26 @@ You can inspect a version which is the equivalent of an escaped string represent
 using Versionaire::Cast
 
 Version("1.2.3").inspect  # "\"1.2.3\""
+----
+
+You can also ask if a version is a major, minor, or patch. Example:
+
+[source,ruby]
+----
+Version("1.0.0").major?  # true
+Version("0.1.0").major?  # false
+Version("0.0.1").major?  # false
+Version("0.0.0").major?  # false
+
+Version("1.0.0").minor?  # false
+Version("0.1.0").minor?  # true
+Version("0.0.1").minor?  # false
+Version("0.0.0").minor?  # false
+
+Version("1.0.0").patch?  # false
+Version("0.1.0").patch?  # false
+Version("0.0.1").patch?  # true
+Version("0.0.0").patch?  # false
 ----
 
 === Comparisons
