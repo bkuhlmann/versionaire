@@ -362,6 +362,67 @@ RSpec.describe Versionaire::Version do
     end
   end
 
+  describe "#major?" do
+    it "answers true when major is positive, minor is zero, and patch is zero" do
+      version = described_class[major: 1, minor: 0, patch: 0]
+      expect(version.major?).to be(true)
+    end
+
+    it "answers false when major, minor, and patch are zero" do
+      version = described_class[major: 0, minor: 0, patch: 0]
+      expect(version.major?).to be(false)
+    end
+
+    it "answers false when major is positive, minor is positive, and patch is zero" do
+      version = described_class[major: 1, minor: 1, patch: 0]
+      expect(version.major?).to be(false)
+    end
+
+    it "answers false when major, minor, and patch are positive" do
+      version = described_class[major: 1, minor: 1, patch: 1]
+      expect(version.major?).to be(false)
+    end
+  end
+
+  describe "#minor?" do
+    it "answers true when major is positive, minor is positive, and patch is zero" do
+      version = described_class[major: 1, minor: 1, patch: 0]
+      expect(version.minor?).to be(true)
+    end
+
+    it "answers true when major is zero, minor is positive, and patch is zero" do
+      version = described_class[major: 0, minor: 1, patch: 0]
+      expect(version.minor?).to be(true)
+    end
+
+    it "answers false when major, minor, and patch are zero" do
+      version = described_class[major: 0, minor: 0, patch: 0]
+      expect(version.minor?).to be(false)
+    end
+
+    it "answers false when major is positive, minor is zero, and patch is zero" do
+      version = described_class[major: 1, minor: 0, patch: 0]
+      expect(version.minor?).to be(false)
+    end
+
+    it "answers false when patch is positive" do
+      version = described_class[major: 0, minor: 0, patch: 1]
+      expect(version.minor?).to be(false)
+    end
+  end
+
+  describe "#patch?" do
+    it "answers true when patch is positive" do
+      version = described_class[major: 0, minor: 0, patch: 1]
+      expect(version.patch?).to be(true)
+    end
+
+    it "answers false when patch is zero" do
+      version = described_class[major: 1, minor: 1, patch: 0]
+      expect(version.patch?).to be(false)
+    end
+  end
+
   describe "#to_a" do
     it "answers array" do
       expect(version.to_a).to contain_exactly(1, 2, 3)

@@ -39,6 +39,18 @@ module Versionaire
 
     def inspect = to_s.inspect
 
+    def major? = major.positive? && minor.zero? && patch.zero?
+
+    def minor?
+      nonmajor = major.zero?
+      nonpatch = patch.zero?
+
+      !(nonmajor && minor.zero? && nonpatch) &&
+        (nonmajor || major.positive?) && minor.positive? && nonpatch
+    end
+
+    def patch? = patch.positive?
+
     def to_proc = method(:public_send).to_proc
 
     def to_s = to_a.join DELIMITER
