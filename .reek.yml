@@ -8,6 +8,8 @@ detectors:
     exclude:
     - Kernel#Version
     - Versionaire#Version
+  UnusedParameters:
+    enabled: false
   UtilityFunction:
     exclude:
     - Kernel#Version
